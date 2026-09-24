@@ -1,0 +1,5 @@
+# Phase 1-2: symbolic closure audit configuration
+residual_tol_max: 1.0e-10   # max |F(z,t)| at 50-digit precision (configurable)
+residual_tol_rel: 1.0e-10   # ||F||_2 / ||A||_2 (nondimensional, configurable)
+max_depth: 14               # recursion bound of the factor-split solver
+max_families: 60            # cap on families per pair (safety)

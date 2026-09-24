@@ -1,0 +1,106 @@
+{
+  "n": "0",
+  "m": "0",
+  "n_equations": 2,
+  "certificate_notes": [],
+  "cleared_denominators": "powers of T and (1-T^2); T in (0,1) so both nonzero",
+  "n_families_found": 1,
+  "families": [
+    {
+      "branch_id": "n0_m0_f0",
+      "n": "0",
+      "m": "0",
+      "family_index": 0,
+      "tier": "B",
+      "group": "main",
+      "constraints": {
+        "gamma": "0",
+        "ell": "alpha2*asq/(2*(Gamma*asq + 1))"
+      },
+      "free_parameters": [
+        "lambda1",
+        "lambda2",
+        "asq",
+        "beta2",
+        "beta3",
+        "beta4",
+        "c",
+        "alpha2",
+        "Gamma"
+      ],
+      "representative_sets": [
+        {
+          "beta2": "1/5",
+          "beta3": "1/5",
+          "beta4": "1/10",
+          "gamma": "0",
+          "alpha2": "1/5",
+          "Gamma": "1/2",
+          "g0": "1",
+          "T2": "sqrt(2)/2",
+          "alpha": "13/15",
+          "lambda1": "1/5",
+          "lambda2": "4/5",
+          "a": "1"
+        },
+        {
+          "beta2": "-1/5",
+          "beta3": "1/10",
+          "beta4": "1/20",
+          "gamma": "0",
+          "alpha2": "3/10",
+          "Gamma": "1",
+          "g0": "1",
+          "T2": "sqrt(3)/2",
+          "alpha": "251/305",
+          "lambda1": "1/10",
+          "lambda2": "13/10",
+          "a": "6/5"
+        }
+      ],
+      "xi_domain": [
+        -4.0,
+        4.0
+      ],
+      "power_convention": "integer_exact",
+      "properties": {
+        "real_profile": true,
+        "bounded_on_domain": true,
+        "bounded_on_R": true,
+        "localized": false,
+        "smooth_C4_on_domain": true,
+        "smooth_C4_on_R": true,
+        "fractional_power": false,
+        "singular_at_xi0": false,
+        "feat_max_amplitude": 1.0,
+        "feat_max_curvature_tt": 0.0,
+        "feat_max_fourth_deriv_tttt": 0.0,
+        "feat_gradient_max": 0.0,
+        "feat_localization_width_t": Infinity,
+        "feat_distance_to_singularity_xi": Infinity,
+        "activity_A_z": 0.0,
+        "activity_beta2_GVD": 0.0,
+        "activity_gain_bandwidth_c": 0.0,
+        "activity_beta3_TOD": 0.0,
+        "activity_beta4_FOD": 0.0,
+        "activity_kerr_gamma": 0.0,
+        "activity_two_photon_alpha2": 0.06666666666666667,
+        "activity_linear_gain_loss": 0.06666666666666667,
+        "activity_saturation_Gamma": 0.06666666666666667
+      },
+      "active_terms": [
+        "two_photon_alpha2",
+        "linear_gain_loss",
+        "saturation_Gamma"
+      ],
+      "residual_max": 0.0,
+      "residual_rms_rel": 0.0,
+      "verified_symbolic": true,
+      "verified_numeric": true,
+      "rejection_reason": "",
+      "notes": []
+    }
+  ],
+  "elapsed_s": 0.11414172199874884,
+  "extended_phase": false
+}

@@ -1,0 +1,36 @@
+{
+  "state": "done",
+  "stage": "nonlinear",
+  "density": 0.05,
+  "noise": 0.05,
+  "seed": 1,
+  "params": [
+    {
+      "param": "gamma",
+      "true": 0.0,
+      "recovered": -0.0011436336395249265,
+      "abs_error": 0.0011436336395249265,
+      "rel_error": null
+    },
+    {
+      "param": "Gamma",
+      "true": 0.0,
+      "recovered": 0.01956564277900341,
+      "abs_error": 0.01956564277900341,
+      "rel_error": null
+    },
+    {
+      "param": "alpha2",
+      "true": 0.64,
+      "recovered": 0.639366506992413,
+      "abs_error": 0.0006334930075869716,
+      "rel_error": 0.000989832824354643
+    }
+  ],
+  "l2re_field": 0.00998342375747107,
+  "n_obs": 230,
+  "obs_sigma": 0.015899768912863956,
+  "elapsed_s": 312.9587018619932,
+  "branch_id": "n1_m0_f0",
+  "job": "n1_m0_f0__nonlinear__d0.05__n0.05__seed1"
+}

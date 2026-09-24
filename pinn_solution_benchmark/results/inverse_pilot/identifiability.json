@@ -1,0 +1,74 @@
+{
+  "n1_m1_f0": {
+    "reduced_names": [
+      "beta2",
+      "beta3",
+      "beta4",
+      "c",
+      "ell",
+      "gamma",
+      "alpha2",
+      "Gamma"
+    ],
+    "reduced_singular_values": [
+      19.447787101952105,
+      15.57328095596792,
+      2.821441390018721,
+      2.2960650287206126,
+      1.0250356538515129,
+      0.29874415064410603,
+      0.2070002071125902,
+      2.568820643125256e-10
+    ],
+    "reduced_condition_number": 75707064850.94153,
+    "reduced_rank_1e-8": 7,
+    "g0T2alpha_singular_values": [
+      12.861314011666963,
+      2.8199209755625265,
+      2.0788544701830058e-10
+    ],
+    "g0T2alpha_rank_1e-8": 2,
+    "g0T2alpha_null_direction": [
+      -0.6859943405839808,
+      0.24253562502944137,
+      -0.6859943405585265
+    ],
+    "statement": "rank < 3 confirms g0, T2, alpha are not separately identifiable; only c = g0*T2^2 and ell = (g0-alpha)/2 are."
+  },
+  "n1_m0_f0": {
+    "reduced_names": [
+      "beta2",
+      "beta3",
+      "beta4",
+      "c",
+      "ell",
+      "gamma",
+      "alpha2",
+      "Gamma"
+    ],
+    "reduced_singular_values": [
+      10.84413126604756,
+      7.460453889115585,
+      2.505771745330123,
+      1.3223580890817268,
+      1.0729666727955143,
+      0.3145037145607813,
+      0.23053444802964923,
+      9.720001340568457e-11
+    ],
+    "reduced_condition_number": 111565121095.06932,
+    "reduced_rank_1e-8": 7,
+    "g0T2alpha_singular_values": [
+      7.747685760260468,
+      2.547539807578868,
+      5.404959301105013e-11
+    ],
+    "g0T2alpha_rank_1e-8": 2,
+    "g0T2alpha_null_direction": [
+      -0.6859943405900057,
+      0.2425356250340479,
+      -0.6859943405508727
+    ],
+    "statement": "rank < 3 confirms g0, T2, alpha are not separately identifiable; only c = g0*T2^2 and ell = (g0-alpha)/2 are."
+  }
+}

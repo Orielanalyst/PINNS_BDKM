@@ -1,0 +1,19 @@
+# High-fidelity retraining of the hardest main branch (bright sech (1,0)),
+# which fails the 1e-2 threshold at pilot budget. CPU-feasible upgrade:
+# 2.5x steps, 2x collocation, wider net. Tests whether the failure is a
+# budget artifact or a genuine difficulty regime.
+inherit: pilot.yaml
+experiment_name: forward_sech_hifi
+branches: [n1_m0_f0]
+param_sets_per_branch: 2
+methods: [vanilla, adaptive_weights, adaptive_sampling]
+seeds: [0, 1, 2]
+network:
+  hidden_layers: 4
+  width: 48
+training:
+  adam_steps: 2500
+  lbfgs_steps: 300
+  n_collocation: 2048
+  resample_every: 600
+  checkpoint_every: 500

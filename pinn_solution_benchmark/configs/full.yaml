@@ -1,0 +1,34 @@
+# Full mode: every accepted main-group branch, recommended settings.
+# Intended for GPU or long CPU runs; fully resumable.
+experiment_name: forward_full
+run_mode: full
+device: auto
+seeds: [0, 1, 2, 3, 4]
+branches: all_main
+param_sets_per_branch: 2
+methods: [vanilla, adaptive_weights, adaptive_sampling]
+domain:
+  z_max: 1.0
+network:
+  hidden_layers: 6
+  width: 64
+  activation: tanh
+  fourier_features: 0     # set >0 to enable Fourier features
+training:
+  adam_steps: 5000
+  adam_lr: 1.0e-3
+  adam_lr_decay: 0.1
+  lbfgs_steps: 500
+  n_collocation: 10000
+  n_initial: 384
+  n_boundary: 384
+  resample_every: 1000
+  balancer_alpha: 0.1
+  balancer_every: 100
+  checkpoint_every: 500
+loss_weights: {initial: 100.0, boundary: 100.0, pde: 1.0}
+metrics:
+  test_grid: [96, 192]
+  n_residual_test: 4000
+  success_threshold_l2re: 1.0e-2
+workers: 3

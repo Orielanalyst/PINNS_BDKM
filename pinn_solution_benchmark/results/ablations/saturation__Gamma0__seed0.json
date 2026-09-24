@@ -1,0 +1,11 @@
+{
+  "job": "saturation__Gamma0__seed0",
+  "ablation": "saturation",
+  "arm": "Gamma0",
+  "seed": 0,
+  "state": "done",
+  "l2re_complex": 0.0006130827880430394,
+  "residual_rms": 0.0022214603791515034,
+  "train_time_s": 130.0672765900017,
+  "success": true
+}

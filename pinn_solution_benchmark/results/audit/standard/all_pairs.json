@@ -1,0 +1,4991 @@
+[
+  {
+    "n": "-3/2",
+    "m": "-3/2",
+    "n_equations": 20,
+    "certificate_notes": [],
+    "cleared_denominators": "powers of T and (1-T^2); T in (0,1) so both nonzero",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "nneg3o2_mneg3o2_f0",
+        "n": "-3/2",
+        "m": "-3/2",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta3": "0",
+          "lambda1": "0",
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0",
+          "c": "0",
+          "ell": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "nneg3o2_mneg3o2_f1",
+        "n": "-3/2",
+        "m": "-3/2",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "lambda1": "0",
+          "ell": "0",
+          "gamma": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.8625776910012064,
+    "extended_phase": false
+  },
+  {
+    "n": "-3/2",
+    "m": "-1",
+    "n_equations": 24,
+    "certificate_notes": [
+      "real_W: unexpected denominator factor T - 1",
+      "imag_W: unexpected denominator factor T - 1",
+      "half-odd-integer n-m: nonlinear terms lie in the W-component alone, forcing alpha2*asq = gamma*asq = 0 unless they cancel against Gamma-terms"
+    ],
+    "cleared_denominators": "powers of T and (1-T^2) after splitting the {1, W} components (W = sech xi not rational in T)",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "nneg3o2_mneg1_f0",
+        "n": "-3/2",
+        "m": "-1",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0",
+          "beta3": "0",
+          "lambda1": "0",
+          "c": "0",
+          "ell": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "nneg3o2_mneg1_f1",
+        "n": "-3/2",
+        "m": "-1",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "lambda1": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.738235764001729,
+    "extended_phase": false
+  },
+  {
+    "n": "-3/2",
+    "m": "-1/2",
+    "n_equations": 21,
+    "certificate_notes": [
+      "real: unexpected denominator factor T - 1",
+      "imag: unexpected denominator factor T - 1"
+    ],
+    "cleared_denominators": "powers of T and (1-T^2); T in (0,1) so both nonzero",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "nneg3o2_mneg1o2_f0",
+        "n": "-3/2",
+        "m": "-1/2",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0",
+          "beta3": "0",
+          "lambda1": "0",
+          "c": "0",
+          "ell": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "nneg3o2_mneg1o2_f1",
+        "n": "-3/2",
+        "m": "-1/2",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "lambda1": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.8180677079981251,
+    "extended_phase": false
+  },
+  {
+    "n": "-3/2",
+    "m": "0",
+    "n_equations": 14,
+    "certificate_notes": [
+      "real_W: unexpected denominator factor T - 1",
+      "imag_W: unexpected denominator factor T - 1",
+      "half-odd-integer n-m: nonlinear terms lie in the W-component alone, forcing alpha2*asq = gamma*asq = 0 unless they cancel against Gamma-terms"
+    ],
+    "cleared_denominators": "powers of T and (1-T^2) after splitting the {1, W} components (W = sech xi not rational in T)",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "nneg3o2_m0_f0",
+        "n": "-3/2",
+        "m": "0",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta3": "0",
+          "lambda1": "0",
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0",
+          "c": "0",
+          "ell": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "nneg3o2_m0_f1",
+        "n": "-3/2",
+        "m": "0",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "ell": "0",
+          "lambda1": "0",
+          "gamma": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.44011416300054407,
+    "extended_phase": false
+  },
+  {
+    "n": "-3/2",
+    "m": "1/2",
+    "n_equations": 23,
+    "certificate_notes": [
+      "real: unexpected denominator factor T - 1",
+      "imag: unexpected denominator factor T - 1"
+    ],
+    "cleared_denominators": "powers of T and (1-T^2); T in (0,1) so both nonzero",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "nneg3o2_m1o2_f0",
+        "n": "-3/2",
+        "m": "1/2",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta3": "0",
+          "lambda1": "0",
+          "c": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "nneg3o2_m1o2_f1",
+        "n": "-3/2",
+        "m": "1/2",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "lambda1": "0",
+          "ell": "0",
+          "gamma": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.9237006010007462,
+    "extended_phase": false
+  },
+  {
+    "n": "-3/2",
+    "m": "1",
+    "n_equations": 16,
+    "certificate_notes": [
+      "real_W: unexpected denominator factor T - 1",
+      "imag_W: unexpected denominator factor T - 1",
+      "half-odd-integer n-m: nonlinear terms lie in the W-component alone, forcing alpha2*asq = gamma*asq = 0 unless they cancel against Gamma-terms"
+    ],
+    "cleared_denominators": "powers of T and (1-T^2) after splitting the {1, W} components (W = sech xi not rational in T)",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "nneg3o2_m1_f0",
+        "n": "-3/2",
+        "m": "1",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta3": "0",
+          "lambda1": "0",
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0",
+          "c": "0",
+          "ell": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "nneg3o2_m1_f1",
+        "n": "-3/2",
+        "m": "1",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "lambda1": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.5748606560009648,
+    "extended_phase": false
+  },
+  {
+    "n": "-3/2",
+    "m": "3/2",
+    "n_equations": 24,
+    "certificate_notes": [
+      "real: unexpected denominator factor T - 1",
+      "imag: unexpected denominator factor T - 1"
+    ],
+    "cleared_denominators": "powers of T and (1-T^2); T in (0,1) so both nonzero",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "nneg3o2_m3o2_f0",
+        "n": "-3/2",
+        "m": "3/2",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta3": "0",
+          "lambda1": "0",
+          "c": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "nneg3o2_m3o2_f1",
+        "n": "-3/2",
+        "m": "3/2",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "lambda1": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.8351394310011528,
+    "extended_phase": false
+  },
+  {
+    "n": "-1",
+    "m": "-3/2",
+    "n_equations": 16,
+    "certificate_notes": [
+      "half-odd-integer n-m: nonlinear terms lie in the W-component alone, forcing alpha2*asq = gamma*asq = 0 unless they cancel against Gamma-terms"
+    ],
+    "cleared_denominators": "powers of T and (1-T^2) after splitting the {1, W} components (W = sech xi not rational in T)",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "nneg1_mneg3o2_f0",
+        "n": "-1",
+        "m": "-3/2",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0",
+          "c": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "beta3": "0",
+          "lambda1": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "nneg1_mneg3o2_f1",
+        "n": "-1",
+        "m": "-3/2",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "lambda1": "0",
+          "ell": "0",
+          "gamma": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.5484665779986244,
+    "extended_phase": false
+  },
+  {
+    "n": "-1",
+    "m": "-1",
+    "n_equations": 11,
+    "certificate_notes": [],
+    "cleared_denominators": "powers of T and (1-T^2); T in (0,1) so both nonzero",
+    "n_families_found": 3,
+    "families": [
+      {
+        "branch_id": "nneg1_mneg1_f0",
+        "n": "-1",
+        "m": "-1",
+        "family_index": 0,
+        "tier": "B",
+        "group": "stress",
+        "constraints": {
+          "lambda1": "0",
+          "beta3": "0",
+          "ell": "-c*lambda2**2",
+          "Gamma": "0",
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0",
+          "alpha2": "-2*c*lambda2**2/asq"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "c"
+        ],
+        "representative_sets": [
+          {
+            "beta2": "0",
+            "beta3": "0",
+            "beta4": "0",
+            "gamma": "0",
+            "alpha2": "-16/25",
+            "Gamma": "0",
+            "g0": "1",
+            "T2": "sqrt(2)/2",
+            "alpha": "41/25",
+            "lambda1": "0",
+            "lambda2": "4/5",
+            "a": "1"
+          },
+          {
+            "beta2": "0",
+            "beta3": "0",
+            "beta4": "0",
+            "gamma": "0",
+            "alpha2": "-169/96",
+            "Gamma": "0",
+            "g0": "1",
+            "T2": "sqrt(3)/2",
+            "alpha": "707/200",
+            "lambda1": "0",
+            "lambda2": "13/10",
+            "a": "6/5"
+          }
+        ],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "integer_exact",
+        "properties": {
+          "real_profile": true,
+          "bounded_on_domain": true,
+          "bounded_on_R": false,
+          "localized": false,
+          "smooth_C4_on_domain": true,
+          "smooth_C4_on_R": false,
+          "fractional_power": false,
+          "singular_at_xi0": true,
+          "feat_max_amplitude": 2.9728677194309836,
+          "feat_max_curvature_tt": 29.825492706980096,
+          "feat_max_fourth_deriv_tttt": 1871.7106720882334,
+          "feat_gradient_max": 6.270353981787824,
+          "feat_localization_width_t": 0.7499999998125001,
+          "feat_distance_to_singularity_xi": 0.350000001,
+          "activity_A_z": 0.0,
+          "activity_beta2_GVD": 0.0,
+          "activity_gain_bandwidth_c": 7.456373176745023,
+          "activity_beta3_TOD": 0.0,
+          "activity_beta4_FOD": 0.0,
+          "activity_kerr_gamma": 0.0,
+          "activity_two_photon_alpha2": 8.407690846962938,
+          "activity_linear_gain_loss": 0.9513176702179149,
+          "activity_saturation_Gamma": 0.0
+        },
+        "active_terms": [
+          "gain_bandwidth_c",
+          "two_photon_alpha2",
+          "linear_gain_loss"
+        ],
+        "residual_max": 2.1382117680737565e-50,
+        "residual_rms_rel": 2.3641250800426743e-51,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "",
+        "notes": []
+      },
+      {
+        "branch_id": "nneg1_mneg1_f1",
+        "n": "-1",
+        "m": "-1",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda1": "0",
+          "beta3": "0",
+          "ell": "0",
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0",
+          "c": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "integer_exact",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "nneg1_mneg1_f2",
+        "n": "-1",
+        "m": "-1",
+        "family_index": 2,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda1": "0",
+          "lambda2": "0",
+          "ell": "0",
+          "gamma": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "integer_exact",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.7680179070011945,
+    "extended_phase": false
+  },
+  {
+    "n": "-1",
+    "m": "-1/2",
+    "n_equations": 16,
+    "certificate_notes": [
+      "real_W: unexpected denominator factor T - 1",
+      "imag_W: unexpected denominator factor T - 1",
+      "half-odd-integer n-m: nonlinear terms lie in the W-component alone, forcing alpha2*asq = gamma*asq = 0 unless they cancel against Gamma-terms"
+    ],
+    "cleared_denominators": "powers of T and (1-T^2) after splitting the {1, W} components (W = sech xi not rational in T)",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "nneg1_mneg1o2_f0",
+        "n": "-1",
+        "m": "-1/2",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0",
+          "c": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "beta3": "0",
+          "lambda1": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "nneg1_mneg1o2_f1",
+        "n": "-1",
+        "m": "-1/2",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "lambda1": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.5404779999989842,
+    "extended_phase": false
+  },
+  {
+    "n": "-1",
+    "m": "0",
+    "n_equations": 6,
+    "certificate_notes": [
+      "real: unexpected denominator factor T - 1",
+      "imag: unexpected denominator factor T - 1"
+    ],
+    "cleared_denominators": "powers of T and (1-T^2); T in (0,1) so both nonzero",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "nneg1_m0_f0",
+        "n": "-1",
+        "m": "0",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda1": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "lambda2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "integer_exact",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      },
+      {
+        "branch_id": "nneg1_m0_f1",
+        "n": "-1",
+        "m": "0",
+        "family_index": 1,
+        "tier": "B",
+        "group": "stress",
+        "constraints": {
+          "lambda1": "-beta3*lambda2**3/6",
+          "ell": "c*lambda2**2/2",
+          "alpha2": "0",
+          "beta2": "-beta4*lambda2**2/12",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [
+          {
+            "beta2": "-2/375",
+            "beta3": "1/5",
+            "beta4": "1/10",
+            "gamma": "0",
+            "alpha2": "0",
+            "Gamma": "1/2",
+            "g0": "1",
+            "T2": "sqrt(2)/2",
+            "alpha": "17/25",
+            "lambda1": "-32/1875",
+            "lambda2": "4/5",
+            "a": "1"
+          },
+          {
+            "beta2": "-169/24000",
+            "beta3": "1/10",
+            "beta4": "1/20",
+            "gamma": "0",
+            "alpha2": "0",
+            "Gamma": "1",
+            "g0": "1",
+            "T2": "sqrt(3)/2",
+            "alpha": "-107/400",
+            "lambda1": "-2197/60000",
+            "lambda2": "13/10",
+            "a": "6/5"
+          }
+        ],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "integer_exact",
+        "properties": {
+          "real_profile": true,
+          "bounded_on_domain": true,
+          "bounded_on_R": false,
+          "localized": false,
+          "smooth_C4_on_domain": true,
+          "smooth_C4_on_R": true,
+          "fractional_power": false,
+          "singular_at_xi0": false,
+          "feat_max_amplitude": 27.308232836016487,
+          "feat_max_curvature_tt": 17.477269015050556,
+          "feat_max_fourth_deriv_tttt": 11.185452169632354,
+          "feat_gradient_max": 21.831933757702203,
+          "feat_localization_width_t": 9.999999998749999,
+          "feat_distance_to_singularity_xi": Infinity,
+          "activity_A_z": 0.4657479201643136,
+          "activity_beta2_GVD": 0.04660605070680147,
+          "activity_gain_bandwidth_c": 4.369317253762638,
+          "activity_beta3_TOD": 0.4657479201643136,
+          "activity_beta4_FOD": 0.04660605070680147,
+          "activity_kerr_gamma": 0.0,
+          "activity_two_photon_alpha2": 0.0,
+          "activity_linear_gain_loss": 4.369317253762638,
+          "activity_saturation_Gamma": 0.0
+        },
+        "active_terms": [
+          "A_z",
+          "beta2_GVD",
+          "gain_bandwidth_c",
+          "beta3_TOD",
+          "beta4_FOD",
+          "linear_gain_loss"
+        ],
+        "residual_max": 2.138228081272697e-50,
+        "residual_rms_rel": 4.7842847937716744e-52,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "",
+        "notes": [
+          "profile unbounded as |xi|->inf; finite only on truncated domain"
+        ]
+      }
+    ],
+    "elapsed_s": 0.3204170200006047,
+    "extended_phase": false
+  },
+  {
+    "n": "-1",
+    "m": "1/2",
+    "n_equations": 16,
+    "certificate_notes": [
+      "real_W: unexpected denominator factor T - 1",
+      "imag_W: unexpected denominator factor T - 1",
+      "half-odd-integer n-m: nonlinear terms lie in the W-component alone, forcing alpha2*asq = gamma*asq = 0 unless they cancel against Gamma-terms"
+    ],
+    "cleared_denominators": "powers of T and (1-T^2) after splitting the {1, W} components (W = sech xi not rational in T)",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "nneg1_m1o2_f0",
+        "n": "-1",
+        "m": "1/2",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "c": "0",
+          "ell": "0",
+          "beta3": "0",
+          "lambda1": "0",
+          "alpha2": "0",
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "nneg1_m1o2_f1",
+        "n": "-1",
+        "m": "1/2",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "lambda1": "0",
+          "ell": "0",
+          "gamma": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.5273650100025407,
+    "extended_phase": false
+  },
+  {
+    "n": "-1",
+    "m": "1",
+    "n_equations": 6,
+    "certificate_notes": [
+      "real: unexpected denominator factor T - 1",
+      "imag: unexpected denominator factor T - 1"
+    ],
+    "cleared_denominators": "powers of T and (1-T^2); T in (0,1) so both nonzero",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "nneg1_m1_f0",
+        "n": "-1",
+        "m": "1",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda1": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "lambda2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "integer_exact",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      },
+      {
+        "branch_id": "nneg1_m1_f1",
+        "n": "-1",
+        "m": "1",
+        "family_index": 1,
+        "tier": "B",
+        "group": "stress",
+        "constraints": {
+          "lambda1": "-2*beta3*lambda2**3/3",
+          "ell": "2*c*lambda2**2",
+          "alpha2": "0",
+          "beta2": "-beta4*lambda2**2/3",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [
+          {
+            "beta2": "-8/375",
+            "beta3": "1/5",
+            "beta4": "1/10",
+            "gamma": "0",
+            "alpha2": "0",
+            "Gamma": "1/2",
+            "g0": "1",
+            "T2": "sqrt(2)/2",
+            "alpha": "-7/25",
+            "lambda1": "-128/1875",
+            "lambda2": "4/5",
+            "a": "1"
+          },
+          {
+            "beta2": "-169/6000",
+            "beta3": "1/10",
+            "beta4": "1/20",
+            "gamma": "0",
+            "alpha2": "0",
+            "Gamma": "1",
+            "g0": "1",
+            "T2": "sqrt(3)/2",
+            "alpha": "-407/100",
+            "lambda1": "-2197/15000",
+            "lambda2": "13/10",
+            "a": "6/5"
+          }
+        ],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "integer_exact",
+        "properties": {
+          "real_profile": true,
+          "bounded_on_domain": true,
+          "bounded_on_R": false,
+          "localized": false,
+          "smooth_C4_on_domain": true,
+          "smooth_C4_on_R": true,
+          "fractional_power": false,
+          "singular_at_xi0": false,
+          "feat_max_amplitude": 745.239412894775,
+          "feat_max_curvature_tt": 1907.8128970106243,
+          "feat_max_fourth_deriv_tttt": 4884.001016347198,
+          "feat_gradient_max": 1192.3833290017426,
+          "feat_localization_width_t": 9.999999998749999,
+          "feat_distance_to_singularity_xi": Infinity,
+          "activity_A_z": 101.75004407481535,
+          "activity_beta2_GVD": 20.35000423477999,
+          "activity_gain_bandwidth_c": 476.953224252656,
+          "activity_beta3_TOD": 101.75004407481536,
+          "activity_beta4_FOD": 20.35000423477999,
+          "activity_kerr_gamma": 0.0,
+          "activity_two_photon_alpha2": 0.0,
+          "activity_linear_gain_loss": 476.953224252656,
+          "activity_saturation_Gamma": 0.0
+        },
+        "active_terms": [
+          "A_z",
+          "beta2_GVD",
+          "gain_bandwidth_c",
+          "beta3_TOD",
+          "beta4_FOD",
+          "linear_gain_loss"
+        ],
+        "residual_max": 3.849018754285868e-48,
+        "residual_rms_rel": 2.4794652567672724e-51,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "",
+        "notes": [
+          "profile unbounded as |xi|->inf; finite only on truncated domain"
+        ]
+      }
+    ],
+    "elapsed_s": 0.5710173039988149,
+    "extended_phase": false
+  },
+  {
+    "n": "-1",
+    "m": "3/2",
+    "n_equations": 16,
+    "certificate_notes": [
+      "real_W: unexpected denominator factor T - 1",
+      "imag_W: unexpected denominator factor T - 1",
+      "half-odd-integer n-m: nonlinear terms lie in the W-component alone, forcing alpha2*asq = gamma*asq = 0 unless they cancel against Gamma-terms"
+    ],
+    "cleared_denominators": "powers of T and (1-T^2) after splitting the {1, W} components (W = sech xi not rational in T)",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "nneg1_m3o2_f0",
+        "n": "-1",
+        "m": "3/2",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0",
+          "c": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "beta3": "0",
+          "lambda1": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "nneg1_m3o2_f1",
+        "n": "-1",
+        "m": "3/2",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "lambda1": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.5731283679997432,
+    "extended_phase": false
+  },
+  {
+    "n": "-1/2",
+    "m": "-3/2",
+    "n_equations": 21,
+    "certificate_notes": [],
+    "cleared_denominators": "powers of T and (1-T^2); T in (0,1) so both nonzero",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "nneg1o2_mneg3o2_f0",
+        "n": "-1/2",
+        "m": "-3/2",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta3": "0",
+          "c": "0",
+          "lambda1": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "nneg1o2_mneg3o2_f1",
+        "n": "-1/2",
+        "m": "-3/2",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "lambda1": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.9674396789996536,
+    "extended_phase": false
+  },
+  {
+    "n": "-1/2",
+    "m": "-1",
+    "n_equations": 24,
+    "certificate_notes": [
+      "half-odd-integer n-m: nonlinear terms lie in the W-component alone, forcing alpha2*asq = gamma*asq = 0 unless they cancel against Gamma-terms"
+    ],
+    "cleared_denominators": "powers of T and (1-T^2) after splitting the {1, W} components (W = sech xi not rational in T)",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "nneg1o2_mneg1_f0",
+        "n": "-1/2",
+        "m": "-1",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta3": "0",
+          "lambda1": "0",
+          "c": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "nneg1o2_mneg1_f1",
+        "n": "-1/2",
+        "m": "-1",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "lambda1": "0",
+          "ell": "0",
+          "gamma": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.6677432149990636,
+    "extended_phase": false
+  },
+  {
+    "n": "-1/2",
+    "m": "-1/2",
+    "n_equations": 18,
+    "certificate_notes": [],
+    "cleared_denominators": "powers of T and (1-T^2); T in (0,1) so both nonzero",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "nneg1o2_mneg1o2_f0",
+        "n": "-1/2",
+        "m": "-1/2",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta3": "0",
+          "c": "0",
+          "lambda1": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "nneg1o2_mneg1o2_f1",
+        "n": "-1/2",
+        "m": "-1/2",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "lambda1": "0",
+          "ell": "0",
+          "gamma": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.6957434229989303,
+    "extended_phase": false
+  },
+  {
+    "n": "-1/2",
+    "m": "0",
+    "n_equations": 14,
+    "certificate_notes": [
+      "real_W: unexpected denominator factor T - 1",
+      "imag_W: unexpected denominator factor T - 1",
+      "half-odd-integer n-m: nonlinear terms lie in the W-component alone, forcing alpha2*asq = gamma*asq = 0 unless they cancel against Gamma-terms"
+    ],
+    "cleared_denominators": "powers of T and (1-T^2) after splitting the {1, W} components (W = sech xi not rational in T)",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "nneg1o2_m0_f0",
+        "n": "-1/2",
+        "m": "0",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta3": "0",
+          "lambda1": "0",
+          "c": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "nneg1o2_m0_f1",
+        "n": "-1/2",
+        "m": "0",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "lambda1": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.35320421699725557,
+    "extended_phase": false
+  },
+  {
+    "n": "-1/2",
+    "m": "1/2",
+    "n_equations": 18,
+    "certificate_notes": [
+      "real: unexpected denominator factor T - 1",
+      "imag: unexpected denominator factor T - 1"
+    ],
+    "cleared_denominators": "powers of T and (1-T^2); T in (0,1) so both nonzero",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "nneg1o2_m1o2_f0",
+        "n": "-1/2",
+        "m": "1/2",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta3": "0",
+          "c": "0",
+          "lambda1": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "nneg1o2_m1o2_f1",
+        "n": "-1/2",
+        "m": "1/2",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "lambda1": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.7310562319980818,
+    "extended_phase": false
+  },
+  {
+    "n": "-1/2",
+    "m": "1",
+    "n_equations": 16,
+    "certificate_notes": [
+      "real_W: unexpected denominator factor T - 1",
+      "imag_W: unexpected denominator factor T - 1",
+      "half-odd-integer n-m: nonlinear terms lie in the W-component alone, forcing alpha2*asq = gamma*asq = 0 unless they cancel against Gamma-terms"
+    ],
+    "cleared_denominators": "powers of T and (1-T^2) after splitting the {1, W} components (W = sech xi not rational in T)",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "nneg1o2_m1_f0",
+        "n": "-1/2",
+        "m": "1",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta3": "0",
+          "lambda1": "0",
+          "c": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "nneg1o2_m1_f1",
+        "n": "-1/2",
+        "m": "1",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "lambda1": "0",
+          "ell": "0",
+          "gamma": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.5626018000002659,
+    "extended_phase": false
+  },
+  {
+    "n": "-1/2",
+    "m": "3/2",
+    "n_equations": 23,
+    "certificate_notes": [
+      "real: unexpected denominator factor T - 1",
+      "imag: unexpected denominator factor T - 1"
+    ],
+    "cleared_denominators": "powers of T and (1-T^2); T in (0,1) so both nonzero",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "nneg1o2_m3o2_f0",
+        "n": "-1/2",
+        "m": "3/2",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta3": "0",
+          "lambda1": "0",
+          "c": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "nneg1o2_m3o2_f1",
+        "n": "-1/2",
+        "m": "3/2",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "lambda1": "0",
+          "ell": "0",
+          "gamma": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.8397478140032035,
+    "extended_phase": false
+  },
+  {
+    "n": "0",
+    "m": "-3/2",
+    "n_equations": 17,
+    "certificate_notes": [
+      "half-odd-integer n-m: nonlinear terms lie in the W-component alone, forcing alpha2*asq = gamma*asq = 0 unless they cancel against Gamma-terms"
+    ],
+    "cleared_denominators": "powers of T and (1-T^2) after splitting the {1, W} components (W = sech xi not rational in T)",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "n0_mneg3o2_f0",
+        "n": "0",
+        "m": "-3/2",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0",
+          "c": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "beta3": "0",
+          "lambda1": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "n0_mneg3o2_f1",
+        "n": "0",
+        "m": "-3/2",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "ell": "0",
+          "lambda1": "0",
+          "alpha2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.47741581599984784,
+    "extended_phase": false
+  },
+  {
+    "n": "0",
+    "m": "-1",
+    "n_equations": 10,
+    "certificate_notes": [],
+    "cleared_denominators": "powers of T and (1-T^2); T in (0,1) so both nonzero",
+    "n_families_found": 3,
+    "families": [
+      {
+        "branch_id": "n0_mneg1_f0",
+        "n": "0",
+        "m": "-1",
+        "family_index": 0,
+        "tier": "B",
+        "group": "stress",
+        "constraints": {
+          "Gamma": "0",
+          "beta4": "0",
+          "beta3": "0",
+          "lambda1": "0",
+          "gamma": "0",
+          "beta2": "0",
+          "alpha2": "-2*c*lambda2**2/asq",
+          "ell": "c*lambda2**2/2"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "c"
+        ],
+        "representative_sets": [
+          {
+            "beta2": "0",
+            "beta3": "0",
+            "beta4": "0",
+            "gamma": "0",
+            "alpha2": "-16/25",
+            "Gamma": "0",
+            "g0": "1",
+            "T2": "sqrt(2)/2",
+            "alpha": "17/25",
+            "lambda1": "0",
+            "lambda2": "4/5",
+            "a": "1"
+          },
+          {
+            "beta2": "0",
+            "beta3": "0",
+            "beta4": "0",
+            "gamma": "0",
+            "alpha2": "-169/96",
+            "Gamma": "0",
+            "g0": "1",
+            "T2": "sqrt(3)/2",
+            "alpha": "-107/400",
+            "lambda1": "0",
+            "lambda2": "13/10",
+            "a": "6/5"
+          }
+        ],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "integer_exact",
+        "properties": {
+          "real_profile": true,
+          "bounded_on_domain": true,
+          "bounded_on_R": false,
+          "localized": true,
+          "smooth_C4_on_domain": true,
+          "smooth_C4_on_R": false,
+          "fractional_power": false,
+          "singular_at_xi0": true,
+          "feat_max_amplitude": 2.799632561111329,
+          "feat_max_curvature_tt": 29.87926432248288,
+          "feat_max_fourth_deriv_tttt": 1871.6449427412274,
+          "feat_gradient_max": 6.658349813756608,
+          "feat_localization_width_t": 0.99999999975,
+          "feat_distance_to_singularity_xi": 0.350000001,
+          "activity_A_z": 0.0,
+          "activity_beta2_GVD": 0.0,
+          "activity_gain_bandwidth_c": 7.469816080620719,
+          "activity_beta3_TOD": 0.0,
+          "activity_beta4_FOD": 0.0,
+          "activity_kerr_gamma": 0.0,
+          "activity_two_photon_alpha2": 7.021874870842906,
+          "activity_linear_gain_loss": 0.44794120977781265,
+          "activity_saturation_Gamma": 0.0
+        },
+        "active_terms": [
+          "gain_bandwidth_c",
+          "two_photon_alpha2",
+          "linear_gain_loss"
+        ],
+        "residual_max": 2.1382117680737565e-50,
+        "residual_rms_rel": 3.748506860275846e-51,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "",
+        "notes": []
+      },
+      {
+        "branch_id": "n0_mneg1_f1",
+        "n": "0",
+        "m": "-1",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0",
+          "c": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "beta3": "0",
+          "lambda1": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "integer_exact",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "n0_mneg1_f2",
+        "n": "0",
+        "m": "-1",
+        "family_index": 2,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "gamma": "0",
+          "lambda1": "0",
+          "ell": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "integer_exact",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.904410518000077,
+    "extended_phase": false
+  },
+  {
+    "n": "0",
+    "m": "-1/2",
+    "n_equations": 14,
+    "certificate_notes": [
+      "half-odd-integer n-m: nonlinear terms lie in the W-component alone, forcing alpha2*asq = gamma*asq = 0 unless they cancel against Gamma-terms"
+    ],
+    "cleared_denominators": "powers of T and (1-T^2) after splitting the {1, W} components (W = sech xi not rational in T)",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "n0_mneg1o2_f0",
+        "n": "0",
+        "m": "-1/2",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0",
+          "c": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "beta3": "0",
+          "lambda1": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "n0_mneg1o2_f1",
+        "n": "0",
+        "m": "-1/2",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "ell": "0",
+          "lambda1": "0",
+          "gamma": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.35421246699843323,
+    "extended_phase": false
+  },
+  {
+    "n": "0",
+    "m": "0",
+    "n_equations": 2,
+    "certificate_notes": [],
+    "cleared_denominators": "powers of T and (1-T^2); T in (0,1) so both nonzero",
+    "n_families_found": 1,
+    "families": [
+      {
+        "branch_id": "n0_m0_f0",
+        "n": "0",
+        "m": "0",
+        "family_index": 0,
+        "tier": "B",
+        "group": "main",
+        "constraints": {
+          "gamma": "0",
+          "ell": "alpha2*asq/(2*(Gamma*asq + 1))"
+        },
+        "free_parameters": [
+          "lambda1",
+          "lambda2",
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "alpha2",
+          "Gamma"
+        ],
+        "representative_sets": [
+          {
+            "beta2": "1/5",
+            "beta3": "1/5",
+            "beta4": "1/10",
+            "gamma": "0",
+            "alpha2": "1/5",
+            "Gamma": "1/2",
+            "g0": "1",
+            "T2": "sqrt(2)/2",
+            "alpha": "13/15",
+            "lambda1": "1/5",
+            "lambda2": "4/5",
+            "a": "1"
+          },
+          {
+            "beta2": "-1/5",
+            "beta3": "1/10",
+            "beta4": "1/20",
+            "gamma": "0",
+            "alpha2": "3/10",
+            "Gamma": "1",
+            "g0": "1",
+            "T2": "sqrt(3)/2",
+            "alpha": "251/305",
+            "lambda1": "1/10",
+            "lambda2": "13/10",
+            "a": "6/5"
+          }
+        ],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "integer_exact",
+        "properties": {
+          "real_profile": true,
+          "bounded_on_domain": true,
+          "bounded_on_R": true,
+          "localized": false,
+          "smooth_C4_on_domain": true,
+          "smooth_C4_on_R": true,
+          "fractional_power": false,
+          "singular_at_xi0": false,
+          "feat_max_amplitude": 1.0,
+          "feat_max_curvature_tt": 0.0,
+          "feat_max_fourth_deriv_tttt": 0.0,
+          "feat_gradient_max": 0.0,
+          "feat_localization_width_t": Infinity,
+          "feat_distance_to_singularity_xi": Infinity,
+          "activity_A_z": 0.0,
+          "activity_beta2_GVD": 0.0,
+          "activity_gain_bandwidth_c": 0.0,
+          "activity_beta3_TOD": 0.0,
+          "activity_beta4_FOD": 0.0,
+          "activity_kerr_gamma": 0.0,
+          "activity_two_photon_alpha2": 0.06666666666666667,
+          "activity_linear_gain_loss": 0.06666666666666667,
+          "activity_saturation_Gamma": 0.06666666666666667
+        },
+        "active_terms": [
+          "two_photon_alpha2",
+          "linear_gain_loss",
+          "saturation_Gamma"
+        ],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.11414172199874884,
+    "extended_phase": false
+  },
+  {
+    "n": "0",
+    "m": "1/2",
+    "n_equations": 14,
+    "certificate_notes": [
+      "real_W: unexpected denominator factor T - 1",
+      "imag_W: unexpected denominator factor T - 1",
+      "half-odd-integer n-m: nonlinear terms lie in the W-component alone, forcing alpha2*asq = gamma*asq = 0 unless they cancel against Gamma-terms"
+    ],
+    "cleared_denominators": "powers of T and (1-T^2) after splitting the {1, W} components (W = sech xi not rational in T)",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "n0_m1o2_f0",
+        "n": "0",
+        "m": "1/2",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "c": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "beta3": "0",
+          "lambda1": "0",
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "n0_m1o2_f1",
+        "n": "0",
+        "m": "1/2",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "ell": "0",
+          "lambda1": "0",
+          "alpha2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.37987267400239944,
+    "extended_phase": false
+  },
+  {
+    "n": "0",
+    "m": "1",
+    "n_equations": 6,
+    "certificate_notes": [
+      "real: unexpected denominator factor T - 1",
+      "imag: unexpected denominator factor T - 1"
+    ],
+    "cleared_denominators": "powers of T and (1-T^2); T in (0,1) so both nonzero",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "n0_m1_f0",
+        "n": "0",
+        "m": "1",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "ell": "0",
+          "alpha2": "0",
+          "lambda1": "0",
+          "lambda2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "integer_exact",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      },
+      {
+        "branch_id": "n0_m1_f1",
+        "n": "0",
+        "m": "1",
+        "family_index": 1,
+        "tier": "B",
+        "group": "stress",
+        "constraints": {
+          "ell": "c*lambda2**2/2",
+          "alpha2": "0",
+          "lambda1": "-beta3*lambda2**3/6",
+          "beta2": "-beta4*lambda2**2/12",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [
+          {
+            "beta2": "-2/375",
+            "beta3": "1/5",
+            "beta4": "1/10",
+            "gamma": "0",
+            "alpha2": "0",
+            "Gamma": "1/2",
+            "g0": "1",
+            "T2": "sqrt(2)/2",
+            "alpha": "17/25",
+            "lambda1": "-32/1875",
+            "lambda2": "4/5",
+            "a": "1"
+          },
+          {
+            "beta2": "-169/24000",
+            "beta3": "1/10",
+            "beta4": "1/20",
+            "gamma": "0",
+            "alpha2": "0",
+            "Gamma": "1",
+            "g0": "1",
+            "T2": "sqrt(3)/2",
+            "alpha": "-107/400",
+            "lambda1": "-2197/60000",
+            "lambda2": "13/10",
+            "a": "6/5"
+          }
+        ],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "integer_exact",
+        "properties": {
+          "real_profile": true,
+          "bounded_on_domain": true,
+          "bounded_on_R": false,
+          "localized": false,
+          "smooth_C4_on_domain": true,
+          "smooth_C4_on_R": true,
+          "fractional_power": false,
+          "singular_at_xi0": false,
+          "feat_max_amplitude": 27.28991719712775,
+          "feat_max_curvature_tt": 17.465547006161763,
+          "feat_max_fourth_deriv_tttt": 11.177950083943529,
+          "feat_gradient_max": 21.84658626881319,
+          "feat_localization_width_t": 9.999999998749999,
+          "feat_distance_to_singularity_xi": Infinity,
+          "activity_A_z": 0.4660605070680147,
+          "activity_beta2_GVD": 0.04657479201643136,
+          "activity_gain_bandwidth_c": 4.36638675154044,
+          "activity_beta3_TOD": 0.4660605070680147,
+          "activity_beta4_FOD": 0.04657479201643136,
+          "activity_kerr_gamma": 0.0,
+          "activity_two_photon_alpha2": 0.0,
+          "activity_linear_gain_loss": 4.36638675154044,
+          "activity_saturation_Gamma": 0.0
+        },
+        "active_terms": [
+          "A_z",
+          "beta2_GVD",
+          "gain_bandwidth_c",
+          "beta3_TOD",
+          "beta4_FOD",
+          "linear_gain_loss"
+        ],
+        "residual_max": 2.0045909333055377e-50,
+        "residual_rms_rel": 4.691644961894056e-52,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "",
+        "notes": [
+          "profile unbounded as |xi|->inf; finite only on truncated domain"
+        ]
+      }
+    ],
+    "elapsed_s": 0.3386126309997053,
+    "extended_phase": false
+  },
+  {
+    "n": "0",
+    "m": "3/2",
+    "n_equations": 14,
+    "certificate_notes": [
+      "real_W: unexpected denominator factor T - 1",
+      "imag_W: unexpected denominator factor T - 1",
+      "half-odd-integer n-m: nonlinear terms lie in the W-component alone, forcing alpha2*asq = gamma*asq = 0 unless they cancel against Gamma-terms"
+    ],
+    "cleared_denominators": "powers of T and (1-T^2) after splitting the {1, W} components (W = sech xi not rational in T)",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "n0_m3o2_f0",
+        "n": "0",
+        "m": "3/2",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta3": "0",
+          "lambda1": "0",
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0",
+          "c": "0",
+          "ell": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "n0_m3o2_f1",
+        "n": "0",
+        "m": "3/2",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "ell": "0",
+          "lambda1": "0",
+          "gamma": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.3645611869978893,
+    "extended_phase": false
+  },
+  {
+    "n": "1/2",
+    "m": "-3/2",
+    "n_equations": 23,
+    "certificate_notes": [],
+    "cleared_denominators": "powers of T and (1-T^2); T in (0,1) so both nonzero",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "n1o2_mneg3o2_f0",
+        "n": "1/2",
+        "m": "-3/2",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0",
+          "beta3": "0",
+          "lambda1": "0",
+          "c": "0",
+          "ell": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "n1o2_mneg3o2_f1",
+        "n": "1/2",
+        "m": "-3/2",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "gamma": "0",
+          "lambda1": "0",
+          "ell": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 1.2721452990008402,
+    "extended_phase": false
+  },
+  {
+    "n": "1/2",
+    "m": "-1",
+    "n_equations": 27,
+    "certificate_notes": [
+      "half-odd-integer n-m: nonlinear terms lie in the W-component alone, forcing alpha2*asq = gamma*asq = 0 unless they cancel against Gamma-terms"
+    ],
+    "cleared_denominators": "powers of T and (1-T^2) after splitting the {1, W} components (W = sech xi not rational in T)",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "n1o2_mneg1_f0",
+        "n": "1/2",
+        "m": "-1",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0",
+          "beta3": "0",
+          "lambda1": "0",
+          "c": "0",
+          "ell": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "n1o2_mneg1_f1",
+        "n": "1/2",
+        "m": "-1",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "ell": "0",
+          "lambda1": "0",
+          "alpha2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.8167868749987974,
+    "extended_phase": false
+  },
+  {
+    "n": "1/2",
+    "m": "-1/2",
+    "n_equations": 18,
+    "certificate_notes": [],
+    "cleared_denominators": "powers of T and (1-T^2); T in (0,1) so both nonzero",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "n1o2_mneg1o2_f0",
+        "n": "1/2",
+        "m": "-1/2",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0",
+          "beta3": "0",
+          "c": "0",
+          "ell": "0",
+          "lambda1": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "n1o2_mneg1o2_f1",
+        "n": "1/2",
+        "m": "-1/2",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "ell": "0",
+          "gamma": "0",
+          "lambda1": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.9543380239992985,
+    "extended_phase": false
+  },
+  {
+    "n": "1/2",
+    "m": "0",
+    "n_equations": 14,
+    "certificate_notes": [
+      "half-odd-integer n-m: nonlinear terms lie in the W-component alone, forcing alpha2*asq = gamma*asq = 0 unless they cancel against Gamma-terms"
+    ],
+    "cleared_denominators": "powers of T and (1-T^2) after splitting the {1, W} components (W = sech xi not rational in T)",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "n1o2_m0_f0",
+        "n": "1/2",
+        "m": "0",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "ell": "0",
+          "alpha2": "0",
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0",
+          "beta3": "0",
+          "lambda1": "0",
+          "c": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "n1o2_m0_f1",
+        "n": "1/2",
+        "m": "0",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "ell": "0",
+          "alpha2": "0",
+          "lambda2": "0",
+          "lambda1": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.350999400998262,
+    "extended_phase": false
+  },
+  {
+    "n": "1/2",
+    "m": "1/2",
+    "n_equations": 18,
+    "certificate_notes": [],
+    "cleared_denominators": "powers of T and (1-T^2); T in (0,1) so both nonzero",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "n1o2_m1o2_f0",
+        "n": "1/2",
+        "m": "1/2",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta3": "0",
+          "c": "0",
+          "lambda1": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "n1o2_m1o2_f1",
+        "n": "1/2",
+        "m": "1/2",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "lambda1": "0",
+          "ell": "0",
+          "gamma": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.646490299001016,
+    "extended_phase": false
+  },
+  {
+    "n": "1/2",
+    "m": "1",
+    "n_equations": 16,
+    "certificate_notes": [
+      "real_W: unexpected denominator factor T - 1",
+      "imag_W: unexpected denominator factor T - 1",
+      "half-odd-integer n-m: nonlinear terms lie in the W-component alone, forcing alpha2*asq = gamma*asq = 0 unless they cancel against Gamma-terms"
+    ],
+    "cleared_denominators": "powers of T and (1-T^2) after splitting the {1, W} components (W = sech xi not rational in T)",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "n1o2_m1_f0",
+        "n": "1/2",
+        "m": "1",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta3": "0",
+          "lambda1": "0",
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0",
+          "c": "0",
+          "ell": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "n1o2_m1_f1",
+        "n": "1/2",
+        "m": "1",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "ell": "0",
+          "lambda1": "0",
+          "alpha2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.5572935130003316,
+    "extended_phase": false
+  },
+  {
+    "n": "1/2",
+    "m": "3/2",
+    "n_equations": 21,
+    "certificate_notes": [
+      "real: unexpected denominator factor T - 1",
+      "imag: unexpected denominator factor T - 1"
+    ],
+    "cleared_denominators": "powers of T and (1-T^2); T in (0,1) so both nonzero",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "n1o2_m3o2_f0",
+        "n": "1/2",
+        "m": "3/2",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "c": "0",
+          "beta3": "0",
+          "lambda1": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "n1o2_m3o2_f1",
+        "n": "1/2",
+        "m": "3/2",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "lambda1": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.8033810439992521,
+    "extended_phase": false
+  },
+  {
+    "n": "1",
+    "m": "-3/2",
+    "n_equations": 30,
+    "certificate_notes": [
+      "half-odd-integer n-m: nonlinear terms lie in the W-component alone, forcing alpha2*asq = gamma*asq = 0 unless they cancel against Gamma-terms"
+    ],
+    "cleared_denominators": "powers of T and (1-T^2) after splitting the {1, W} components (W = sech xi not rational in T)",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "n1_mneg3o2_f0",
+        "n": "1",
+        "m": "-3/2",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0",
+          "beta3": "0",
+          "lambda1": "0",
+          "c": "0",
+          "ell": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "n1_mneg3o2_f1",
+        "n": "1",
+        "m": "-3/2",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "ell": "0",
+          "lambda1": "0",
+          "alpha2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.9222721420010203,
+    "extended_phase": false
+  },
+  {
+    "n": "1",
+    "m": "-1",
+    "n_equations": 10,
+    "certificate_notes": [],
+    "cleared_denominators": "powers of T and (1-T^2); T in (0,1) so both nonzero",
+    "n_families_found": 3,
+    "families": [
+      {
+        "branch_id": "n1_mneg1_f0",
+        "n": "1",
+        "m": "-1",
+        "family_index": 0,
+        "tier": "B",
+        "group": "stress",
+        "constraints": {
+          "Gamma": "0",
+          "beta4": "0",
+          "gamma": "0",
+          "beta2": "0",
+          "beta3": "0",
+          "lambda1": "0",
+          "ell": "2*c*lambda2**2",
+          "alpha2": "-2*c*lambda2**2/asq"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "c"
+        ],
+        "representative_sets": [
+          {
+            "beta2": "0",
+            "beta3": "0",
+            "beta4": "0",
+            "gamma": "0",
+            "alpha2": "-16/25",
+            "Gamma": "0",
+            "g0": "1",
+            "T2": "sqrt(2)/2",
+            "alpha": "-7/25",
+            "lambda1": "0",
+            "lambda2": "4/5",
+            "a": "1"
+          },
+          {
+            "beta2": "0",
+            "beta3": "0",
+            "beta4": "0",
+            "gamma": "0",
+            "alpha2": "-169/96",
+            "Gamma": "0",
+            "g0": "1",
+            "T2": "sqrt(3)/2",
+            "alpha": "-407/100",
+            "lambda1": "0",
+            "lambda2": "13/10",
+            "a": "6/5"
+          }
+        ],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "integer_exact",
+        "properties": {
+          "real_profile": true,
+          "bounded_on_domain": true,
+          "bounded_on_R": false,
+          "localized": true,
+          "smooth_C4_on_domain": true,
+          "smooth_C4_on_R": false,
+          "fractional_power": false,
+          "singular_at_xi0": true,
+          "feat_max_amplitude": 2.6364921742078002,
+          "feat_max_curvature_tt": 30.20733610454449,
+          "feat_max_fourth_deriv_tttt": 1870.0874483733762,
+          "feat_gradient_max": 6.979835175848468,
+          "feat_localization_width_t": 0.9583333330937499,
+          "feat_distance_to_singularity_xi": 0.350000001,
+          "activity_A_z": 0.0,
+          "activity_beta2_GVD": 0.0,
+          "activity_gain_bandwidth_c": 7.551834026136121,
+          "activity_beta3_TOD": 0.0,
+          "activity_beta4_FOD": 0.0,
+          "activity_kerr_gamma": 0.0,
+          "activity_two_photon_alpha2": 5.864479034643128,
+          "activity_linear_gain_loss": 1.6873549914929922,
+          "activity_saturation_Gamma": 0.0
+        },
+        "active_terms": [
+          "gain_bandwidth_c",
+          "two_photon_alpha2",
+          "linear_gain_loss"
+        ],
+        "residual_max": 4.276423536147513e-50,
+        "residual_rms_rel": 8.421453599846678e-51,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "",
+        "notes": []
+      },
+      {
+        "branch_id": "n1_mneg1_f1",
+        "n": "1",
+        "m": "-1",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0",
+          "beta3": "0",
+          "lambda1": "0",
+          "c": "0",
+          "ell": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "integer_exact",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "n1_mneg1_f2",
+        "n": "1",
+        "m": "-1",
+        "family_index": 2,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "gamma": "0",
+          "lambda1": "0",
+          "ell": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "integer_exact",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 1.2624469059992407,
+    "extended_phase": false
+  },
+  {
+    "n": "1",
+    "m": "-1/2",
+    "n_equations": 27,
+    "certificate_notes": [
+      "half-odd-integer n-m: nonlinear terms lie in the W-component alone, forcing alpha2*asq = gamma*asq = 0 unless they cancel against Gamma-terms"
+    ],
+    "cleared_denominators": "powers of T and (1-T^2) after splitting the {1, W} components (W = sech xi not rational in T)",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "n1_mneg1o2_f0",
+        "n": "1",
+        "m": "-1/2",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0",
+          "beta3": "0",
+          "lambda1": "0",
+          "c": "0",
+          "ell": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "n1_mneg1o2_f1",
+        "n": "1",
+        "m": "-1/2",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "ell": "0",
+          "lambda1": "0",
+          "alpha2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.8989165220009454,
+    "extended_phase": false
+  },
+  {
+    "n": "1",
+    "m": "0",
+    "n_equations": 10,
+    "certificate_notes": [],
+    "cleared_denominators": "powers of T and (1-T^2); T in (0,1) so both nonzero",
+    "n_families_found": 3,
+    "families": [
+      {
+        "branch_id": "n1_m0_f0",
+        "n": "1",
+        "m": "0",
+        "family_index": 0,
+        "tier": "B",
+        "group": "main",
+        "constraints": {
+          "Gamma": "0",
+          "beta4": "0",
+          "beta3": "0",
+          "lambda1": "0",
+          "gamma": "0",
+          "beta2": "0",
+          "alpha2": "2*c*lambda2**2/asq",
+          "ell": "c*lambda2**2/2"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "c"
+        ],
+        "representative_sets": [
+          {
+            "beta2": "0",
+            "beta3": "0",
+            "beta4": "0",
+            "gamma": "0",
+            "alpha2": "16/25",
+            "Gamma": "0",
+            "g0": "1",
+            "T2": "sqrt(2)/2",
+            "alpha": "17/25",
+            "lambda1": "0",
+            "lambda2": "4/5",
+            "a": "1"
+          },
+          {
+            "beta2": "0",
+            "beta3": "0",
+            "beta4": "0",
+            "gamma": "0",
+            "alpha2": "169/96",
+            "Gamma": "0",
+            "g0": "1",
+            "T2": "sqrt(3)/2",
+            "alpha": "-107/400",
+            "lambda1": "0",
+            "lambda2": "13/10",
+            "a": "6/5"
+          }
+        ],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "integer_exact",
+        "properties": {
+          "real_profile": true,
+          "bounded_on_domain": true,
+          "bounded_on_R": true,
+          "localized": true,
+          "smooth_C4_on_domain": true,
+          "smooth_C4_on_R": true,
+          "fractional_power": false,
+          "singular_at_xi0": false,
+          "feat_max_amplitude": 0.9977818856133671,
+          "feat_max_curvature_tt": 0.6329209129145882,
+          "feat_max_fourth_deriv_tttt": 1.9929408430384574,
+          "feat_gradient_max": 0.39991258375413746,
+          "feat_localization_width_t": 9.166666665520832,
+          "feat_distance_to_singularity_xi": Infinity,
+          "activity_A_z": 0.0,
+          "activity_beta2_GVD": 0.0,
+          "activity_gain_bandwidth_c": 0.15823022822864705,
+          "activity_beta3_TOD": 0.0,
+          "activity_beta4_FOD": 0.0,
+          "activity_kerr_gamma": 0.0,
+          "activity_two_photon_alpha2": 0.31787532992678574,
+          "activity_linear_gain_loss": 0.15964510169813875,
+          "activity_saturation_Gamma": 0.0
+        },
+        "active_terms": [
+          "gain_bandwidth_c",
+          "two_photon_alpha2",
+          "linear_gain_loss"
+        ],
+        "residual_max": 1.3363823550460978e-51,
+        "residual_rms_rel": 5.908013743811303e-52,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "",
+        "notes": []
+      },
+      {
+        "branch_id": "n1_m0_f1",
+        "n": "1",
+        "m": "0",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta3": "0",
+          "lambda1": "0",
+          "c": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "integer_exact",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "n1_m0_f2",
+        "n": "1",
+        "m": "0",
+        "family_index": 2,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "gamma": "0",
+          "lambda1": "0",
+          "ell": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "integer_exact",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.8597426889973576,
+    "extended_phase": false
+  },
+  {
+    "n": "1",
+    "m": "1/2",
+    "n_equations": 24,
+    "certificate_notes": [
+      "half-odd-integer n-m: nonlinear terms lie in the W-component alone, forcing alpha2*asq = gamma*asq = 0 unless they cancel against Gamma-terms"
+    ],
+    "cleared_denominators": "powers of T and (1-T^2) after splitting the {1, W} components (W = sech xi not rational in T)",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "n1_m1o2_f0",
+        "n": "1",
+        "m": "1/2",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "c": "0",
+          "ell": "0",
+          "beta3": "0",
+          "lambda1": "0",
+          "alpha2": "0",
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "n1_m1o2_f1",
+        "n": "1",
+        "m": "1/2",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "ell": "0",
+          "lambda1": "0",
+          "gamma": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.7454645380021248,
+    "extended_phase": false
+  },
+  {
+    "n": "1",
+    "m": "1",
+    "n_equations": 11,
+    "certificate_notes": [],
+    "cleared_denominators": "powers of T and (1-T^2); T in (0,1) so both nonzero",
+    "n_families_found": 3,
+    "families": [
+      {
+        "branch_id": "n1_m1_f0",
+        "n": "1",
+        "m": "1",
+        "family_index": 0,
+        "tier": "B",
+        "group": "main",
+        "constraints": {
+          "Gamma": "0",
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0",
+          "beta3": "0",
+          "lambda1": "0",
+          "ell": "-c*lambda2**2",
+          "alpha2": "-2*c*lambda2**2/asq"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "c"
+        ],
+        "representative_sets": [
+          {
+            "beta2": "0",
+            "beta3": "0",
+            "beta4": "0",
+            "gamma": "0",
+            "alpha2": "-16/25",
+            "Gamma": "0",
+            "g0": "1",
+            "T2": "sqrt(2)/2",
+            "alpha": "41/25",
+            "lambda1": "0",
+            "lambda2": "4/5",
+            "a": "1"
+          },
+          {
+            "beta2": "0",
+            "beta3": "0",
+            "beta4": "0",
+            "gamma": "0",
+            "alpha2": "-169/96",
+            "Gamma": "0",
+            "g0": "1",
+            "T2": "sqrt(3)/2",
+            "alpha": "707/200",
+            "lambda1": "0",
+            "lambda2": "13/10",
+            "a": "6/5"
+          }
+        ],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "integer_exact",
+        "properties": {
+          "real_profile": true,
+          "bounded_on_domain": true,
+          "bounded_on_R": true,
+          "localized": false,
+          "smooth_C4_on_domain": true,
+          "smooth_C4_on_R": true,
+          "fractional_power": false,
+          "singular_at_xi0": false,
+          "feat_max_amplitude": 0.9993292997390669,
+          "feat_max_curvature_tt": 0.492606591271938,
+          "feat_max_fourth_deriv_tttt": 1.669211911182398,
+          "feat_gradient_max": 0.7964549530065332,
+          "feat_localization_width_t": 4.4999999994375,
+          "feat_distance_to_singularity_xi": Infinity,
+          "activity_A_z": 0.0,
+          "activity_beta2_GVD": 0.0,
+          "activity_gain_bandwidth_c": 0.12315164781798447,
+          "activity_beta3_TOD": 0.0,
+          "activity_beta4_FOD": 0.0,
+          "activity_kerr_gamma": 0.0,
+          "activity_two_photon_alpha2": 0.3193565594982445,
+          "activity_linear_gain_loss": 0.3197853759165014,
+          "activity_saturation_Gamma": 0.0
+        },
+        "active_terms": [
+          "gain_bandwidth_c",
+          "two_photon_alpha2",
+          "linear_gain_loss"
+        ],
+        "residual_max": 2.0045735325691467e-51,
+        "residual_rms_rel": 5.951376276638199e-52,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "",
+        "notes": []
+      },
+      {
+        "branch_id": "n1_m1_f1",
+        "n": "1",
+        "m": "1",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0",
+          "ell": "0",
+          "lambda1": "0",
+          "beta3": "0",
+          "c": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "integer_exact",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "n1_m1_f2",
+        "n": "1",
+        "m": "1",
+        "family_index": 2,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "ell": "0",
+          "lambda1": "0",
+          "gamma": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "integer_exact",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.854736748002324,
+    "extended_phase": false
+  },
+  {
+    "n": "1",
+    "m": "3/2",
+    "n_equations": 24,
+    "certificate_notes": [
+      "real_W: unexpected denominator factor T - 1",
+      "imag_W: unexpected denominator factor T - 1",
+      "half-odd-integer n-m: nonlinear terms lie in the W-component alone, forcing alpha2*asq = gamma*asq = 0 unless they cancel against Gamma-terms"
+    ],
+    "cleared_denominators": "powers of T and (1-T^2) after splitting the {1, W} components (W = sech xi not rational in T)",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "n1_m3o2_f0",
+        "n": "1",
+        "m": "3/2",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0",
+          "beta3": "0",
+          "lambda1": "0",
+          "c": "0",
+          "ell": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "n1_m3o2_f1",
+        "n": "1",
+        "m": "3/2",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "ell": "0",
+          "lambda1": "0",
+          "alpha2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.7163424819991633,
+    "extended_phase": false
+  },
+  {
+    "n": "3/2",
+    "m": "-3/2",
+    "n_equations": 24,
+    "certificate_notes": [],
+    "cleared_denominators": "powers of T and (1-T^2); T in (0,1) so both nonzero",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "n3o2_mneg3o2_f0",
+        "n": "3/2",
+        "m": "-3/2",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0",
+          "beta3": "0",
+          "lambda1": "0",
+          "c": "0",
+          "ell": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "n3o2_mneg3o2_f1",
+        "n": "3/2",
+        "m": "-3/2",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "lambda1": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 1.1854165830009151,
+    "extended_phase": false
+  },
+  {
+    "n": "3/2",
+    "m": "-1",
+    "n_equations": 30,
+    "certificate_notes": [
+      "half-odd-integer n-m: nonlinear terms lie in the W-component alone, forcing alpha2*asq = gamma*asq = 0 unless they cancel against Gamma-terms"
+    ],
+    "cleared_denominators": "powers of T and (1-T^2) after splitting the {1, W} components (W = sech xi not rational in T)",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "n3o2_mneg1_f0",
+        "n": "3/2",
+        "m": "-1",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0",
+          "beta3": "0",
+          "lambda1": "0",
+          "c": "0",
+          "ell": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "n3o2_mneg1_f1",
+        "n": "3/2",
+        "m": "-1",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "ell": "0",
+          "lambda1": "0",
+          "alpha2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.9023992299989914,
+    "extended_phase": false
+  },
+  {
+    "n": "3/2",
+    "m": "-1/2",
+    "n_equations": 23,
+    "certificate_notes": [],
+    "cleared_denominators": "powers of T and (1-T^2); T in (0,1) so both nonzero",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "n3o2_mneg1o2_f0",
+        "n": "3/2",
+        "m": "-1/2",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0",
+          "beta3": "0",
+          "lambda1": "0",
+          "c": "0",
+          "ell": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "n3o2_mneg1o2_f1",
+        "n": "3/2",
+        "m": "-1/2",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "gamma": "0",
+          "lambda1": "0",
+          "ell": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 1.1810086559999036,
+    "extended_phase": false
+  },
+  {
+    "n": "3/2",
+    "m": "0",
+    "n_equations": 17,
+    "certificate_notes": [
+      "half-odd-integer n-m: nonlinear terms lie in the W-component alone, forcing alpha2*asq = gamma*asq = 0 unless they cancel against Gamma-terms"
+    ],
+    "cleared_denominators": "powers of T and (1-T^2) after splitting the {1, W} components (W = sech xi not rational in T)",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "n3o2_m0_f0",
+        "n": "3/2",
+        "m": "0",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0",
+          "beta3": "0",
+          "lambda1": "0",
+          "c": "0",
+          "ell": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "n3o2_m0_f1",
+        "n": "3/2",
+        "m": "0",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "gamma": "0",
+          "lambda1": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.46339464600168867,
+    "extended_phase": false
+  },
+  {
+    "n": "3/2",
+    "m": "1/2",
+    "n_equations": 21,
+    "certificate_notes": [],
+    "cleared_denominators": "powers of T and (1-T^2); T in (0,1) so both nonzero",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "n3o2_m1o2_f0",
+        "n": "3/2",
+        "m": "1/2",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta3": "0",
+          "lambda1": "0",
+          "c": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "n3o2_m1o2_f1",
+        "n": "3/2",
+        "m": "1/2",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "lambda1": "0",
+          "ell": "0",
+          "alpha2": "0",
+          "gamma": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.9600956890026282,
+    "extended_phase": false
+  },
+  {
+    "n": "3/2",
+    "m": "1",
+    "n_equations": 16,
+    "certificate_notes": [
+      "half-odd-integer n-m: nonlinear terms lie in the W-component alone, forcing alpha2*asq = gamma*asq = 0 unless they cancel against Gamma-terms"
+    ],
+    "cleared_denominators": "powers of T and (1-T^2) after splitting the {1, W} components (W = sech xi not rational in T)",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "n3o2_m1_f0",
+        "n": "3/2",
+        "m": "1",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta3": "0",
+          "lambda1": "0",
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0",
+          "c": "0",
+          "ell": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "n3o2_m1_f1",
+        "n": "3/2",
+        "m": "1",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "ell": "0",
+          "lambda1": "0",
+          "gamma": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.720975432999694,
+    "extended_phase": false
+  },
+  {
+    "n": "3/2",
+    "m": "3/2",
+    "n_equations": 20,
+    "certificate_notes": [],
+    "cleared_denominators": "powers of T and (1-T^2); T in (0,1) so both nonzero",
+    "n_families_found": 2,
+    "families": [
+      {
+        "branch_id": "n3o2_m3o2_f0",
+        "n": "3/2",
+        "m": "3/2",
+        "family_index": 0,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "beta3": "0",
+          "lambda1": "0",
+          "beta4": "0",
+          "beta2": "0",
+          "gamma": "0",
+          "c": "0",
+          "ell": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "lambda2",
+          "asq",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          0.35,
+          4.35
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": 0.0,
+        "residual_rms_rel": 0.0,
+        "verified_symbolic": true,
+        "verified_numeric": true,
+        "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+        "notes": []
+      },
+      {
+        "branch_id": "n3o2_m3o2_f1",
+        "n": "3/2",
+        "m": "3/2",
+        "family_index": 1,
+        "tier": "C",
+        "group": "none",
+        "constraints": {
+          "lambda2": "0",
+          "ell": "0",
+          "lambda1": "0",
+          "gamma": "0",
+          "alpha2": "0"
+        },
+        "free_parameters": [
+          "asq",
+          "beta2",
+          "beta3",
+          "beta4",
+          "c",
+          "Gamma"
+        ],
+        "representative_sets": [],
+        "xi_domain": [
+          -4.0,
+          4.0
+        ],
+        "power_convention": "positive_xi",
+        "properties": {},
+        "active_terms": [],
+        "residual_max": NaN,
+        "residual_rms_rel": NaN,
+        "verified_symbolic": false,
+        "verified_numeric": false,
+        "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+        "notes": []
+      }
+    ],
+    "elapsed_s": 0.6277997400029562,
+    "extended_phase": false
+  }
+]

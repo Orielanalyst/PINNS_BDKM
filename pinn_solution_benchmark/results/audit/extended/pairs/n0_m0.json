@@ -1,0 +1,118 @@
+{
+  "n": "0",
+  "m": "0",
+  "n_equations": 2,
+  "certificate_notes": [],
+  "cleared_denominators": "powers of T and (1-T^2); T in (0,1) so both nonzero",
+  "n_families_found": 1,
+  "families": [
+    {
+      "branch_id": "n0_m0_f0",
+      "n": "0",
+      "m": "0",
+      "family_index": 0,
+      "tier": "A",
+      "group": "main",
+      "constraints": {
+        "ell": "(-Gamma*asq*c*omega**2 + alpha2*asq - c*omega**2)/(2*(Gamma*asq + 1))",
+        "kappa": "(12*Gamma*asq*beta2*omega**2 + 4*Gamma*asq*beta3*omega**3 - Gamma*asq*beta4*omega**4 - 24*asq*gamma + 12*beta2*omega**2 + 4*beta3*omega**3 - beta4*omega**4)/(24*(Gamma*asq + 1))"
+      },
+      "free_parameters": [
+        "lambda1",
+        "lambda2",
+        "asq",
+        "beta2",
+        "beta3",
+        "beta4",
+        "c",
+        "gamma",
+        "alpha2",
+        "Gamma",
+        "omega"
+      ],
+      "representative_sets": [
+        {
+          "beta2": "1/5",
+          "beta3": "1/5",
+          "beta4": "1/10",
+          "gamma": "1",
+          "alpha2": "1/5",
+          "Gamma": "1/2",
+          "g0": "1",
+          "T2": "sqrt(2)/2",
+          "alpha": "119/120",
+          "lambda1": "1/5",
+          "lambda2": "4/5",
+          "a": "1",
+          "omega": "1/2",
+          "kappa": "-2449/3840"
+        },
+        {
+          "beta2": "-1/5",
+          "beta3": "1/10",
+          "beta4": "1/20",
+          "gamma": "1/2",
+          "alpha2": "3/10",
+          "Gamma": "1",
+          "g0": "1",
+          "T2": "sqrt(3)/2",
+          "alpha": "24299/19520",
+          "lambda1": "1/10",
+          "lambda2": "13/10",
+          "a": "6/5",
+          "omega": "3/4",
+          "kappa": "-861903/2498560"
+        }
+      ],
+      "xi_domain": [
+        -4.0,
+        4.0
+      ],
+      "power_convention": "integer_exact",
+      "properties": {
+        "real_profile": false,
+        "bounded_on_domain": true,
+        "bounded_on_R": true,
+        "localized": false,
+        "smooth_C4_on_domain": true,
+        "smooth_C4_on_R": true,
+        "fractional_power": false,
+        "singular_at_xi0": false,
+        "feat_max_amplitude": 1.0,
+        "feat_max_curvature_tt": 0.0,
+        "feat_max_fourth_deriv_tttt": 0.0,
+        "feat_gradient_max": 0.0,
+        "feat_localization_width_t": Infinity,
+        "feat_distance_to_singularity_xi": Infinity,
+        "activity_A_z": 0.6377604166666668,
+        "activity_beta2_GVD": 0.025000000000000005,
+        "activity_gain_bandwidth_c": 0.06250000000000001,
+        "activity_beta3_TOD": 0.0041666666666666675,
+        "activity_beta4_FOD": 0.0002604166666666667,
+        "activity_kerr_gamma": 0.6666666666666667,
+        "activity_two_photon_alpha2": 0.06666666666666668,
+        "activity_linear_gain_loss": 0.0041666666666666675,
+        "activity_saturation_Gamma": 0.33993463423951903
+      },
+      "active_terms": [
+        "A_z",
+        "beta2_GVD",
+        "gain_bandwidth_c",
+        "beta3_TOD",
+        "beta4_FOD",
+        "kerr_gamma",
+        "two_photon_alpha2",
+        "linear_gain_loss",
+        "saturation_Gamma"
+      ],
+      "residual_max": 2.631090799846227e-51,
+      "residual_rms_rel": 1.1736251257603558e-51,
+      "verified_symbolic": true,
+      "verified_numeric": true,
+      "rejection_reason": "",
+      "notes": []
+    }
+  ],
+  "elapsed_s": 2.1349117579993617,
+  "extended_phase": true
+}

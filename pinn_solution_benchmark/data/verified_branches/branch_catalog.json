@@ -1,0 +1,863 @@
+[
+  {
+    "branch_id": "nneg1_mneg1_f0",
+    "n": "-1",
+    "m": "-1",
+    "family_index": 0,
+    "tier": "B",
+    "group": "stress",
+    "constraints": {
+      "lambda1": "0",
+      "beta3": "0",
+      "ell": "-c*lambda2**2",
+      "Gamma": "0",
+      "beta4": "0",
+      "beta2": "0",
+      "gamma": "0",
+      "alpha2": "-2*c*lambda2**2/asq"
+    },
+    "free_parameters": [
+      "lambda2",
+      "asq",
+      "c"
+    ],
+    "representative_sets": [
+      {
+        "beta2": "0",
+        "beta3": "0",
+        "beta4": "0",
+        "gamma": "0",
+        "alpha2": "-16/25",
+        "Gamma": "0",
+        "g0": "1",
+        "T2": "sqrt(2)/2",
+        "alpha": "41/25",
+        "lambda1": "0",
+        "lambda2": "4/5",
+        "a": "1"
+      },
+      {
+        "beta2": "0",
+        "beta3": "0",
+        "beta4": "0",
+        "gamma": "0",
+        "alpha2": "-169/96",
+        "Gamma": "0",
+        "g0": "1",
+        "T2": "sqrt(3)/2",
+        "alpha": "707/200",
+        "lambda1": "0",
+        "lambda2": "13/10",
+        "a": "6/5"
+      }
+    ],
+    "xi_domain": [
+      0.35,
+      4.35
+    ],
+    "power_convention": "integer_exact",
+    "properties": {
+      "real_profile": true,
+      "bounded_on_domain": true,
+      "bounded_on_R": false,
+      "localized": false,
+      "smooth_C4_on_domain": true,
+      "smooth_C4_on_R": false,
+      "fractional_power": false,
+      "singular_at_xi0": true,
+      "feat_max_amplitude": 2.9728677194309836,
+      "feat_max_curvature_tt": 29.825492706980096,
+      "feat_max_fourth_deriv_tttt": 1871.7106720882334,
+      "feat_gradient_max": 6.270353981787824,
+      "feat_localization_width_t": 0.7499999998125001,
+      "feat_distance_to_singularity_xi": 0.350000001,
+      "activity_A_z": 0.0,
+      "activity_beta2_GVD": 0.0,
+      "activity_gain_bandwidth_c": 7.456373176745023,
+      "activity_beta3_TOD": 0.0,
+      "activity_beta4_FOD": 0.0,
+      "activity_kerr_gamma": 0.0,
+      "activity_two_photon_alpha2": 8.407690846962938,
+      "activity_linear_gain_loss": 0.9513176702179149,
+      "activity_saturation_Gamma": 0.0
+    },
+    "active_terms": [
+      "gain_bandwidth_c",
+      "two_photon_alpha2",
+      "linear_gain_loss"
+    ],
+    "residual_max": 2.1382117680737565e-50,
+    "residual_rms_rel": 2.3641250800426743e-51,
+    "verified_symbolic": true,
+    "verified_numeric": true,
+    "rejection_reason": "",
+    "notes": []
+  },
+  {
+    "branch_id": "nneg1_m0_f1",
+    "n": "-1",
+    "m": "0",
+    "family_index": 1,
+    "tier": "B",
+    "group": "stress",
+    "constraints": {
+      "lambda1": "-beta3*lambda2**3/6",
+      "ell": "c*lambda2**2/2",
+      "alpha2": "0",
+      "beta2": "-beta4*lambda2**2/12",
+      "gamma": "0"
+    },
+    "free_parameters": [
+      "lambda2",
+      "asq",
+      "beta3",
+      "beta4",
+      "c",
+      "Gamma"
+    ],
+    "representative_sets": [
+      {
+        "beta2": "-2/375",
+        "beta3": "1/5",
+        "beta4": "1/10",
+        "gamma": "0",
+        "alpha2": "0",
+        "Gamma": "1/2",
+        "g0": "1",
+        "T2": "sqrt(2)/2",
+        "alpha": "17/25",
+        "lambda1": "-32/1875",
+        "lambda2": "4/5",
+        "a": "1"
+      },
+      {
+        "beta2": "-169/24000",
+        "beta3": "1/10",
+        "beta4": "1/20",
+        "gamma": "0",
+        "alpha2": "0",
+        "Gamma": "1",
+        "g0": "1",
+        "T2": "sqrt(3)/2",
+        "alpha": "-107/400",
+        "lambda1": "-2197/60000",
+        "lambda2": "13/10",
+        "a": "6/5"
+      }
+    ],
+    "xi_domain": [
+      -4.0,
+      4.0
+    ],
+    "power_convention": "integer_exact",
+    "properties": {
+      "real_profile": true,
+      "bounded_on_domain": true,
+      "bounded_on_R": false,
+      "localized": false,
+      "smooth_C4_on_domain": true,
+      "smooth_C4_on_R": true,
+      "fractional_power": false,
+      "singular_at_xi0": false,
+      "feat_max_amplitude": 27.308232836016487,
+      "feat_max_curvature_tt": 17.477269015050556,
+      "feat_max_fourth_deriv_tttt": 11.185452169632354,
+      "feat_gradient_max": 21.831933757702203,
+      "feat_localization_width_t": 9.999999998749999,
+      "feat_distance_to_singularity_xi": Infinity,
+      "activity_A_z": 0.4657479201643136,
+      "activity_beta2_GVD": 0.04660605070680147,
+      "activity_gain_bandwidth_c": 4.369317253762638,
+      "activity_beta3_TOD": 0.4657479201643136,
+      "activity_beta4_FOD": 0.04660605070680147,
+      "activity_kerr_gamma": 0.0,
+      "activity_two_photon_alpha2": 0.0,
+      "activity_linear_gain_loss": 4.369317253762638,
+      "activity_saturation_Gamma": 0.0
+    },
+    "active_terms": [
+      "A_z",
+      "beta2_GVD",
+      "gain_bandwidth_c",
+      "beta3_TOD",
+      "beta4_FOD",
+      "linear_gain_loss"
+    ],
+    "residual_max": 2.138228081272697e-50,
+    "residual_rms_rel": 4.7842847937716744e-52,
+    "verified_symbolic": true,
+    "verified_numeric": true,
+    "rejection_reason": "",
+    "notes": [
+      "profile unbounded as |xi|->inf; finite only on truncated domain"
+    ]
+  },
+  {
+    "branch_id": "nneg1_m1_f1",
+    "n": "-1",
+    "m": "1",
+    "family_index": 1,
+    "tier": "B",
+    "group": "stress",
+    "constraints": {
+      "lambda1": "-2*beta3*lambda2**3/3",
+      "ell": "2*c*lambda2**2",
+      "alpha2": "0",
+      "beta2": "-beta4*lambda2**2/3",
+      "gamma": "0"
+    },
+    "free_parameters": [
+      "lambda2",
+      "asq",
+      "beta3",
+      "beta4",
+      "c",
+      "Gamma"
+    ],
+    "representative_sets": [
+      {
+        "beta2": "-8/375",
+        "beta3": "1/5",
+        "beta4": "1/10",
+        "gamma": "0",
+        "alpha2": "0",
+        "Gamma": "1/2",
+        "g0": "1",
+        "T2": "sqrt(2)/2",
+        "alpha": "-7/25",
+        "lambda1": "-128/1875",
+        "lambda2": "4/5",
+        "a": "1"
+      },
+      {
+        "beta2": "-169/6000",
+        "beta3": "1/10",
+        "beta4": "1/20",
+        "gamma": "0",
+        "alpha2": "0",
+        "Gamma": "1",
+        "g0": "1",
+        "T2": "sqrt(3)/2",
+        "alpha": "-407/100",
+        "lambda1": "-2197/15000",
+        "lambda2": "13/10",
+        "a": "6/5"
+      }
+    ],
+    "xi_domain": [
+      -4.0,
+      4.0
+    ],
+    "power_convention": "integer_exact",
+    "properties": {
+      "real_profile": true,
+      "bounded_on_domain": true,
+      "bounded_on_R": false,
+      "localized": false,
+      "smooth_C4_on_domain": true,
+      "smooth_C4_on_R": true,
+      "fractional_power": false,
+      "singular_at_xi0": false,
+      "feat_max_amplitude": 745.239412894775,
+      "feat_max_curvature_tt": 1907.8128970106243,
+      "feat_max_fourth_deriv_tttt": 4884.001016347198,
+      "feat_gradient_max": 1192.3833290017426,
+      "feat_localization_width_t": 9.999999998749999,
+      "feat_distance_to_singularity_xi": Infinity,
+      "activity_A_z": 101.75004407481535,
+      "activity_beta2_GVD": 20.35000423477999,
+      "activity_gain_bandwidth_c": 476.953224252656,
+      "activity_beta3_TOD": 101.75004407481536,
+      "activity_beta4_FOD": 20.35000423477999,
+      "activity_kerr_gamma": 0.0,
+      "activity_two_photon_alpha2": 0.0,
+      "activity_linear_gain_loss": 476.953224252656,
+      "activity_saturation_Gamma": 0.0
+    },
+    "active_terms": [
+      "A_z",
+      "beta2_GVD",
+      "gain_bandwidth_c",
+      "beta3_TOD",
+      "beta4_FOD",
+      "linear_gain_loss"
+    ],
+    "residual_max": 3.849018754285868e-48,
+    "residual_rms_rel": 2.4794652567672724e-51,
+    "verified_symbolic": true,
+    "verified_numeric": true,
+    "rejection_reason": "",
+    "notes": [
+      "profile unbounded as |xi|->inf; finite only on truncated domain"
+    ]
+  },
+  {
+    "branch_id": "n0_mneg1_f0",
+    "n": "0",
+    "m": "-1",
+    "family_index": 0,
+    "tier": "B",
+    "group": "stress",
+    "constraints": {
+      "Gamma": "0",
+      "beta4": "0",
+      "beta3": "0",
+      "lambda1": "0",
+      "gamma": "0",
+      "beta2": "0",
+      "alpha2": "-2*c*lambda2**2/asq",
+      "ell": "c*lambda2**2/2"
+    },
+    "free_parameters": [
+      "lambda2",
+      "asq",
+      "c"
+    ],
+    "representative_sets": [
+      {
+        "beta2": "0",
+        "beta3": "0",
+        "beta4": "0",
+        "gamma": "0",
+        "alpha2": "-16/25",
+        "Gamma": "0",
+        "g0": "1",
+        "T2": "sqrt(2)/2",
+        "alpha": "17/25",
+        "lambda1": "0",
+        "lambda2": "4/5",
+        "a": "1"
+      },
+      {
+        "beta2": "0",
+        "beta3": "0",
+        "beta4": "0",
+        "gamma": "0",
+        "alpha2": "-169/96",
+        "Gamma": "0",
+        "g0": "1",
+        "T2": "sqrt(3)/2",
+        "alpha": "-107/400",
+        "lambda1": "0",
+        "lambda2": "13/10",
+        "a": "6/5"
+      }
+    ],
+    "xi_domain": [
+      0.35,
+      4.35
+    ],
+    "power_convention": "integer_exact",
+    "properties": {
+      "real_profile": true,
+      "bounded_on_domain": true,
+      "bounded_on_R": false,
+      "localized": true,
+      "smooth_C4_on_domain": true,
+      "smooth_C4_on_R": false,
+      "fractional_power": false,
+      "singular_at_xi0": true,
+      "feat_max_amplitude": 2.799632561111329,
+      "feat_max_curvature_tt": 29.87926432248288,
+      "feat_max_fourth_deriv_tttt": 1871.6449427412274,
+      "feat_gradient_max": 6.658349813756608,
+      "feat_localization_width_t": 0.99999999975,
+      "feat_distance_to_singularity_xi": 0.350000001,
+      "activity_A_z": 0.0,
+      "activity_beta2_GVD": 0.0,
+      "activity_gain_bandwidth_c": 7.469816080620719,
+      "activity_beta3_TOD": 0.0,
+      "activity_beta4_FOD": 0.0,
+      "activity_kerr_gamma": 0.0,
+      "activity_two_photon_alpha2": 7.021874870842906,
+      "activity_linear_gain_loss": 0.44794120977781265,
+      "activity_saturation_Gamma": 0.0
+    },
+    "active_terms": [
+      "gain_bandwidth_c",
+      "two_photon_alpha2",
+      "linear_gain_loss"
+    ],
+    "residual_max": 2.1382117680737565e-50,
+    "residual_rms_rel": 3.748506860275846e-51,
+    "verified_symbolic": true,
+    "verified_numeric": true,
+    "rejection_reason": "",
+    "notes": []
+  },
+  {
+    "branch_id": "n0_m0_f0",
+    "n": "0",
+    "m": "0",
+    "family_index": 0,
+    "tier": "B",
+    "group": "main",
+    "constraints": {
+      "gamma": "0",
+      "ell": "alpha2*asq/(2*(Gamma*asq + 1))"
+    },
+    "free_parameters": [
+      "lambda1",
+      "lambda2",
+      "asq",
+      "beta2",
+      "beta3",
+      "beta4",
+      "c",
+      "alpha2",
+      "Gamma"
+    ],
+    "representative_sets": [
+      {
+        "beta2": "1/5",
+        "beta3": "1/5",
+        "beta4": "1/10",
+        "gamma": "0",
+        "alpha2": "1/5",
+        "Gamma": "1/2",
+        "g0": "1",
+        "T2": "sqrt(2)/2",
+        "alpha": "13/15",
+        "lambda1": "1/5",
+        "lambda2": "4/5",
+        "a": "1"
+      },
+      {
+        "beta2": "-1/5",
+        "beta3": "1/10",
+        "beta4": "1/20",
+        "gamma": "0",
+        "alpha2": "3/10",
+        "Gamma": "1",
+        "g0": "1",
+        "T2": "sqrt(3)/2",
+        "alpha": "251/305",
+        "lambda1": "1/10",
+        "lambda2": "13/10",
+        "a": "6/5"
+      }
+    ],
+    "xi_domain": [
+      -4.0,
+      4.0
+    ],
+    "power_convention": "integer_exact",
+    "properties": {
+      "real_profile": true,
+      "bounded_on_domain": true,
+      "bounded_on_R": true,
+      "localized": false,
+      "smooth_C4_on_domain": true,
+      "smooth_C4_on_R": true,
+      "fractional_power": false,
+      "singular_at_xi0": false,
+      "feat_max_amplitude": 1.0,
+      "feat_max_curvature_tt": 0.0,
+      "feat_max_fourth_deriv_tttt": 0.0,
+      "feat_gradient_max": 0.0,
+      "feat_localization_width_t": Infinity,
+      "feat_distance_to_singularity_xi": Infinity,
+      "activity_A_z": 0.0,
+      "activity_beta2_GVD": 0.0,
+      "activity_gain_bandwidth_c": 0.0,
+      "activity_beta3_TOD": 0.0,
+      "activity_beta4_FOD": 0.0,
+      "activity_kerr_gamma": 0.0,
+      "activity_two_photon_alpha2": 0.06666666666666667,
+      "activity_linear_gain_loss": 0.06666666666666667,
+      "activity_saturation_Gamma": 0.06666666666666667
+    },
+    "active_terms": [
+      "two_photon_alpha2",
+      "linear_gain_loss",
+      "saturation_Gamma"
+    ],
+    "residual_max": 0.0,
+    "residual_rms_rel": 0.0,
+    "verified_symbolic": true,
+    "verified_numeric": true,
+    "rejection_reason": "",
+    "notes": []
+  },
+  {
+    "branch_id": "n0_m1_f1",
+    "n": "0",
+    "m": "1",
+    "family_index": 1,
+    "tier": "B",
+    "group": "stress",
+    "constraints": {
+      "ell": "c*lambda2**2/2",
+      "alpha2": "0",
+      "lambda1": "-beta3*lambda2**3/6",
+      "beta2": "-beta4*lambda2**2/12",
+      "gamma": "0"
+    },
+    "free_parameters": [
+      "lambda2",
+      "asq",
+      "beta3",
+      "beta4",
+      "c",
+      "Gamma"
+    ],
+    "representative_sets": [
+      {
+        "beta2": "-2/375",
+        "beta3": "1/5",
+        "beta4": "1/10",
+        "gamma": "0",
+        "alpha2": "0",
+        "Gamma": "1/2",
+        "g0": "1",
+        "T2": "sqrt(2)/2",
+        "alpha": "17/25",
+        "lambda1": "-32/1875",
+        "lambda2": "4/5",
+        "a": "1"
+      },
+      {
+        "beta2": "-169/24000",
+        "beta3": "1/10",
+        "beta4": "1/20",
+        "gamma": "0",
+        "alpha2": "0",
+        "Gamma": "1",
+        "g0": "1",
+        "T2": "sqrt(3)/2",
+        "alpha": "-107/400",
+        "lambda1": "-2197/60000",
+        "lambda2": "13/10",
+        "a": "6/5"
+      }
+    ],
+    "xi_domain": [
+      -4.0,
+      4.0
+    ],
+    "power_convention": "integer_exact",
+    "properties": {
+      "real_profile": true,
+      "bounded_on_domain": true,
+      "bounded_on_R": false,
+      "localized": false,
+      "smooth_C4_on_domain": true,
+      "smooth_C4_on_R": true,
+      "fractional_power": false,
+      "singular_at_xi0": false,
+      "feat_max_amplitude": 27.28991719712775,
+      "feat_max_curvature_tt": 17.465547006161763,
+      "feat_max_fourth_deriv_tttt": 11.177950083943529,
+      "feat_gradient_max": 21.84658626881319,
+      "feat_localization_width_t": 9.999999998749999,
+      "feat_distance_to_singularity_xi": Infinity,
+      "activity_A_z": 0.4660605070680147,
+      "activity_beta2_GVD": 0.04657479201643136,
+      "activity_gain_bandwidth_c": 4.36638675154044,
+      "activity_beta3_TOD": 0.4660605070680147,
+      "activity_beta4_FOD": 0.04657479201643136,
+      "activity_kerr_gamma": 0.0,
+      "activity_two_photon_alpha2": 0.0,
+      "activity_linear_gain_loss": 4.36638675154044,
+      "activity_saturation_Gamma": 0.0
+    },
+    "active_terms": [
+      "A_z",
+      "beta2_GVD",
+      "gain_bandwidth_c",
+      "beta3_TOD",
+      "beta4_FOD",
+      "linear_gain_loss"
+    ],
+    "residual_max": 2.0045909333055377e-50,
+    "residual_rms_rel": 4.691644961894056e-52,
+    "verified_symbolic": true,
+    "verified_numeric": true,
+    "rejection_reason": "",
+    "notes": [
+      "profile unbounded as |xi|->inf; finite only on truncated domain"
+    ]
+  },
+  {
+    "branch_id": "n1_mneg1_f0",
+    "n": "1",
+    "m": "-1",
+    "family_index": 0,
+    "tier": "B",
+    "group": "stress",
+    "constraints": {
+      "Gamma": "0",
+      "beta4": "0",
+      "gamma": "0",
+      "beta2": "0",
+      "beta3": "0",
+      "lambda1": "0",
+      "ell": "2*c*lambda2**2",
+      "alpha2": "-2*c*lambda2**2/asq"
+    },
+    "free_parameters": [
+      "lambda2",
+      "asq",
+      "c"
+    ],
+    "representative_sets": [
+      {
+        "beta2": "0",
+        "beta3": "0",
+        "beta4": "0",
+        "gamma": "0",
+        "alpha2": "-16/25",
+        "Gamma": "0",
+        "g0": "1",
+        "T2": "sqrt(2)/2",
+        "alpha": "-7/25",
+        "lambda1": "0",
+        "lambda2": "4/5",
+        "a": "1"
+      },
+      {
+        "beta2": "0",
+        "beta3": "0",
+        "beta4": "0",
+        "gamma": "0",
+        "alpha2": "-169/96",
+        "Gamma": "0",
+        "g0": "1",
+        "T2": "sqrt(3)/2",
+        "alpha": "-407/100",
+        "lambda1": "0",
+        "lambda2": "13/10",
+        "a": "6/5"
+      }
+    ],
+    "xi_domain": [
+      0.35,
+      4.35
+    ],
+    "power_convention": "integer_exact",
+    "properties": {
+      "real_profile": true,
+      "bounded_on_domain": true,
+      "bounded_on_R": false,
+      "localized": true,
+      "smooth_C4_on_domain": true,
+      "smooth_C4_on_R": false,
+      "fractional_power": false,
+      "singular_at_xi0": true,
+      "feat_max_amplitude": 2.6364921742078002,
+      "feat_max_curvature_tt": 30.20733610454449,
+      "feat_max_fourth_deriv_tttt": 1870.0874483733762,
+      "feat_gradient_max": 6.979835175848468,
+      "feat_localization_width_t": 0.9583333330937499,
+      "feat_distance_to_singularity_xi": 0.350000001,
+      "activity_A_z": 0.0,
+      "activity_beta2_GVD": 0.0,
+      "activity_gain_bandwidth_c": 7.551834026136121,
+      "activity_beta3_TOD": 0.0,
+      "activity_beta4_FOD": 0.0,
+      "activity_kerr_gamma": 0.0,
+      "activity_two_photon_alpha2": 5.864479034643128,
+      "activity_linear_gain_loss": 1.6873549914929922,
+      "activity_saturation_Gamma": 0.0
+    },
+    "active_terms": [
+      "gain_bandwidth_c",
+      "two_photon_alpha2",
+      "linear_gain_loss"
+    ],
+    "residual_max": 4.276423536147513e-50,
+    "residual_rms_rel": 8.421453599846678e-51,
+    "verified_symbolic": true,
+    "verified_numeric": true,
+    "rejection_reason": "",
+    "notes": []
+  },
+  {
+    "branch_id": "n1_m0_f0",
+    "n": "1",
+    "m": "0",
+    "family_index": 0,
+    "tier": "B",
+    "group": "main",
+    "constraints": {
+      "Gamma": "0",
+      "beta4": "0",
+      "beta3": "0",
+      "lambda1": "0",
+      "gamma": "0",
+      "beta2": "0",
+      "alpha2": "2*c*lambda2**2/asq",
+      "ell": "c*lambda2**2/2"
+    },
+    "free_parameters": [
+      "lambda2",
+      "asq",
+      "c"
+    ],
+    "representative_sets": [
+      {
+        "beta2": "0",
+        "beta3": "0",
+        "beta4": "0",
+        "gamma": "0",
+        "alpha2": "16/25",
+        "Gamma": "0",
+        "g0": "1",
+        "T2": "sqrt(2)/2",
+        "alpha": "17/25",
+        "lambda1": "0",
+        "lambda2": "4/5",
+        "a": "1"
+      },
+      {
+        "beta2": "0",
+        "beta3": "0",
+        "beta4": "0",
+        "gamma": "0",
+        "alpha2": "169/96",
+        "Gamma": "0",
+        "g0": "1",
+        "T2": "sqrt(3)/2",
+        "alpha": "-107/400",
+        "lambda1": "0",
+        "lambda2": "13/10",
+        "a": "6/5"
+      }
+    ],
+    "xi_domain": [
+      -4.0,
+      4.0
+    ],
+    "power_convention": "integer_exact",
+    "properties": {
+      "real_profile": true,
+      "bounded_on_domain": true,
+      "bounded_on_R": true,
+      "localized": true,
+      "smooth_C4_on_domain": true,
+      "smooth_C4_on_R": true,
+      "fractional_power": false,
+      "singular_at_xi0": false,
+      "feat_max_amplitude": 0.9977818856133671,
+      "feat_max_curvature_tt": 0.6329209129145882,
+      "feat_max_fourth_deriv_tttt": 1.9929408430384574,
+      "feat_gradient_max": 0.39991258375413746,
+      "feat_localization_width_t": 9.166666665520832,
+      "feat_distance_to_singularity_xi": Infinity,
+      "activity_A_z": 0.0,
+      "activity_beta2_GVD": 0.0,
+      "activity_gain_bandwidth_c": 0.15823022822864705,
+      "activity_beta3_TOD": 0.0,
+      "activity_beta4_FOD": 0.0,
+      "activity_kerr_gamma": 0.0,
+      "activity_two_photon_alpha2": 0.31787532992678574,
+      "activity_linear_gain_loss": 0.15964510169813875,
+      "activity_saturation_Gamma": 0.0
+    },
+    "active_terms": [
+      "gain_bandwidth_c",
+      "two_photon_alpha2",
+      "linear_gain_loss"
+    ],
+    "residual_max": 1.3363823550460978e-51,
+    "residual_rms_rel": 5.908013743811303e-52,
+    "verified_symbolic": true,
+    "verified_numeric": true,
+    "rejection_reason": "",
+    "notes": []
+  },
+  {
+    "branch_id": "n1_m1_f0",
+    "n": "1",
+    "m": "1",
+    "family_index": 0,
+    "tier": "B",
+    "group": "main",
+    "constraints": {
+      "Gamma": "0",
+      "beta4": "0",
+      "beta2": "0",
+      "gamma": "0",
+      "beta3": "0",
+      "lambda1": "0",
+      "ell": "-c*lambda2**2",
+      "alpha2": "-2*c*lambda2**2/asq"
+    },
+    "free_parameters": [
+      "lambda2",
+      "asq",
+      "c"
+    ],
+    "representative_sets": [
+      {
+        "beta2": "0",
+        "beta3": "0",
+        "beta4": "0",
+        "gamma": "0",
+        "alpha2": "-16/25",
+        "Gamma": "0",
+        "g0": "1",
+        "T2": "sqrt(2)/2",
+        "alpha": "41/25",
+        "lambda1": "0",
+        "lambda2": "4/5",
+        "a": "1"
+      },
+      {
+        "beta2": "0",
+        "beta3": "0",
+        "beta4": "0",
+        "gamma": "0",
+        "alpha2": "-169/96",
+        "Gamma": "0",
+        "g0": "1",
+        "T2": "sqrt(3)/2",
+        "alpha": "707/200",
+        "lambda1": "0",
+        "lambda2": "13/10",
+        "a": "6/5"
+      }
+    ],
+    "xi_domain": [
+      -4.0,
+      4.0
+    ],
+    "power_convention": "integer_exact",
+    "properties": {
+      "real_profile": true,
+      "bounded_on_domain": true,
+      "bounded_on_R": true,
+      "localized": false,
+      "smooth_C4_on_domain": true,
+      "smooth_C4_on_R": true,
+      "fractional_power": false,
+      "singular_at_xi0": false,
+      "feat_max_amplitude": 0.9993292997390669,
+      "feat_max_curvature_tt": 0.492606591271938,
+      "feat_max_fourth_deriv_tttt": 1.669211911182398,
+      "feat_gradient_max": 0.7964549530065332,
+      "feat_localization_width_t": 4.4999999994375,
+      "feat_distance_to_singularity_xi": Infinity,
+      "activity_A_z": 0.0,
+      "activity_beta2_GVD": 0.0,
+      "activity_gain_bandwidth_c": 0.12315164781798447,
+      "activity_beta3_TOD": 0.0,
+      "activity_beta4_FOD": 0.0,
+      "activity_kerr_gamma": 0.0,
+      "activity_two_photon_alpha2": 0.3193565594982445,
+      "activity_linear_gain_loss": 0.3197853759165014,
+      "activity_saturation_Gamma": 0.0
+    },
+    "active_terms": [
+      "gain_bandwidth_c",
+      "two_photon_alpha2",
+      "linear_gain_loss"
+    ],
+    "residual_max": 2.0045735325691467e-51,
+    "residual_rms_rel": 5.951376276638199e-52,
+    "verified_symbolic": true,
+    "verified_numeric": true,
+    "rejection_reason": "",
+    "notes": []
+  }
+]

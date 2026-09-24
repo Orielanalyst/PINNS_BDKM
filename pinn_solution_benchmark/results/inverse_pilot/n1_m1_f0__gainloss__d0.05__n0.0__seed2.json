@@ -1,0 +1,29 @@
+{
+  "state": "done",
+  "stage": "gainloss",
+  "density": 0.05,
+  "noise": 0.0,
+  "seed": 2,
+  "params": [
+    {
+      "param": "c",
+      "true": 0.5000000000000001,
+      "recovered": 0.4793408047249221,
+      "abs_error": 0.020659195275078035,
+      "rel_error": 0.04131839055015606
+    },
+    {
+      "param": "ell",
+      "true": -0.31999999999999995,
+      "recovered": -0.31906975665031856,
+      "abs_error": 0.0009302433496813922,
+      "rel_error": 0.002907010467754351
+    }
+  ],
+  "l2re_field": 0.0037520063223825863,
+  "n_obs": 230,
+  "obs_sigma": 0.0,
+  "elapsed_s": 309.42522205800196,
+  "branch_id": "n1_m1_f0",
+  "job": "n1_m1_f0__gainloss__d0.05__n0.0__seed2"
+}

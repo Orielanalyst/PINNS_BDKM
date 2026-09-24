@@ -1,0 +1,447 @@
+<title>The Forty-Nine Branch Audit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root {
+  --ground: #FBFAF7; --surface: #FFFFFF; --ink: #1D242B; --ink-2: #5B6673;
+  --hairline: #E3E1DA; --accent: #0E7490; --ok: #3E7D4E; --bad: #AF4438;
+  --warn: #9A6B15; --plate-border: #D8D5CC; --tile: #F3F1EB;
+  --code-bg: #F0EEE8;
+}
+:root:not([data-theme="light"]) { }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #14181D; --surface: #1C2229; --ink: #E7E9E4; --ink-2: #98A2AC;
+    --hairline: #2C333B; --accent: #3FB3D2; --ok: #74B183; --bad: #D57F72;
+    --warn: #C79A4B; --plate-border: #39414B; --tile: #1C2229;
+    --code-bg: #20272F;
+  }
+}
+:root[data-theme="dark"] {
+  --ground: #14181D; --surface: #1C2229; --ink: #E7E9E4; --ink-2: #98A2AC;
+  --hairline: #2C333B; --accent: #3FB3D2; --ok: #74B183; --bad: #D57F72;
+  --warn: #C79A4B; --plate-border: #39414B; --tile: #1C2229;
+  --code-bg: #20272F;
+}
+body {
+  background: var(--ground); color: var(--ink);
+  font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+  font-size: 17px; line-height: 1.62; margin: 0;
+}
+.wrap { max-width: 1000px; margin: 0 auto; padding: 3.2rem 1.4rem 5rem; }
+.prose { max-width: 70ch; }
+.eyebrow {
+  font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 0.72rem;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);
+  font-weight: 600;
+}
+h1 {
+  font-size: clamp(2.1rem, 5vw, 3.1rem); line-height: 1.12; font-weight: 700;
+  margin: 0.5rem 0 0.9rem; text-wrap: balance; letter-spacing: -0.01em;
+}
+.dek { font-size: 1.12rem; color: var(--ink-2); max-width: 62ch; margin: 0 0 1.1rem; }
+.meta {
+  font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 0.74rem;
+  color: var(--ink-2); border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline); padding: 0.55rem 0; margin: 1.4rem 0 2.2rem;
+  display: flex; flex-wrap: wrap; gap: 0.4rem 1.6rem;
+}
+h2 {
+  font-size: 1.45rem; font-weight: 700; margin: 3rem 0 0.9rem; text-wrap: balance;
+  padding-top: 1.4rem; border-top: 1px solid var(--hairline);
+}
+h2 .no { color: var(--accent); font-family: "IBM Plex Mono", monospace;
+  font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em; display: block;
+  margin-bottom: 0.35rem; }
+h3 { font-size: 1.08rem; font-weight: 600; margin: 1.7rem 0 0.5rem; }
+p { margin: 0 0 1rem; }
+a { color: var(--accent); }
+strong { font-weight: 600; }
+code, .mono {
+  font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 0.84em;
+  background: var(--code-bg); border-radius: 3px; padding: 0.08em 0.3em;
+}
+pre {
+  font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 0.78rem;
+  background: var(--code-bg); border: 1px solid var(--hairline); border-radius: 6px;
+  padding: 0.9rem 1rem; overflow-x: auto; line-height: 1.55;
+}
+pre code { background: none; padding: 0; }
+
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px; margin: 0 0 0.6rem; }
+.tile { background: var(--tile); border: 1px solid var(--hairline); border-radius: 6px;
+  padding: 0.85rem 1rem 0.75rem; }
+.tile .n { font-family: "IBM Plex Mono", monospace; font-size: 1.65rem; font-weight: 600;
+  line-height: 1.1; font-variant-numeric: tabular-nums; }
+.tile .l { font-size: 0.78rem; color: var(--ink-2); margin-top: 0.25rem; line-height: 1.35; }
+.tile.ok .n { color: var(--ok); }
+.tile.bad .n { color: var(--bad); }
+
+.plate { background: #FFFFFF; border: 1px solid var(--plate-border); border-radius: 6px;
+  padding: 10px; margin: 1.3rem 0 0.4rem; }
+.plate img { display: block; width: 100%; height: auto; }
+.caption { font-size: 0.82rem; color: var(--ink-2); margin: 0.45rem 0 1.6rem;
+  max-width: 78ch; line-height: 1.5; }
+.caption b { color: var(--ink); font-weight: 600; }
+.plates2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 720px) { .plates2 { grid-template-columns: 1fr; } }
+.plates2 .plate { margin: 1.3rem 0 0.2rem; }
+
+.tablewrap { overflow-x: auto; margin: 1.2rem 0 0.4rem; border: 1px solid var(--hairline);
+  border-radius: 6px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.82rem; }
+th, td { text-align: left; padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--hairline);
+  vertical-align: top; }
+th { font-family: "IBM Plex Mono", monospace; font-size: 0.68rem; letter-spacing: 0.07em;
+  text-transform: uppercase; color: var(--ink-2); font-weight: 600;
+  background: var(--tile); }
+tbody tr:last-child td { border-bottom: none; }
+td.num, th.num { text-align: right; font-family: "IBM Plex Mono", monospace;
+  font-variant-numeric: tabular-nums; font-size: 0.78rem; white-space: nowrap; }
+td .pill { display: inline-block; font-family: "IBM Plex Mono", monospace;
+  font-size: 0.66rem; font-weight: 600; letter-spacing: 0.05em; padding: 0.1rem 0.5rem;
+  border-radius: 999px; border: 1px solid; }
+.pill.ok { color: var(--ok); border-color: var(--ok); }
+.pill.bad { color: var(--bad); border-color: var(--bad); }
+.pill.warn { color: var(--warn); border-color: var(--warn); }
+
+.finding { border-left: 3px solid var(--accent); background: var(--tile);
+  border-radius: 0 6px 6px 0; padding: 0.9rem 1.1rem; margin: 1.4rem 0; max-width: 74ch; }
+.finding.neg { border-left-color: var(--bad); }
+.finding p:last-child { margin-bottom: 0; }
+ul { margin: 0 0 1rem; padding-left: 1.3rem; }
+li { margin-bottom: 0.35rem; }
+.footer { margin-top: 3.5rem; padding-top: 1.2rem; border-top: 1px solid var(--hairline);
+  font-size: 0.8rem; color: var(--ink-2); font-family: "IBM Plex Mono", monospace; }
+</style>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">Sim2Sci &middot; Verification &amp; Benchmark Report</div>
+  <h1>The Forty-Nine Branch Audit</h1>
+  <p class="dek">An independent symbolic audit of the exact-solution catalogue claimed
+  in <i>paper-5.pdf</i> for a fourth-order gain&ndash;loss nonlinear
+  Schr&ouml;dinger-type equation &mdash; and a physics-informed neural-network
+  benchmark built only on the solutions that survive.</p>
+  <div class="meta">
+    <span>2026-08-25</span>
+    <span>pinn_solution_benchmark v0.1.0</span>
+    <span>4-core CPU &middot; no GPU &middot; torch float64</span>
+    <span>42/42 unit tests passing</span>
+  </div>
+</header>
+
+<div class="tiles">
+  <div class="tile"><div class="n">49</div><div class="l">branches claimed by the paper</div></div>
+  <div class="tile bad"><div class="n">40</div><div class="l">pairs rejected: only vacuous or degenerate closures exist</div></div>
+  <div class="tile ok"><div class="n">9</div><div class="l">pairs with verified, nontrivial solution families</div></div>
+  <div class="tile ok"><div class="n">3</div><div class="l">smooth, bounded, benchmark-grade profiles</div></div>
+  <div class="tile"><div class="n">0</div><div class="l">branches supporting the full nine-coefficient model (Tier&nbsp;A)</div></div>
+</div>
+<p class="caption">Every &ldquo;verified&rdquo; family passed two independent gates: exact
+symbolic vanishing of the closure certificate with free parameters kept symbolic, and
+50-digit-precision residuals of the <b>original complex PDE</b> on a dense grid plus
+random points (max&nbsp;|F| &lt; 10<sup>&minus;47</sup>, most &asymp; 10<sup>&minus;50</sup>).</p>
+
+<section>
+<h2><span class="no">&sect;1 &middot; The claim</span>What the paper asserts</h2>
+<div class="prose">
+<p>The paper studies the envelope equation</p>
+<p style="text-align:center"><code>A<sub>z</sub> + (i/2)(&beta;&#8322; + i g&#8320;T&#8322;&sup2;)A<sub>tt</sub> + (&beta;&#8323;/6)A<sub>ttt</sub> + (i&beta;&#8324;/24)A<sub>tttt</sub> + i(&gamma; + i&alpha;&#8322;/2)&nbsp;|A|&sup2;A/(1+&Gamma;|A|&sup2;) + &frac12;(g&#8320;&minus;&alpha;)A = 0</code></p>
+<p>and proposes the traveling-wave ansatz <code>A = a&nbsp;J<sub>n,m</sub>(&lambda;&#8321;z+&lambda;&#8322;t)</code>
+with <code>J<sub>n,m</sub> = sinh<sup>m</sup>/cosh<sup>n</sup></code>, taking the amplitude
+<i>a</i> real (&ldquo;without loss of generality&rdquo;) and no carrier phase. From an
+index-matching argument it announces a catalogue of 49 solution branches,
+<code>n,m &isin; {&minus;3/2 &hellip; 3/2}&sup2;</code>, offered as ground truth for
+future PINN benchmarks. The paper solves no closure system for any branch.</p>
+</div>
+</section>
+
+<section>
+<h2><span class="no">&sect;2 &middot; The audit</span>Three defects, one exact certificate</h2>
+<div class="prose">
+<p>The audit rebuilds everything from scratch. Substituting the ansatz and dividing by
+<i>A</i> maps the PDE onto rational functions of <code>T = tanh&nbsp;&xi;</code>
+(and <code>W = sech&nbsp;&xi;</code>, which is not rational in T); clearing only powers of
+<code>T</code> and <code>1&minus;T&sup2;</code> &mdash; both nonzero on the open domain
+&mdash; turns &ldquo;is this an exact solution?&rdquo; into &ldquo;do all polynomial
+coefficients vanish?&rdquo;. A bounded factor-splitting solver then enumerates
+<i>every</i> solution family of that system, refusing <code>a = 0</code> and flagging
+<code>&lambda;&#8322; = 0</code>. Findings against the paper:</p>
+</div>
+<div class="finding neg">
+<p><b>The classification contradicts itself.</b> The paper&rsquo;s own Eq.&nbsp;(28)
+derives <code>n = m</code> from its index-matching requirement &mdash; then Section&nbsp;7.3
+takes the 7&times;7 Cartesian product anyway, adding 42 off-diagonal pairs with no
+justification. Deeper: the argument treats distinct J-functions as linearly independent,
+but <code>J&#8322;,&#8320; = J&#8320;,&#8320; &minus; J&#8322;,&#8322;</code>
+(sech&sup2; = 1 &minus; tanh&sup2;). Index matching is neither necessary nor sufficient:
+the one bright branch that genuinely closes, (1,0)&nbsp;=&nbsp;sech, is
+<i>off-diagonal</i>.</p>
+</div>
+<div class="finding neg">
+<p><b>The printed residual split is wrong.</b> Eqs.&nbsp;(37)&ndash;(38) attach
+&beta;&#8323; and &beta;&#8324; to the wrong field components and leave a complex
+coefficient outside Re[&middot;]/Im[&middot;]. The corrected split is derived
+symbolically and proven against <code>F = F<sub>u</sub> + iF<sub>v</sub></code> on random
+smooth fields in the test suite. The abstract also counts &ldquo;eight physical
+parameters&rdquo; while listing nine.</p>
+</div>
+<div class="finding neg">
+<p><b>&ldquo;a real without loss of generality&rdquo; is a loss of generality.</b>
+A z-dependent carrier phase cannot be gauged away in this equation. Under the paper&rsquo;s
+convention no branch retains Kerr nonlinearity (&gamma; is forced to 0 everywhere), and
+no nonconstant branch tolerates saturation &Gamma;&nbsp;&gt;&nbsp;0. &sect;9 shows what
+returns when the phase is restored.</p>
+</div>
+</section>
+
+<section>
+<h2><span class="no">&sect;3 &middot; The survivors</span>Nine pairs, three benchmark-grade profiles</h2>
+<div class="prose">
+<p>Every family that survives is a <i>reduced</i> model &mdash; the closure forces several
+physical coefficients to vanish. The three smooth, bounded, unambiguous profiles form the
+main benchmark; singular and unbounded profiles form a separate stress group. All 40
+remaining pairs admit only the all-coefficients-zero equation or
+<code>&lambda;&#8322; = 0</code>.</p>
+</div>
+<div class="tablewrap"><table>
+<thead><tr><th>(n,m)</th><th>profile</th><th>group</th><th>closure (all other coefficients forced to 0)</th><th class="num">max |F|</th><th>verdict</th></tr></thead>
+<tbody>
+<tr><td class="mono">(0,0)</td><td>constant control</td><td>main</td><td>&gamma;=0; &ell; = &alpha;&#8322;a&sup2;/2(1+&Gamma;a&sup2;) &mdash; <b>saturation active</b>, &beta;&#8322;&hellip;&beta;&#8324; free</td><td class="num">0</td><td><span class="pill ok">verified</span></td></tr>
+<tr><td class="mono">(1,0)</td><td>bright sech pulse</td><td>main</td><td>&Gamma;=0; &alpha;&#8322;a&sup2;=2c&lambda;&#8322;&sup2;, &ell;=c&lambda;&#8322;&sup2;/2 (gain + filtering + 2-photon loss)</td><td class="num">1.3e&minus;51</td><td><span class="pill ok">verified</span></td></tr>
+<tr><td class="mono">(1,1)</td><td>dark tanh kink</td><td>main</td><td>&Gamma;=0; &alpha;&#8322;a&sup2;=&minus;2c&lambda;&#8322;&sup2;, &ell;=&minus;c&lambda;&#8322;&sup2; (loss + filtering + nonlinear gain)</td><td class="num">2.0e&minus;51</td><td><span class="pill ok">verified</span></td></tr>
+<tr><td class="mono">(&minus;1,&minus;1), (0,&minus;1), (1,&minus;1)</td><td>coth / csch types</td><td>stress</td><td>as kink/sech families; singular at &xi;=0, domain restricted to &xi;&gt;0</td><td class="num">&le;4.3e&minus;50</td><td><span class="pill warn">stress</span></td></tr>
+<tr><td class="mono">(&minus;1,0), (&minus;1,1), (0,1)</td><td>cosh / sinh types</td><td>stress</td><td>&gamma;=&alpha;&#8322;=0 (linear eq.); <b>&beta;&#8323;, &beta;&#8324; active</b>, traveling &lambda;&#8321;=&minus;&beta;&#8323;&lambda;&#8322;&sup3;/6&hellip;; unbounded</td><td class="num">&le;3.8e&minus;48</td><td><span class="pill warn">stress</span></td></tr>
+<tr><td class="mono">40 other pairs</td><td>&mdash;</td><td>&mdash;</td><td>only vacuous (every coefficient zero) or &lambda;&#8322;=0 closures</td><td class="num">&mdash;</td><td><span class="pill bad">rejected</span></td></tr>
+</tbody></table></div>
+<p class="caption">The complete machine-readable catalogue (constraints, free parameters,
+representative sets, domains, activity of each PDE term) is in
+<code>data/verified_branches/branch_catalog.{csv,json}</code>; per-pair rejection reasons in
+<code>rejected_pairs.csv</code>. c&nbsp;=&nbsp;g&#8320;T&#8322;&sup2;,
+&ell;&nbsp;=&nbsp;(g&#8320;&minus;&alpha;)/2.</p>
+
+<div class="plates2">
+  <div><div class="plate">{{IMG:reports/figures/audit/profile_n1_m0_f0.png}}</div>
+  <p class="caption"><b>Bright branch (1,0).</b> A stationary dissipative pulse: net linear
+  gain balanced by two-photon absorption and spectral filtering.</p></div>
+  <div><div class="plate">{{IMG:reports/figures/audit/profile_n1_m1_f0.png}}</div>
+  <p class="caption"><b>Dark branch (1,1).</b> A stationary kink: net linear loss balanced
+  by nonlinear gain (&alpha;&#8322;&nbsp;&lt;&nbsp;0) and filtering.</p></div>
+</div>
+</section>
+
+<section>
+<h2><span class="no">&sect;4 &middot; Cross-check</span>An independent conventional solver agrees</h2>
+<div class="prose">
+<p>Before any network training, each verified profile was propagated with a conventional
+method-of-lines solver &mdash; 6th-order finite differences in t with ghost values from the
+exact boundary data (kinks are never given periodic conditions), DOP853 in z; a Fourier
+pseudospectral ETDRK4 scheme cross-checks the periodic-compatible profiles. Three spatial
+resolutions &times; two tolerances:</p>
+</div>
+<div class="tablewrap"><table>
+<thead><tr><th>branch</th><th>scheme</th><th class="num">best complex L2RE</th><th class="num">observed order</th><th class="num">runtime</th></tr></thead>
+<tbody>
+<tr><td>constant (0,0)</td><td class="mono">fd_mol / etdrk4</td><td class="num">1.6e&minus;13 / 8.6e&minus;18</td><td class="num">at rounding floor</td><td class="num">&lt; 30 s</td></tr>
+<tr><td>bright sech (1,0)</td><td class="mono">fd_mol / etdrk4</td><td class="num">5.8e&minus;11 / 2.3e&minus;06</td><td class="num">6.0, 6.0</td><td class="num">&lt; 1 s</td></tr>
+<tr><td>dark kink (1,1)</td><td class="mono">fd_mol</td><td class="num">7.5e&minus;11</td><td class="num">6.0, 4.6</td><td class="num">&lt; 1 s</td></tr>
+</tbody></table></div>
+<p class="caption">The clean 6th-order convergence and 10<sup>&minus;11</sup> agreement
+confirm the analytical solutions independently of the symbolic machinery. The ETDRK4
+figure for the sech is limited by periodic tail truncation, documented in
+<code>reports/numerical_solver_validation.md</code>.</p>
+</section>
+
+<section>
+<h2><span class="no">&sect;5 &middot; Forward benchmark</span>Can a PINN reconstruct the verified solutions?</h2>
+<div class="prose">
+<p>The pilot matrix: 3 branches &times; 2 closure-respecting parameter sets &times; 3
+methods (fixed weights; gradient-norm adaptive weights; residual-adaptive collocation)
+&times; 5 seeds = <b>90 runs, zero failures</b>. Networks are tanh MLPs in float64
+trained on exact initial and Dirichlet boundary data plus the PDE residual only &mdash;
+no interior solution values. Errors are measured on an independent grid; residuals at
+points never used in training.</p>
+</div>
+<div class="plate">{{IMG:reports/figures/summary/forward_error_distributions.png}}</div>
+<p class="caption"><b>Every seed of every cell.</b> The constant and kink branches sit
+one to two decades below the 10<sup>&minus;2</sup> success threshold; the bright sech
+branch straddles it. Red diamonds: high-fidelity retraining of the sech branch
+(2.5&times; steps, 2&times; collocation points).</p>
+
+<div class="plates2">
+  <div><div class="plate">{{IMG:reports/figures/summary/method_comparison_ci.png}}</div>
+  <p class="caption"><b>Methods, with bootstrap 95% CIs.</b> Adaptive loss weighting is
+  the only method that materially helps the hardest branch; on the easiest branch it
+  <i>hurts</i> (it deprioritizes the already-converged data terms).</p></div>
+  <div><div class="plate">{{IMG:reports/figures/summary/success_matrix.png}}</div>
+  <p class="caption"><b>Success rate across seeds</b> (complex L2RE &lt; 10<sup>&minus;2</sup>
+  and finite independent residual).</p></div>
+</div>
+
+<div class="tablewrap"><table>
+<thead><tr><th>branch</th><th>method</th><th class="num">median L2RE</th><th class="num">min &hellip; max</th><th class="num">success</th><th class="num">indep. residual RMS</th></tr></thead>
+<tbody>
+<tr><td rowspan="3">constant (0,0)</td><td>vanilla</td><td class="num">5.3e&minus;04</td><td class="num">3.4e&minus;04 &hellip; 2.3e&minus;03</td><td class="num">10/10</td><td class="num">2.2e&minus;03</td></tr>
+<tr><td>adaptive weights</td><td class="num">3.8e&minus;03</td><td class="num">2.6e&minus;04 &hellip; 8.6e&minus;03</td><td class="num">10/10</td><td class="num">6.6e&minus;03</td></tr>
+<tr><td>adaptive sampling</td><td class="num">1.3e&minus;03</td><td class="num">2.6e&minus;04 &hellip; 3.4e&minus;03</td><td class="num">10/10</td><td class="num">3.5e&minus;03</td></tr>
+<tr><td rowspan="3">bright sech (1,0)</td><td>vanilla</td><td class="num">1.9e&minus;02</td><td class="num">1.4e&minus;02 &hellip; 2.4e&minus;02</td><td class="num">0/10</td><td class="num">2.6e&minus;02</td></tr>
+<tr><td>adaptive weights</td><td class="num">1.3e&minus;02</td><td class="num">4.5e&minus;03 &hellip; 2.9e&minus;02</td><td class="num">5/10</td><td class="num">1.9e&minus;02</td></tr>
+<tr><td>adaptive sampling</td><td class="num">1.6e&minus;02</td><td class="num">1.0e&minus;02 &hellip; 2.4e&minus;02</td><td class="num">0/10</td><td class="num">2.4e&minus;02</td></tr>
+<tr><td rowspan="3">dark kink (1,1)</td><td>vanilla</td><td class="num">5.3e&minus;03</td><td class="num">2.9e&minus;03 &hellip; 6.1e&minus;03</td><td class="num">10/10</td><td class="num">1.8e&minus;02</td></tr>
+<tr><td>adaptive weights</td><td class="num">2.4e&minus;03</td><td class="num">1.3e&minus;03 &hellip; 5.9e&minus;03</td><td class="num">10/10</td><td class="num">9.3e&minus;03</td></tr>
+<tr><td>adaptive sampling</td><td class="num">6.0e&minus;03</td><td class="num">3.2e&minus;03 &hellip; 7.4e&minus;03</td><td class="num">10/10</td><td class="num">1.9e&minus;02</td></tr>
+</tbody></table></div>
+<p class="caption">CPU-scaled pilot budget (4&times;40 tanh net, 1024 collocation points,
+600 Adam + 100 L-BFGS steps); the recommended GPU configuration lives unchanged in
+<code>configs/full.yaml</code>. {{HIFI_SENTENCE}}</p>
+
+<div class="plate">{{IMG:reports/figures/summary/error_vs_z_branches.png}}</div>
+<p class="caption"><b>Error along propagation.</b> Errors are anchored by the exact data
+at z = 0 and grow into the interior &mdash; the residual term alone must carry the
+solution away from the data-rich boundary.</p>
+
+<div class="plate">{{IMG:reports/figures/summary/difficulty_features.png}}</div>
+<p class="caption"><b>What makes a branch hard.</b> Across all runs the error tracks the
+profile&rsquo;s curvature and fourth-derivative magnitude &mdash; the sech branch maximizes
+both, and the equation&rsquo;s A<sub>tttt</sub> term makes the fourth derivative the
+operative feature. {{STRESS_CAPTION}}</p>
+
+<div class="plate">{{IMG:reports/figures/forward_pilot/{{FIELD_TRIPTYCH}}}}</div>
+<p class="caption"><b>A representative reconstruction</b> (dark kink, vanilla, median
+seed): analytic intensity, PINN intensity, and pointwise complex error.</p>
+</section>
+
+<section>
+<h2><span class="no">&sect;6 &middot; Inverse problem</span>What can be recovered &mdash; and what provably cannot</h2>
+<div class="finding">
+<p><b>g&#8320;, T&#8322; and &alpha; are not separately identifiable.</b> They enter the
+equation only through c&nbsp;=&nbsp;g&#8320;T&#8322;&sup2; and
+&ell;&nbsp;=&nbsp;(g&#8320;&minus;&alpha;)/2. The sensitivity Jacobian of the residual
+on the exact solution has rank <b>2 of 3</b> in (g&#8320;, T&#8322;, &alpha;), with an
+explicit null direction &mdash; so recovery is performed in the reduced coordinates, and
+any claim of recovering all three separately from a single field would be wrong by
+construction.</p>
+</div>
+<div class="prose">
+<p>Staged recovery (network and parameters trained jointly from sparse noisy field
+observations plus the residual; positive parameters via softplus, all scaled to O(1)):</p>
+</div>
+<div class="plate">{{IMG:reports/figures/summary/inverse_recovery.png}}</div>
+<p class="caption"><b>Left:</b> median recovery error vs noise at 5% observation density
+(both branches pooled; &gamma; and, on most branches, the &beta;&rsquo;s have true value 0
+&mdash; absolute error shown). <b>Right:</b> recovery vs observation density for the
+gain/loss stage. {{INV_DENSITY_NOTE}}</p>
+<div class="prose">
+<ul>
+<li><b>Gain/loss stage:</b> &ell; to 0.3&ndash;2%, c to 1&ndash;7% across 0&ndash;5% noise.</li>
+<li><b>Nonlinear stage:</b> &alpha;&#8322; to 1&ndash;3%; saturation &Gamma; (true 0) pinned to &le;0.04 absolute; Kerr &gamma; correctly discovered as &asymp;0.</li>
+{{INV_EXTRA_LI}}
+</ul>
+<p>A further audit consequence: on the surviving branches most coefficients are
+<i>forced to zero</i>, so the paper&rsquo;s proposed nine-parameter recovery benchmark
+largely reduces to discovering zeros.</p>
+</div>
+</section>
+
+<section>
+<h2><span class="no">&sect;7 &middot; Ablations</span>Matched, closure-respecting comparisons</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>comparison (constant branch, one parameter changed)</th><th class="num">arm A</th><th class="num">arm B</th><th>reading</th></tr></thead>
+<tbody>
+<tr><td>saturation &Gamma; = 0 vs &Gamma; = 1</td><td class="num">6.1e&minus;04</td><td class="num">8.8e&minus;04</td><td>mildly harder with saturation (&times;1.4)</td></tr>
+<tr><td>&beta;&#8324; = 0 vs &beta;&#8324; = 0.4</td><td class="num">9.2e&minus;04</td><td class="num">1.1e&minus;03</td><td>mildly harder with 4th-order dispersion in the operator</td></tr>
+</tbody></table></div>
+<p class="caption">Mean L2RE over 3 seeds. The remaining requested ablations are
+<b>impossible by closure</b>, which is itself a finding: no verified branch admits a
+conservative (&ell; = &alpha;&#8322; = 0) version, and &Gamma; &gt; 0 or
+&beta;&#8324; &ne; 0 are closure-forbidden off the constant branch &mdash; the surviving
+solution set is intrinsically dissipative. Fixed-vs-adaptive weighting and
+uniform-vs-adaptive sampling are covered by the &sect;5 matrix.</p>
+</section>
+
+<section>
+<h2><span class="no">&sect;8 &middot; Generalization</span>One conditioned network across branches</h2>
+<div class="prose">
+<p>A single PINN taking (z, t) cannot represent multiple solutions at the same
+coordinates, so a parameter-conditioned network
+<code>&Acirc;(z, t; &eta;)</code> is trained across branches, with &eta; the scaled shape
+indices, wave parameters and physical coefficients. New evaluation tasks are generated
+only by re-solving the exact closure constraints at new free-parameter values.</p>
+</div>
+<div class="plates2">
+  <div><div class="plate">{{IMG:reports/figures/summary/generalization_interp_extrap.png}}</div>
+  <p class="caption"><b>Parameter transfer.</b> Interpolation to unseen in-range
+  parameters partially works (5&ndash;25&times;10<sup>&minus;2</sup>); extrapolation
+  fails.</p></div>
+  <div><div class="plate">{{IMG:reports/figures/summary/generalization_lobo.png}}</div>
+  <p class="caption"><b>Branch transfer.</b> Zero-shot on a held-out branch fails
+  completely (L2RE &asymp; 1); 1% of held-out data recovers scratch-level or better
+  accuracy at the same compute budget.</p></div>
+</div>
+</section>
+
+<section>
+<h2><span class="no">&sect;9 &middot; Coda</span>What the paper lost with its phase convention</h2>
+<div class="prose">
+<p>As a clearly separated optional experiment, the audit was re-run with the carrier
+ansatz <code>A = a&nbsp;J<sub>n,m</sub>(&xi;)&nbsp;e<sup>i(&kappa;z+&omega;t)</sup></code>
+over all 49 pairs. The carrier rescues <b>none</b> of the 40 rejected pairs &mdash; but on
+the surviving nine it restores exactly the physics the constant-phase convention
+destroyed:</p>
+<ul>
+<li>the classic <b>traveling bright NLS soliton</b> on (1,0):
+&gamma; = &beta;&#8322;&lambda;&#8322;&sup2;/a&sup2; (focusing), with dispersion relation
+&kappa; and group velocity from &omega;;</li>
+<li>the <b>traveling dark soliton</b> on (1,1): &gamma; = &minus;&beta;&#8322;&lambda;&#8322;&sup2;/a&sup2; (defocusing);</li>
+<li>a <b>Tier-A continuous-wave solution</b> on (0,0) with saturation, fourth-order
+dispersion and gain/loss simultaneously active &mdash; the only full-model solution found
+anywhere in this study.</li>
+</ul>
+<p>All 17 extended families pass the same two verification gates (residuals
+&asymp;&nbsp;10<sup>&minus;51</sup>). The verdict: the catalogue&rsquo;s collapse is caused
+by the &ldquo;a real without loss of generality&rdquo; assumption, not by the equation.</p>
+</div>
+</section>
+
+<section>
+<h2><span class="no">&sect;10 &middot; Reproduction</span>Scope, honesty, and exact commands</h2>
+<div class="prose">
+<p>Everything above is regenerated by the commands below; every experiment skips
+completed jobs and resumes from checkpoints, so interrupting costs nothing. Raw per-run
+results, checkpoints, seeds, and environment logs are kept under
+<code>results/</code>.</p>
+</div>
+<pre><code># audit + tests + numerical validation
+python scripts/run_audit.py --config configs/audit.yaml        # +--extended-phase
+python -m pytest tests/ -q
+python scripts/run_numerical.py
+
+# forward / inverse / ablations / generalization
+python scripts/run_forward.py --config configs/pilot.yaml      # 90-run matrix
+python scripts/run_forward.py --config configs/sech_highfidelity.yaml
+python scripts/run_forward.py --config configs/stress.yaml
+python scripts/run_inverse.py  --config configs/inverse_pilot.yaml
+python scripts/run_ablations.py
+python scripts/run_generalization.py --config configs/generalization_pilot.yaml
+
+# or the whole pipeline:
+python scripts/run_full_benchmark.py --mode smoke|pilot|full</code></pre>
+<div class="prose">
+<p><b>Scope notes.</b> All training ran in float64 on a 4-core CPU; network and
+collocation sizes are the documented CPU scaling of the recommended settings
+(<code>configs/full.yaml</code> keeps the 6&times;64 / 10k-point GPU configuration).
+{{SCOPE_NOTES}}
+This study tests whether PINNs reproduce independently verified solutions and where they
+fail; it does not claim that PINNs &ldquo;work&rdquo;.</p>
+</div>
+</section>
+
+<div class="footer">
+  pinn_solution_benchmark &middot; reports/: paper_equation_inventory &middot;
+  mathematical_audit (+extended) &middot; numerical_solver_validation &middot;
+  ablations &middot; final_benchmark_report &middot; data/verified_branches/ &middot;
+  90 + {{N_EXTRA_RUNS}} training runs archived under results/
+</div>
+</div>

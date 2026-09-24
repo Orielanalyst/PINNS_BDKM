@@ -1,0 +1,293 @@
+{
+  "n": "-1",
+  "m": "-1",
+  "n_equations": 14,
+  "certificate_notes": [],
+  "cleared_denominators": "powers of T and (1-T^2); T in (0,1) so both nonzero",
+  "n_families_found": 4,
+  "families": [
+    {
+      "branch_id": "nneg1_mneg1_f0",
+      "n": "-1",
+      "m": "-1",
+      "family_index": 0,
+      "tier": "B",
+      "group": "stress",
+      "constraints": {
+        "c": "0",
+        "ell": "0",
+        "alpha2": "0",
+        "Gamma": "0",
+        "beta4": "0",
+        "beta3": "0",
+        "lambda1": "beta2*lambda2*omega",
+        "gamma": "-beta2*lambda2**2/asq",
+        "kappa": "beta2*(2*lambda2**2 + omega**2)/2"
+      },
+      "free_parameters": [
+        "lambda2",
+        "asq",
+        "beta2",
+        "omega"
+      ],
+      "representative_sets": [
+        {
+          "beta2": "1/5",
+          "beta3": "0",
+          "beta4": "0",
+          "gamma": "-16/125",
+          "alpha2": "0",
+          "Gamma": "0",
+          "g0": "0",
+          "T2": "0",
+          "alpha": "0",
+          "lambda1": "2/25",
+          "lambda2": "4/5",
+          "a": "1",
+          "omega": "1/2",
+          "kappa": "153/1000"
+        },
+        {
+          "beta2": "-1/5",
+          "beta3": "0",
+          "beta4": "0",
+          "gamma": "169/720",
+          "alpha2": "0",
+          "Gamma": "0",
+          "g0": "0",
+          "T2": "0",
+          "alpha": "0",
+          "lambda1": "-39/200",
+          "lambda2": "13/10",
+          "a": "6/5",
+          "omega": "3/4",
+          "kappa": "-1577/4000"
+        }
+      ],
+      "xi_domain": [
+        0.35,
+        4.35
+      ],
+      "power_convention": "integer_exact",
+      "properties": {
+        "real_profile": false,
+        "bounded_on_domain": true,
+        "bounded_on_R": false,
+        "localized": false,
+        "smooth_C4_on_domain": true,
+        "smooth_C4_on_R": false,
+        "fractional_power": false,
+        "singular_at_xi0": true,
+        "feat_max_amplitude": 2.9728677194309836,
+        "feat_max_curvature_tt": 29.825492706980096,
+        "feat_max_fourth_deriv_tttt": 1871.7106720882334,
+        "feat_gradient_max": 6.270353981787824,
+        "feat_localization_width_t": 0.7499999998125001,
+        "feat_distance_to_singularity_xi": 0.350000001,
+        "activity_A_z": 0.7746359054541773,
+        "activity_beta2_GVD": 2.9750564758228033,
+        "activity_gain_bandwidth_c": 0.0,
+        "activity_beta3_TOD": 0.0,
+        "activity_beta4_FOD": 0.0,
+        "activity_kerr_gamma": 3.3630763387851754,
+        "activity_two_photon_alpha2": 0.0,
+        "activity_linear_gain_loss": 0.0,
+        "activity_saturation_Gamma": 0.0
+      },
+      "active_terms": [
+        "A_z",
+        "beta2_GVD",
+        "kerr_gamma"
+      ],
+      "residual_max": 1.0774258996659865e-50,
+      "residual_rms_rel": 1.4802430146924356e-51,
+      "verified_symbolic": true,
+      "verified_numeric": true,
+      "rejection_reason": "",
+      "notes": []
+    },
+    {
+      "branch_id": "nneg1_mneg1_f1",
+      "n": "-1",
+      "m": "-1",
+      "family_index": 1,
+      "tier": "C",
+      "group": "none",
+      "constraints": {
+        "c": "0",
+        "ell": "0",
+        "alpha2": "0",
+        "beta4": "0",
+        "beta3": "0",
+        "lambda1": "0",
+        "beta2": "0",
+        "kappa": "0",
+        "gamma": "0"
+      },
+      "free_parameters": [
+        "lambda2",
+        "asq",
+        "Gamma",
+        "omega"
+      ],
+      "representative_sets": [],
+      "xi_domain": [
+        0.35,
+        4.35
+      ],
+      "power_convention": "integer_exact",
+      "properties": {},
+      "active_terms": [],
+      "residual_max": 0.0,
+      "residual_rms_rel": 0.0,
+      "verified_symbolic": true,
+      "verified_numeric": true,
+      "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+      "notes": []
+    },
+    {
+      "branch_id": "nneg1_mneg1_f2",
+      "n": "-1",
+      "m": "-1",
+      "family_index": 2,
+      "tier": "C",
+      "group": "none",
+      "constraints": {
+        "lambda2": "0",
+        "lambda1": "0",
+        "ell": "-c*omega**2/2",
+        "alpha2": "0",
+        "kappa": "omega**2*(12*beta2 + 4*beta3*omega - beta4*omega**2)/24",
+        "gamma": "0"
+      },
+      "free_parameters": [
+        "asq",
+        "beta2",
+        "beta3",
+        "beta4",
+        "c",
+        "Gamma",
+        "omega"
+      ],
+      "representative_sets": [],
+      "xi_domain": [
+        -4.0,
+        4.0
+      ],
+      "power_convention": "integer_exact",
+      "properties": {},
+      "active_terms": [],
+      "residual_max": NaN,
+      "residual_rms_rel": NaN,
+      "verified_symbolic": false,
+      "verified_numeric": false,
+      "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+      "notes": []
+    },
+    {
+      "branch_id": "nneg1_mneg1_f3",
+      "n": "-1",
+      "m": "-1",
+      "family_index": 3,
+      "tier": "B",
+      "group": "stress",
+      "constraints": {
+        "omega": "0",
+        "lambda1": "0",
+        "beta3": "0",
+        "ell": "-c*lambda2**2",
+        "Gamma": "0",
+        "beta4": "0",
+        "kappa": "beta2*lambda2**2",
+        "gamma": "-beta2*lambda2**2/asq",
+        "alpha2": "-2*c*lambda2**2/asq"
+      },
+      "free_parameters": [
+        "lambda2",
+        "asq",
+        "beta2",
+        "c"
+      ],
+      "representative_sets": [
+        {
+          "beta2": "1/5",
+          "beta3": "0",
+          "beta4": "0",
+          "gamma": "-16/125",
+          "alpha2": "-16/25",
+          "Gamma": "0",
+          "g0": "1",
+          "T2": "sqrt(2)/2",
+          "alpha": "41/25",
+          "lambda1": "0",
+          "lambda2": "4/5",
+          "a": "1",
+          "omega": "0",
+          "kappa": "16/125"
+        },
+        {
+          "beta2": "-1/5",
+          "beta3": "0",
+          "beta4": "0",
+          "gamma": "169/720",
+          "alpha2": "-169/96",
+          "Gamma": "0",
+          "g0": "1",
+          "T2": "sqrt(3)/2",
+          "alpha": "707/200",
+          "lambda1": "0",
+          "lambda2": "13/10",
+          "a": "6/5",
+          "omega": "0",
+          "kappa": "-169/500"
+        }
+      ],
+      "xi_domain": [
+        0.35,
+        4.35
+      ],
+      "power_convention": "integer_exact",
+      "properties": {
+        "real_profile": false,
+        "bounded_on_domain": true,
+        "bounded_on_R": false,
+        "localized": false,
+        "smooth_C4_on_domain": true,
+        "smooth_C4_on_R": false,
+        "fractional_power": false,
+        "singular_at_xi0": true,
+        "feat_max_amplitude": 2.9728677194309836,
+        "feat_max_curvature_tt": 29.825492706980096,
+        "feat_max_fourth_deriv_tttt": 1871.7106720882334,
+        "feat_gradient_max": 6.270353981787824,
+        "feat_localization_width_t": 0.7499999998125001,
+        "feat_distance_to_singularity_xi": 0.350000001,
+        "activity_A_z": 0.3805270680871659,
+        "activity_beta2_GVD": 2.9825492706980095,
+        "activity_gain_bandwidth_c": 7.456373176745023,
+        "activity_beta3_TOD": 0.0,
+        "activity_beta4_FOD": 0.0,
+        "activity_kerr_gamma": 3.3630763387851745,
+        "activity_two_photon_alpha2": 8.407690846962936,
+        "activity_linear_gain_loss": 0.9513176702179149,
+        "activity_saturation_Gamma": 0.0
+      },
+      "active_terms": [
+        "A_z",
+        "beta2_GVD",
+        "gain_bandwidth_c",
+        "kerr_gamma",
+        "two_photon_alpha2",
+        "linear_gain_loss"
+      ],
+      "residual_max": 2.390593431851467e-50,
+      "residual_rms_rel": 2.6598353822552266e-51,
+      "verified_symbolic": true,
+      "verified_numeric": true,
+      "rejection_reason": "",
+      "notes": []
+    }
+  ],
+  "elapsed_s": 132.10381083200264,
+  "extended_phase": true
+}

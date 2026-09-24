@@ -1,0 +1,29 @@
+\begin{tabular}{llrrrrr}
+\toprule
+branch & scheme & $n_t$ & tol / steps & final L2RE & max err & runtime (s) \\
+\midrule
+constant $(0,0)$ & fd\_mol & 65 & $1.0\times10^{-8}$ & $9.9\times10^{-12}$ & $1.4\times10^{-11}$ & 0.04 \\
+ & fd\_mol & 65 & $1.0\times10^{-10}$ & $1.6\times10^{-13}$ & $2.4\times10^{-13}$ & 0.04 \\
+ & fd\_mol & 129 & $1.0\times10^{-8}$ & $8.4\times10^{-12}$ & $1.2\times10^{-11}$ & 0.73 \\
+ & fd\_mol & 129 & $1.0\times10^{-10}$ & $2.5\times10^{-13}$ & $4.5\times10^{-13}$ & 0.74 \\
+ & fd\_mol & 257 & $1.0\times10^{-8}$ & $5.3\times10^{-11}$ & $7.5\times10^{-11}$ & 13.47 \\
+ & fd\_mol & 257 & $1.0\times10^{-10}$ & $1.2\times10^{-12}$ & $1.6\times10^{-12}$ & 13.42 \\
+ & ETDRK4 & 256 & 400 steps & $8.6\times10^{-18}$ & $8.6\times10^{-18}$ & 0.06 \\
+\multicolumn{7}{l}{\quad\footnotesize observed spatial orders: -0.6, -2.3} \\[2pt]
+sech $(1,0)$ & fd\_mol & 65 & $1.0\times10^{-8}$ & $2.3\times10^{-7}$ & $4.4\times10^{-7}$ & 0.01 \\
+ & fd\_mol & 65 & $1.0\times10^{-10}$ & $2.3\times10^{-7}$ & $4.4\times10^{-7}$ & 0.02 \\
+ & fd\_mol & 129 & $1.0\times10^{-8}$ & $7.6\times10^{-9}$ & $1.2\times10^{-8}$ & 0.05 \\
+ & fd\_mol & 129 & $1.0\times10^{-10}$ & $3.7\times10^{-9}$ & $7.2\times10^{-9}$ & 0.05 \\
+ & fd\_mol & 257 & $1.0\times10^{-8}$ & $4.6\times10^{-10}$ & $5.0\times10^{-10}$ & 0.20 \\
+ & fd\_mol & 257 & $1.0\times10^{-10}$ & $5.8\times10^{-11}$ & $1.2\times10^{-10}$ & 0.21 \\
+ & ETDRK4 & 256 & 400 steps & $2.3\times10^{-6}$ & $5.3\times10^{-6}$ & 0.06 \\
+\multicolumn{7}{l}{\quad\footnotesize observed spatial orders: 6.0, 6.0} \\[2pt]
+kink $(1,1)$ & fd\_mol & 65 & $1.0\times10^{-8}$ & $1.1\times10^{-7}$ & $3.1\times10^{-7}$ & 0.01 \\
+ & fd\_mol & 65 & $1.0\times10^{-10}$ & $1.1\times10^{-7}$ & $3.1\times10^{-7}$ & 0.02 \\
+ & fd\_mol & 129 & $1.0\times10^{-8}$ & $1.8\times10^{-9}$ & $5.2\times10^{-9}$ & 0.05 \\
+ & fd\_mol & 129 & $1.0\times10^{-10}$ & $1.8\times10^{-9}$ & $5.2\times10^{-9}$ & 0.05 \\
+ & fd\_mol & 257 & $1.0\times10^{-8}$ & $3.7\times10^{-9}$ & $5.0\times10^{-9}$ & 0.21 \\
+ & fd\_mol & 257 & $1.0\times10^{-10}$ & $7.5\times10^{-11}$ & $1.0\times10^{-10}$ & 0.21 \\
+\multicolumn{7}{l}{\quad\footnotesize observed spatial orders: 6.0, 4.6} \\[2pt]
+\bottomrule
+\end{tabular}

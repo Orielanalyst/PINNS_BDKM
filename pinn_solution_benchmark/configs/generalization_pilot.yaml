@@ -1,0 +1,29 @@
+# Phase 8 pilot: parameter-conditioned cross-branch PINN.
+# Explicit task lists prevent leakage: held-out branches contribute NOTHING to
+# training in LOBO/zero-shot; fine-tuning uses only the stated data fraction.
+experiment_name: generalization_pilot
+device: auto
+seeds: [0, 1]
+train_branches: [n0_m0_f0, n1_m0_f0, n1_m1_f0]   # all main-group branches
+# interpolation/extrapolation: new closure-consistent free-parameter values
+interp_assignments: {lambda2: 1.05, asq: 1.15, c: 0.6, Gamma: 0.7, alpha2: 0.25,
+                     beta2: 0.0, beta3: 0.15, beta4: 0.08, ell: 0.05,
+                     lambda1: 0.15}
+extrap_assignments: {lambda2: 1.7, asq: 2.2, c: 1.1, Gamma: 1.6, alpha2: 0.45,
+                     beta2: -0.1, beta3: 0.05, beta4: 0.03, ell: -0.15,
+                     lambda1: 0.05}
+fine_tune_fractions: [0.01, 0.05]
+network:
+  hidden_layers: 5
+  width: 48
+  activation: tanh
+training:
+  steps: 800
+  fine_tune_steps: 250
+  scratch_steps: 250          # matched budget for the from-scratch baseline
+  adam_lr: 2.0e-3
+  n_collocation_per_task: 512
+  n_initial_per_task: 96
+  n_boundary_per_task: 96
+metrics:
+  test_grid: [48, 96]

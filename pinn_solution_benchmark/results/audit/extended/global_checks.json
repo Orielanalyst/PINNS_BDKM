@@ -1,0 +1,30 @@
+{
+  "offset_coefficients_match_paper": {
+    "-4": true,
+    "-3": true,
+    "-2": true,
+    "-1": true,
+    "0": true,
+    "1": true,
+    "2": true,
+    "3": true,
+    "4": true
+  },
+  "all_offsets_match": true,
+  "classification": {
+    "eq28_forces_n_equals_m": true,
+    "n_solution": "r/2 - s/2",
+    "off_diagonal_pairs_unsupported": 42,
+    "J_index_linear_dependence_example": true,
+    "statement": "The paper's Eq. (28) supports only n = m; the 49-pair grid adds 42 off-diagonal pairs without justification. Moreover J_{2,0} = J_{0,0} - J_{2,2} shows distinct J-indices are not linearly independent, so index matching is neither necessary nor sufficient for closure."
+  },
+  "residual_split_discrepancies": [
+    "Paper Eq. (37) places -(beta3/6) v_ttt in F_u; the correct real part of (beta3/6)A_ttt is +(beta3/6) u_ttt.",
+    "Paper Eq. (37) places -(beta4/24) u_tttt in F_u; the correct real part of (i beta4/24)A_tttt is -(beta4/24) v_tttt.",
+    "Paper Eq. (38) places +(beta3/6) u_ttt in F_v; correct is +(beta3/6) v_ttt.",
+    "Paper Eq. (38) places -(beta4/24) v_tttt in F_v; correct is +(beta4/24) u_tttt.",
+    "Paper Eqs. (37)-(38) keep the complex coefficient (gamma + i alpha2/2) outside Re[.]/Im[.], which is ill-formed for real residuals; the correct split is -(alpha2/2)Q u - gamma Q v in F_u and -(alpha2/2)Q v + gamma Q u in F_v with Q = |A|^2/(1+Gamma|A|^2).",
+    "Abstract and Section 2 say 'eight physical parameters' but list nine: beta2, beta3, beta4, g0, T2, alpha, alpha2, gamma, Gamma (Section 9.3 itself says 'up to nine independent physical coefficients').",
+    "Paper Eq. (36) prints 'C6 J_{2,2} + C7 J_{2,2}'; for (n,m)=(1,1) the C7 term multiplies J_{3,3} = tanh^3, not J_{2,2}."
+  ]
+}

@@ -1,0 +1,932 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{authblk}
+\usepackage{enumitem}
+\usepackage[numbers,sort&compress]{natbib}
+
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\newcommand{\J}[2]{J_{#1,#2}}
+\newcommand{\ii}{\mathrm{i}}
+
+\title{\textbf{Exact Traveling-Wave Solution Families of a Higher-Order \\
+Gain--Loss Nonlinear Schr\"odinger-Type Equation via the iB-Function (BDKm) Ansatz: \\
+A Combinatorial Solution Catalog and a Benchmark Design for \\
+Physics-Informed Machine Learning}}
+
+\author[1]{Author Name}
+\author[1]{Co-Author Name}
+\affil[1]{Department of Applied Mathematics / Photonics, Institution Name}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We study a fourth-order nonlinear evolution equation that couples group-velocity
+dispersion, third- and fourth-order dispersion, saturable Kerr-type self-phase
+modulation, and gain/loss with finite gain-bandwidth, a model relevant to pulse
+propagation in dispersive, dissipative, gain-saturated media such as doped fiber
+amplifiers and mode-locked lasers. Using the traveling-wave reduction and the
+implicit Bogning function (iB-function) ansatz $A(\xi)=a\,J_{n,m}(\xi)$ with
+$J_{n,m}(\xi)=\sinh^m(\xi)/\cosh^n(\xi)$, we derive the fully expanded
+nine-term-times-two (``Range'') algebraic equation obtained after coefficient
+substitution, and we carry out a complete combinatorial classification of the
+index pairs $(n,m)$ for which the two blocks of the Range equation can share
+common $J$-indices. This classification yields a restricted field of 49 rational
+half-integer pairs $(n,m)\in\{-3/2,-1,-1/2,0,1/2,1,3/2\}^2$, for which we tabulate
+the fully expanded coefficients $C_1,\dots,C_9$ in closed form in terms of the
+eight physical parameters of the model. Beyond the analytical contribution, we
+propose and specify a concrete methodology for using this parametrized exact-solution
+catalog as a benchmark and training-data generator for physics-informed neural
+networks (PINNs), extending existing PINN studies of the nonlinear Schr\"odinger
+hierarchy -- which typically validate against one or two closed-form solitons --
+to a systematically generated, 49-branch family with known ground truth across the
+full physical parameter set. We give the explicit forward-problem and
+inverse-problem (parameter-discovery) loss functionals for this equation, work
+through one representative branch ($n=m=1$) in full detail, and outline a
+generalization-testing protocol (training on a subset of $(n,m)$ branches and
+evaluating on held-out branches) that is not available with a single hand-picked
+soliton solution. This paper is presented as a methodological framework and
+worked derivation; the numerical PINN experiments it specifies are proposed future
+work rather than results reported here.
+\end{abstract}
+
+\noindent\textbf{Keywords:} higher-order nonlinear Schr\"odinger equation; gain-saturated
+dispersive media; traveling-wave ansatz; iB-functions; exact solutions; physics-informed
+neural networks; benchmark datasets; parameter discovery
+
+\tableofcontents
+
+%======================================================================
+\section{Introduction}
+%======================================================================
+
+Nonlinear evolution equations in the nonlinear Schr\"odinger (NLS) hierarchy govern
+pulse propagation in a wide range of dispersive-nonlinear media, from optical fibers
+to Bose--Einstein condensates and deep-water waves. When higher-order dispersion,
+gain, loss, and saturable nonlinearity are all retained, the resulting model equation
+becomes analytically intractable by inverse scattering in general, and one instead
+seeks particular closed-form traveling-wave solutions through structured ans\"atze
+(tanh-, sech-, Jacobi-elliptic-, and, more recently, ``implicit Bogning function''
+or iB-function methods). These ansatz methods are algorithmic: a trial solution is
+substituted into the governing equation, the result is expanded in a basis of
+elementary functions, and the coefficients of each basis element are matched to
+zero, producing a system of algebraic constraints on the physical and wave
+parameters \citep{baldwin2004,hereman1990}.
+
+Independently, over the last several years physics-informed neural networks (PINNs)
+\citep{raissi2019} have become a standard tool for both the forward problem (learning
+a solution field from the governing PDE and sparse data) and the inverse problem
+(recovering unknown physical coefficients from field data) for equations in the NLS
+hierarchy. PINNs have been applied to the standard NLS equation, the third-order
+(Hirota) equation \citep{zhou2021}, higher-order NLS equations with self-steepening
+and Raman terms \citep{fang2021}, equations with external potentials
+\citep{pinnreview2025}, and adaptive-sampling variants that improve accuracy on
+strongly localized structures such as rogue waves \citep{gravis2026}. A recurring
+feature of this literature is that PINNs are trained and validated against a small
+number of hand-selected closed-form solutions (one soliton, two solitons, a breather,
+a rogue wave), each with its own fixed parameter values.
+
+This paper makes two contributions. First, we present a complete and self-contained
+derivation of the traveling-wave reduction of a fourth-order gain--loss NLS-type
+equation using the iB-function ansatz $J_{n,m}(\xi)=\sinh^m(\xi)/\cosh^n(\xi)$, including
+a systematic combinatorial classification of which index pairs $(n,m)$ can produce
+internally consistent solutions once the ansatz is substituted and the resulting
+expression is expanded over the saturable-nonlinearity denominator. This produces a
+\emph{restricted field} of 49 admissible half-integer index pairs, each with fully
+expanded, closed-form coefficients in terms of the eight physical parameters of the
+model ($\beta_2,\beta_3,\beta_4,g_0,T_2,\alpha,\alpha_2,\gamma,\Gamma$) and the two
+wave parameters $\lambda_1,\lambda_2$.
+
+Second, we argue -- and specify in reproducible detail -- that this kind of
+systematically generated, parametrized solution family is directly useful as a
+benchmark and training-data generator for PINNs applied to higher-order gain-saturated
+evolution equations, addressing a real gap in the existing PINN-for-NLSE literature:
+existing studies validate against isolated solutions rather than families, so they
+cannot test whether a learned solver or a parameter-discovery network generalizes
+across a structured solution space. We give the explicit PINN forward and inverse loss
+functionals for this equation (Section~\ref{sec:pinn}), work through the $(n,m)=(1,1)$
+branch as a concrete worked example, and specify a generalization-testing protocol.
+We do not report numerical PINN results in this paper; the machine-learning section is
+a methodological proposal intended to make the benchmark immediately usable by
+follow-up numerical work.
+
+%======================================================================
+\section{Governing Equation}
+%======================================================================
+
+We consider the fourth-order nonlinear evolution equation
+\begin{equation}
+\frac{\partial A}{\partial z}
++\frac{\ii}{2}\!\left(\beta_2+\ii g_0T_2^2\right)\frac{\partial^2 A}{\partial t^2}
++\frac{\beta_3}{6}\frac{\partial^3 A}{\partial t^3}
++\frac{\ii\beta_4}{24}\frac{\partial^4 A}{\partial t^4}
++\ii\!\left(\gamma+\ii\frac{\alpha_2}{2}\right)\frac{|A|^2A}{1+\Gamma|A|^2}
++\frac{1}{2}(g_0-\alpha)A=0,
+\label{eq:governing}
+\end{equation}
+where $A(z,t)$ is the complex envelope, $z$ is the propagation coordinate, $t$ is the
+retarded time, $\beta_2,\beta_3,\beta_4$ are the second-, third- and fourth-order
+dispersion coefficients, $g_0$ is the small-signal gain, $T_2$ is the gain-medium
+dipole relaxation time (setting the parabolic gain bandwidth), $\alpha$ is the linear
+loss, $\alpha_2$ is a two-photon-type loss coefficient, $\gamma$ is the self-phase
+modulation (Kerr) coefficient, and $\Gamma$ is the nonlinearity saturation parameter.
+Equation~\eqref{eq:governing} reduces to the cubic NLS equation when
+$\beta_3=\beta_4=g_0=\alpha=\alpha_2=\Gamma=0$, and to the Hirota/third-order NLS
+equation when $\beta_4=g_0=\alpha_2=\Gamma=0$.
+
+%======================================================================
+\section{Traveling-Wave Reduction}
+%======================================================================
+
+We seek pure traveling-wave profiles by introducing
+\begin{equation}
+\xi=\lambda_1 z+\lambda_2 t, \qquad A(z,t)=A(\xi),
+\label{eq:tw}
+\end{equation}
+with $\lambda_1,\lambda_2$ real propagation constants. The chain rule gives
+\begin{align}
+\frac{\partial A}{\partial z}&=\lambda_1\frac{dA}{d\xi}, &
+\frac{\partial^2 A}{\partial t^2}&=\lambda_2^2\frac{d^2A}{d\xi^2}, \\
+\frac{\partial^3 A}{\partial t^3}&=\lambda_2^3\frac{d^3A}{d\xi^3}, &
+\frac{\partial^4 A}{\partial t^4}&=\lambda_2^4\frac{d^4A}{d\xi^4}.
+\end{align}
+Substituting into \eqref{eq:governing} yields the traveling-wave ODE
+\begin{equation}
+\lambda_1 A'
++\frac{\ii}{2}\!\left(\beta_2+\ii g_0T_2^2\right)\lambda_2^2 A''
++\frac{\beta_3}{6}\lambda_2^3A'''
++\frac{\ii\beta_4}{24}\lambda_2^4A^{(4)}
++\ii\!\left(\gamma+\ii\frac{\alpha_2}{2}\right)\frac{|A|^2A}{1+\Gamma|A|^2}
++\frac{1}{2}(g_0-\alpha)A=0,
+\label{eq:tw-ode}
+\end{equation}
+where primes denote $d/d\xi$.
+
+%======================================================================
+\section{The iB-Function (BDKm) Ansatz}
+%======================================================================
+
+We represent the traveling-wave profile with the implicit Bogning function (iB-function)
+ansatz,
+\begin{equation}
+A(\xi)=a\,J_{n,m}(\xi), \qquad
+J_{n,m}(\xi)=\frac{\sinh^m(\xi)}{\cosh^n(\xi)},
+\label{eq:ansatz}
+\end{equation}
+where $a$ is a (generally complex) amplitude and $n,m$ are exponents to be determined.
+The ansatz obeys the closed differentiation rule
+\begin{equation}
+\frac{d}{d\xi}J_{n,m}=m\,J_{n-1,m-1}-n\,J_{n+1,m+1},
+\label{eq:diffrule}
+\end{equation}
+which follows directly from $\dfrac{d}{d\xi}\sinh=\cosh$, $\dfrac{d}{d\xi}\cosh=\sinh$
+and the quotient rule. Iterating \eqref{eq:diffrule} gives the derivatives of $A(\xi)$
+used below.
+
+\subsection{First and second derivatives}
+\begin{align}
+A' &= a\left[mJ_{n-1,m-1}-nJ_{n+1,m+1}\right], \\[2pt]
+A'' &= a\Big[m(m-1)J_{n-2,m-2}-\big(m(n-1)+n(m+1)\big)J_{n,m}+n(n+1)J_{n+2,m+2}\Big].
+\end{align}
+
+\subsection{Third derivative}
+\begin{equation}
+A'''=a\left[A_1J_{n-3,m-3}+A_2J_{n-1,m-1}+A_3J_{n+1,m+1}+A_4J_{n+3,m+3}\right],
+\end{equation}
+with
+\begin{align}
+A_1&=m(m-1)(m-2)=m^3-3m^2+2m, \\
+A_2&=-3m^2n+3m^2-2m, \\
+A_3&=3mn^2+3n^2+2n, \\
+A_4&=-n(n+1)(n+2)=-n^3-3n^2-2n.
+\end{align}
+
+\subsection{Fourth derivative}
+\begin{align}
+A^{(4)}=a\Big\{&A_1(m-3)J_{n-4,m-4}+\big[A_2(m-1)-A_1(n-3)\big]J_{n-2,m-2} \notag\\
+&+\big[A_3(m+1)-A_2(n-1)\big]J_{n,m}
++\big[A_4(m+3)-A_3(n+1)\big]J_{n+2,m+2} \notag\\
+&-A_4(n+3)J_{n+4,m+4}\Big\}.
+\end{align}
+
+%======================================================================
+\section{Substitution and Coefficient Grouping}
+%======================================================================
+
+Using the power identities $|A|^2A=a^3J_{3n,3m}$ and $1+\Gamma|A|^2=1+\Gamma a^2J_{2n,2m}$
+(taking $a$ real without loss of generality for the modulus), substituting the
+derivatives above into \eqref{eq:tw-ode} and dividing by $a$ gives, before clearing the
+saturation denominator,
+\begin{equation}
+\Big[\textstyle\sum_{k=1}^{9} C_k\,J_{n+r_k,\,m+r_k}\Big]
++\ii\!\left(\gamma+\ii\frac{\alpha_2}{2}\right)\frac{a^2J_{3n,3m}}{1+\Gamma a^2J_{2n,2m}}=0,
+\label{eq:premultiplied}
+\end{equation}
+with offsets $r_k\in\{-4,-3,-2,-1,0,1,2,3,4\}$ for $k=1,\dots,9$ and the grouped
+coefficients
+\begin{align}
+C_1&=\frac{\ii\beta_4}{24}\lambda_2^4\,m(m-1)(m-2)(m-3), \\
+C_2&=\frac{\beta_3}{6}\lambda_2^3\,m(m-1)(m-2), \\
+C_3&=\frac{\ii}{2}\!\left(\beta_2+\ii g_0T_2^2\right)\lambda_2^2m(m-1)
++\frac{\ii\beta_4}{24}\lambda_2^4\Big[(-3m^2n+3m^2-2m)(m-1)-m(m-1)(m-2)(n-3)\Big], \\
+C_4&=\lambda_1 m+\frac{\beta_3}{6}\lambda_2^3\big(-3m^2n+3m^2-2m\big), \\
+C_5&=\frac{1}{2}(g_0-\alpha)
+-\frac{\ii}{2}\!\left(\beta_2+\ii g_0T_2^2\right)\lambda_2^2\big[m(n-1)+n(m+1)\big] \notag\\
+&\quad+\frac{\ii\beta_4}{24}\lambda_2^4\Big[(3mn^2+3n^2+2n)(m+1)-(-3m^2n+3m^2-2m)(n-1)\Big], \\
+C_6&=-\lambda_1 n+\frac{\beta_3}{6}\lambda_2^3\big(3mn^2+3n^2+2n\big), \\
+C_7&=\frac{\ii}{2}\!\left(\beta_2+\ii g_0T_2^2\right)\lambda_2^2n(n+1)
++\frac{\ii\beta_4}{24}\lambda_2^4\Big[-n(n+1)(n+2)(m+3)-(3mn^2+3n^2+2n)(n+1)\Big], \\
+C_8&=-\frac{\beta_3}{6}\lambda_2^3\,n(n+1)(n+2), \\
+C_9&=\frac{\ii\beta_4}{24}\lambda_2^4\,n(n+1)(n+2)(n+3).
+\end{align}
+
+%======================================================================
+\section{The Fully Expanded Range Equation}
+%======================================================================
+
+Multiplying \eqref{eq:premultiplied} by $1+\Gamma a^2J_{2n,2m}$ and using
+$J_{2n,2m}\cdot J_{p,q}=J_{2n+p,2m+q}$ term by term gives the complete, fraction-free
+19-term \emph{Range equation}:
+\begin{align}
+&C_1J_{n-4,m-4}+C_2J_{n-3,m-3}+C_3J_{n-2,m-2}+C_4J_{n-1,m-1}+C_5J_{n,m} \notag\\
+&+C_6J_{n+1,m+1}+C_7J_{n+2,m+2}+C_8J_{n+3,m+3}+C_9J_{n+4,m+4} \notag\\
+&+\Gamma a^2\Big[C_1J_{3n-4,3m-4}+C_2J_{3n-3,3m-3}+C_3J_{3n-2,3m-2}+C_4J_{3n-1,3m-1}+C_5J_{3n,3m} \notag\\
+&\qquad+C_6J_{3n+1,3m+1}+C_7J_{3n+2,3m+2}+C_8J_{3n+3,3m+3}+C_9J_{3n+4,3m+4}\Big] \notag\\
+&+\ii\!\left(\gamma+\ii\frac{\alpha_2}{2}\right)a^2J_{3n,3m}=0.
+\label{eq:range}
+\end{align}
+For a solution to exist, every coefficient of every distinct $J_{p,q}$ index appearing
+in \eqref{eq:range} must vanish (or the terms with matching indices must sum to zero).
+Because the first block has indices $n+r$ ($r\in\{-4,\dots,4\}$) and the second block
+has indices $3n+s$ ($s\in\{-4,\dots,4\}$), a term from each block coincides only for
+special $(n,m)$; this motivates the combinatorial classification below.
+
+%======================================================================
+\section{Combinatorial Classification of Admissible $(n,m)$}
+\label{sec:combinatorics}
+%======================================================================
+
+\subsection{Candidate values}
+
+Let $r,s\in\{-4,-3,-2,-1,0,1,2,3,4\}$ index a term $J_{n+r,m+r}$ in the first block and
+$J_{3n+s,3m+s}$ in the second block of \eqref{eq:range}. Equality of the first indices,
+$n+r=3n+s$, requires
+\begin{equation}
+n=\frac{r-s}{2},
+\label{eq:nsolve}
+\end{equation}
+and equality of the second indices gives the identical relation for $m$. Since a single
+$J$-function pair must match simultaneously in both indices for the same $(r,s)$,
+\begin{equation}
+n=m=\frac{r-s}{2}.
+\end{equation}
+Table~\ref{tab:nvalues} tabulates $n=(r-s)/2$ over all $81$ ordered pairs $(r,s)$.
+
+\begin{table}[htbp]
+\centering
+\caption{Values of $n=(r-s)/2$ obtained from $n+r=3n+s$, for $r,s\in\{-4,\dots,4\}$.}
+\label{tab:nvalues}
+\small
+\begin{tabular}{c|ccccccccc}
+\toprule
+$r\backslash s$ & $-4$ & $-3$ & $-2$ & $-1$ & $0$ & $1$ & $2$ & $3$ & $4$ \\
+\midrule
+$-4$ & $0$    & $-\tfrac12$ & $-1$   & $-\tfrac32$ & $-2$ & $-\tfrac52$ & $-3$ & $-\tfrac72$ & $-4$ \\
+$-3$ & $\tfrac12$ & $0$    & $-\tfrac12$ & $-1$   & $-\tfrac32$ & $-2$ & $-\tfrac52$ & $-3$ & $-\tfrac72$ \\
+$-2$ & $1$    & $\tfrac12$ & $0$    & $-\tfrac12$ & $-1$   & $-\tfrac32$ & $-2$ & $-\tfrac52$ & $-3$ \\
+$-1$ & $\tfrac32$ & $1$    & $\tfrac12$ & $0$    & $-\tfrac12$ & $-1$   & $-\tfrac32$ & $-2$ & $-\tfrac52$ \\
+$0$  & $2$    & $\tfrac32$ & $1$    & $\tfrac12$ & $0$    & $-\tfrac12$ & $-1$   & $-\tfrac32$ & $-2$ \\
+$1$  & $\tfrac52$ & $2$    & $\tfrac32$ & $1$    & $\tfrac12$ & $0$    & $-\tfrac12$ & $-1$   & $-\tfrac32$ \\
+$2$  & $3$    & $\tfrac52$ & $2$    & $\tfrac32$ & $1$    & $\tfrac12$ & $0$    & $-\tfrac12$ & $-1$ \\
+$3$  & $\tfrac72$ & $3$    & $\tfrac52$ & $2$    & $\tfrac32$ & $1$    & $\tfrac12$ & $0$    & $-\tfrac12$ \\
+$4$  & $4$    & $\tfrac72$ & $3$    & $\tfrac52$ & $2$    & $\tfrac32$ & $1$    & $\tfrac12$ & $0$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Although there are 81 ordered comparisons, they collapse to only 17 distinct candidate
+pairs $(n,m)=(q,q)$ with
+\begin{equation}
+q\in\left\{-4,-\tfrac72,-3,-\tfrac52,-2,-\tfrac32,-1,-\tfrac12,0,\tfrac12,1,\tfrac32,2,\tfrac52,3,\tfrac72,4\right\}.
+\end{equation}
+Restricting to integer $(n,m)$ leaves $q=-4,\dots,4$; further restricting to nonnegative
+integers leaves $q=0,1,2,3,4$.
+
+\subsection{Combinatorial frequency of each candidate}
+
+Assigning each of the 81 ordered comparisons $(r,s)$ equal weight $1/81$, the number of
+comparisons yielding a given difference $d=r-s=2q$ is $N_d=9-|d|$, so
+\begin{equation}
+N(q)=9-2|q|, \qquad P(q,q)=\frac{N(q)}{81}=\frac{9-2|q|}{81},
+\qquad q=-4,-\tfrac72,\dots,\tfrac72,4.
+\label{eq:prob}
+\end{equation}
+We stress that $P(q,q)$ is a purely combinatorial frequency over index comparisons, not a
+physical probability of solution existence; it is a convenient measure of how many
+index-matching routes support a given candidate pair. Table~\ref{tab:freq} lists the full
+distribution, which sums to unity by construction.
+
+\begin{table}[htbp]
+\centering
+\caption{Combinatorial frequency of each candidate pair $(n,m)=(q,q)$.}
+\label{tab:freq}
+\begin{tabular}{cccc}
+\toprule
+$(n,m)$ & Appearances & Probability & Percentage \\
+\midrule
+$(-4,-4)$ & 1 & $1/81$ & 1.23\% \\
+$(-7/2,-7/2)$ & 2 & $2/81$ & 2.47\% \\
+$(-3,-3)$ & 3 & $3/81$ & 3.70\% \\
+$(-5/2,-5/2)$ & 4 & $4/81$ & 4.94\% \\
+$(-2,-2)$ & 5 & $5/81$ & 6.17\% \\
+$(-3/2,-3/2)$ & 6 & $6/81$ & 7.41\% \\
+$(-1,-1)$ & 7 & $7/81$ & 8.64\% \\
+$(-1/2,-1/2)$ & 8 & $8/81$ & 9.88\% \\
+$(0,0)$ & 9 & $9/81$ & 11.11\% \\
+$(1/2,1/2)$ & 8 & $8/81$ & 9.88\% \\
+$(1,1)$ & 7 & $7/81$ & 8.64\% \\
+$(3/2,3/2)$ & 6 & $6/81$ & 7.41\% \\
+$(2,2)$ & 5 & $5/81$ & 6.17\% \\
+$(5/2,5/2)$ & 4 & $4/81$ & 4.94\% \\
+$(3,3)$ & 3 & $3/81$ & 3.70\% \\
+$(7/2,7/2)$ & 2 & $2/81$ & 2.47\% \\
+$(4,4)$ & 1 & $1/81$ & 1.23\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The most combinatorially supported candidate is $(0,0)$, corresponding to the trivial
+constant $J_{0,0}\equiv1$; the extreme pairs $(\pm4,\pm4)$ are supported by a single
+comparison route each.
+
+\subsection{The restricted field}
+
+The full extended field formed from the 17 candidate values in each coordinate contains
+$17^2=289$ pairs. We restrict attention to the field generated by the six most
+combinatorially supported nontrivial candidates together with $(0,0)$,
+\begin{equation}
+\mathcal{F}_R=\left\{-\tfrac32,-1,-\tfrac12,0,\tfrac12,1,\tfrac32\right\}^2,
+\end{equation}
+which contains $49$ ordered pairs $(n,m)$. For every pair in $\mathcal{F}_R$ the coefficients
+$C_1,\dots,C_9$ can be evaluated by exact substitution of $n,m$ into the expressions of
+Section~5. The full 49-branch table is given in Appendix~\ref{app:tables}.
+
+%======================================================================
+\section{A Worked Branch: $(n,m)=(1,1)$}
+\label{sec:worked}
+%======================================================================
+
+To make the general procedure concrete, we work through the branch $(n,m)=(1,1)$, for
+which $J_{1,1}(\xi)=\tanh(\xi)$, so the ansatz is the familiar dark/kink profile
+$A(\xi)=a\tanh(\xi)$. Evaluating the coefficient expressions of Section~5 at $n=m=1$
+gives (Appendix~\ref{app:tables}, Table~\ref{tab:n1-0113})
+\begin{align}
+C_1&=0, & C_2&=0, & C_3&=0, \\
+C_4&=\lambda_1-\frac{\beta_3}{3}\lambda_2^3, &
+C_5&=\frac{g_0-\alpha}{2}-\ii\!\left(\beta_2+\ii\frac{g_0T_2^2}{2}\right)\lambda_2^2+\frac{2\ii\beta_4}{3}\lambda_2^4, \\
+C_6&=-\lambda_1+\frac{4\beta_3}{3}\lambda_2^3, &
+C_7&=\ii\!\left(\beta_2+\ii\frac{g_0T_2^2}{2}\right)\lambda_2^2-\frac{5\ii\beta_4}{3}\lambda_2^4, \\
+C_8&=-\beta_3\lambda_2^3, & C_9&=\ii\beta_4\lambda_2^4.
+\end{align}
+The vanishing of $C_1,C_2,C_3$ is not a coincidence: for $n=m=1$ the offset indices
+$n-4,n-3,n-2$ correspond to $J_{-3,-3},J_{-2,-2},J_{-1,-1}$, and the prefactors $A_1(m-3)$,
+$A_2(m-1)-A_1(n-3)$, and the second-derivative bracket all contain a factor of
+$(m-1)$ or $(m-1)(m-2)\cdots$ that vanishes identically at $m=1$. This is a generic
+feature of integer branches with $n=m$: the ``deep negative offset'' terms of the fourth
+derivative collapse automatically, leaving a shorter, more tractable coefficient system.
+The remaining Range equation for this branch, after also imposing the matching of
+$J_{3,3}=\tanh^3(\xi)$ terms coming from the saturable-nonlinearity expansion and the
+self-phase-modulation term, is
+\begin{equation}
+C_4J_{0,0}+C_5J_{1,1}+C_6J_{2,2}+C_7J_{2,2}
++\Gamma a^2\big[\cdots\big]_{J_{3,3},\,J_{5,5},\dots}
++\ii\!\left(\gamma+\ii\frac{\alpha_2}{2}\right)a^2J_{3,3}=0,
+\end{equation}
+and setting the coefficient of each independent power of $\tanh(\xi)$ to zero yields an
+algebraic system relating $a,\lambda_1$ to $\beta_2,\beta_3,\beta_4,g_0,T_2,\alpha,\alpha_2,\gamma,\Gamma$
+(most directly: $C_4=0$ fixes $\lambda_1=\beta_3\lambda_2^3/3$ once the cubic-dispersion
+branch is selected, and the remaining balance between $C_5+C_6+C_7$ and the
+nonlinear/saturation terms fixes $a^2$ in terms of the gain-loss and dispersion
+parameters). We do not carry every branch of $\mathcal{F}_R$ to this level of explicit
+closure in this paper; the point of Table~\ref{tab:freq}--\ref{tab:n32-3-32} is to make the
+coefficient system for \emph{any} of the 49 branches immediately available for such a
+reduction, whether performed by hand or automatically with a computer-algebra or
+symbolic-regression back end (Section~\ref{sec:pinn}).
+
+%======================================================================
+\section{Application: A Benchmark Design for Physics-Informed Neural Networks}
+\label{sec:pinn}
+%======================================================================
+
+\subsection{Motivation}
+
+PINNs \citep{raissi2019} approximate the field $A(z,t)=u(z,t)+\ii v(z,t)$ by a neural
+network $\hat A_\theta$ and train it by minimizing a composite loss built from (i) a
+data-fit term against known values (initial/boundary conditions, or sparse
+measurements) and (ii) a physics-residual term obtained by substituting $\hat A_\theta$
+into the governing PDE and evaluating the residual on collocation points via automatic
+differentiation. This scheme has been applied successfully to the NLS equation, the
+Hirota (third-order NLS) equation \citep{zhou2021}, and higher-order NLS equations with
+self-steepening and Raman terms \citep{fang2021}, in each case validated against one or
+a handful of hand-picked exact solutions with fixed coefficients. A structural
+limitation of this approach is that it cannot easily test \emph{generalization}: whether
+a network (or a class of network architectures/training schedules) that performs well on
+one soliton also performs well across a structured family of solutions with different
+exponent structure and different physical-parameter regimes.
+
+The restricted field $\mathcal{F}_R$ derived in Section~\ref{sec:combinatorics}
+directly addresses this limitation for the higher-order gain-saturated equation
+\eqref{eq:governing}: it provides 49 closed-form solution branches, each an exact
+solution of \eqref{eq:governing} once the associated algebraic constraint system (as
+illustrated in Section~\ref{sec:worked}) is imposed on
+$(a,\lambda_1,\lambda_2,\beta_2,\beta_3,\beta_4,g_0,T_2,\alpha,\alpha_2,\gamma,\Gamma)$.
+Because the branches differ systematically in $(n,m)$ -- and hence in qualitative
+solution shape (bright, dark, singular, or mixed hyperbolic profiles) -- they form a
+natural train/held-out split for generalization testing that a single soliton solution
+cannot provide.
+
+\subsection{Forward-problem loss functional}
+
+Writing $A=u+\ii v$ and the residual $F=F_u+\ii F_v$ obtained from
+\eqref{eq:governing},
+\begin{align}
+F_u&:=u_z-\tfrac12\!\left(\beta_2 v_{tt}+g_0T_2^2u_{tt}\right)-\tfrac{\beta_3}{6}v_{ttt}-\tfrac{\beta_4}{24}u_{tttt}
+-\left(\gamma+\ii\tfrac{\alpha_2}{2}\right)\!\Re\!\left[\ii\frac{(u^2+v^2)(u+\ii v)}{1+\Gamma(u^2+v^2)}\right]
++\tfrac12(g_0-\alpha)u, \\
+F_v&:=v_z+\tfrac12\!\left(\beta_2 u_{tt}-g_0T_2^2v_{tt}\right)+\tfrac{\beta_3}{6}u_{ttt}-\tfrac{\beta_4}{24}v_{tttt}
+-\left(\gamma+\ii\tfrac{\alpha_2}{2}\right)\!\Im\!\left[\ii\frac{(u^2+v^2)(u+\ii v)}{1+\Gamma(u^2+v^2)}\right]
++\tfrac12(g_0-\alpha)v,
+\end{align}
+the forward-problem training loss for a given branch $(n,m)\in\mathcal{F}_R$, with its
+exact solution $A_{n,m}(\xi;\,\text{params})$ supplying initial/boundary data, is
+\begin{align}
+\mathcal{L}_{\text{fwd}}=\;&\frac{1}{N_I}\sum_{j=1}^{N_I}\big|\hat A_\theta(z_0,t_I^j)-A_{n,m}(z_0,t_I^j)\big|^2
++\frac{1}{N_B}\sum_{j=1}^{N_B}\big|\hat A_\theta(z,\pm L_j)-A_{n,m}(z,\pm L_j)\big|^2 \notag\\
+&+\frac{1}{N_S}\sum_{j=1}^{N_S}\big(F_u^{2}+F_v^{2}\big)\Big|_{(z^j_S,t^j_S)},
+\end{align}
+following the standard Latin-hypercube collocation strategy used throughout this
+literature \citep{raissi2019,zhou2021,fang2021}.
+
+\subsection{Inverse-problem (parameter-discovery) loss functional}
+
+For parameter discovery, $\beta_2,\beta_3,\beta_4,g_0,T_2,\alpha,\alpha_2,\gamma,\Gamma$
+(or any chosen subset) are promoted to trainable scalars alongside the network weights,
+and the loss becomes
+\begin{align}
+\mathcal{L}_{\text{inv}}=\;&\frac{1}{N_p}\sum_{j=1}^{N_p}\big|\hat A_\theta(z^j,t^j)-A_{n,m}^j\big|^2
++\frac{1}{N_p}\sum_{j=1}^{N_p}\big(F_u^2+F_v^2\big)\Big|_{(z^j,t^j)},
+\end{align}
+with $\{z^j,t^j,A_{n,m}^j\}$ sampled from one exact branch. This is a direct
+generalization of the two- and four-parameter discovery experiments of
+\citet{zhou2021} and \citet{fang2021} to a model with up to nine independent physical
+coefficients; the restricted field $\mathcal{F}_R$ makes it possible to test parameter
+recovery separately on bright-type branches (e.g.\ small $|n|,|m|$) and singular/kink-type
+branches (e.g.\ $n=m=1$), which is not possible with a single soliton family.
+
+\subsection{Proposed generalization-testing protocol}
+
+We propose the following protocol as future numerical work built directly on the
+catalog in Appendix~\ref{app:tables}:
+\begin{enumerate}[label=(\roman*)]
+\item \textbf{Branch generation.} For each $(n,m)\in\mathcal{F}_R$, solve the algebraic
+closure conditions illustrated in Section~\ref{sec:worked} (symbolically, e.g.\ with a
+computer-algebra system) to obtain the admissible parameter manifold and one or more
+representative parameter sets; sample $\{z^j,t^j,A^j\}$ from each resulting exact solution.
+\item \textbf{Held-out split.} Partition $\mathcal{F}_R$ into a training subset (e.g.\
+$|n|,|m|\le 1$) and a held-out subset (e.g.\ $|n|$ or $|m|=3/2$), train a single PINN
+architecture on the training subset only, and evaluate the relative $L^2$ error on the
+held-out branches.
+\item \textbf{Parameter-recovery robustness.} Repeat the inverse-problem experiment of
+\citet{zhou2021,fang2021} independently on each branch and report how recovery error for
+$(\beta_2,\beta_3,\beta_4,g_0,T_2,\alpha,\alpha_2,\gamma,\Gamma)$ varies with branch
+type, under both clean and noise-perturbed data (as in \citet{zhou2021}).
+\item \textbf{Ablation on saturation.} Because $\Gamma$ enters only through the
+denominator $1+\Gamma|A|^2$, compare PINN performance with $\Gamma=0$ (unsaturated,
+standard higher-order NLS) against $\Gamma\neq0$ branches, to quantify whether the
+saturable nonlinearity increases the forward- or inverse-problem difficulty.
+\end{enumerate}
+This protocol, and the underlying 49-branch catalog, is the concrete deliverable this
+paper contributes to future PINN work on higher-order gain-saturated evolution
+equations; we emphasize again that we report the framework and worked derivation only,
+not executed numerical experiments.
+
+%======================================================================
+\section{Discussion}
+%======================================================================
+
+The combinatorial classification of Section~\ref{sec:combinatorics} is, to our
+knowledge, not typically made explicit in the ansatz-method literature, where
+authors usually state the admissible $(n,m)$ (or equivalent tanh/sech exponents) without
+enumerating the full comparison space or reporting a frequency measure over it. Making
+this step explicit and reproducible is what allows the resulting solution catalog to be
+generated systematically (Appendix~\ref{app:tables}) rather than one branch at a time,
+which is what makes it usable as a benchmark generator rather than a single validation
+example. Existing symbolic-computation packages for the tanh/sech method
+\citep{baldwin2004} automate a closely related search over exponents for a narrower
+ansatz family; extending that kind of automation to the iB-function family
+$J_{n,m}$ with fractional exponents, and coupling it directly to PINN-benchmark
+generation as specified in Section~\ref{sec:pinn}, is a natural direction for follow-up
+software work.
+
+We also note two limitations. First, not every branch in $\mathcal{F}_R$ will admit a
+non-degenerate closure (some coefficient systems may be over- or under-determined,
+forcing $a=0$ or leaving free parameters unconstrained); a systematic audit of which of
+the 49 branches yield genuine, non-trivial exact solutions is needed before the full
+catalog can be used as-is as a benchmark suite. Second, the combinatorial frequency
+$P(q,q)$ of Eq.~\eqref{eq:prob} measures index-matching multiplicity, not solution
+existence or physical relevance, and should not be over-interpreted as a likelihood that
+a given branch yields a physically meaningful pulse.
+
+%======================================================================
+\section{Conclusion}
+%======================================================================
+
+We have derived the traveling-wave reduction of a fourth-order gain-saturated nonlinear
+Schr\"odinger-type equation under the iB-function (BDKm) ansatz, obtained the fully
+expanded Range equation, and carried out a complete combinatorial classification of the
+admissible index pairs $(n,m)$, yielding a restricted field of 49 branches with fully
+expanded closed-form coefficients in terms of all eight physical parameters of the
+model. We have shown, through the explicit $(n,m)=(1,1)$ example, how each branch reduces
+to an algebraic closure system fixing the wave parameters in terms of the physical
+ones. Building on this catalog, we specified a concrete benchmark design for
+physics-informed neural networks -- forward-problem and inverse-problem loss functionals
+matching the full nine-parameter model, and a generalization-testing protocol exploiting
+the branch structure of $\mathcal{F}_R$ -- that addresses a specific limitation of
+existing PINN-for-NLSE-hierarchy studies, namely their reliance on isolated,
+hand-picked solutions rather than structured families. Executing this protocol
+numerically, and auditing the non-degeneracy of all 49 branches, are the natural next
+steps.
+
+%======================================================================
+\appendix
+\section{Fully Expanded Coefficient Tables for the Restricted Field}
+\label{app:tables}
+%======================================================================
+
+For every $(n,m)\in\mathcal{F}_R=\{-3/2,-1,-1/2,0,1/2,1,3/2\}^2$ we report the exact,
+simplified values of $C_1,\dots,C_9$ from Section~5, grouped by the index $n$.
+
+\subsection{$n=-3/2$}
+
+\begin{table}[htbp]
+\centering\small
+\caption{Coefficients for $n=-3/2$, $m\in\{-3/2,-1,-1/2\}$.}
+\begin{tabular}{lccc}
+\toprule
+Coeff. & $(-3/2,-3/2)$ & $(-3/2,-1)$ & $(-3/2,-1/2)$ \\
+\midrule
+$C_1$ & $\tfrac{315\ii\beta_4}{128}\lambda_2^4$ & $\ii\beta_4\lambda_2^4$ & $\tfrac{35\ii\beta_4}{128}\lambda_2^4$ \\
+$C_2$ & $-\tfrac{35\beta_3}{16}\lambda_2^3$ & $-\beta_3\lambda_2^3$ & $-\tfrac{5\beta_3}{16}\lambda_2^3$ \\
+$C_3$ & $\tfrac{15\ii}{8}\Xi\lambda_2^2-\tfrac{145\ii\beta_4}{32}\lambda_2^4$ & $\ii\Xi\lambda_2^2-\tfrac{23\ii\beta_4}{12}\lambda_2^4$ & $\tfrac{3\ii}{8}\Xi\lambda_2^2-\tfrac{17\ii\beta_4}{32}\lambda_2^4$ \\
+$C_4$ & $-\tfrac32\lambda_1+\tfrac{53\beta_3}{16}\lambda_2^3$ & $-\lambda_1+\tfrac{19\beta_3}{12}\lambda_2^3$ & $-\tfrac12\lambda_1+\tfrac{23\beta_3}{48}\lambda_2^3$ \\
+$C_5$ & $\tfrac{g_0-\alpha}{2}-\tfrac{9\ii}{4}\Xi\lambda_2^2+\tfrac{141\ii\beta_4}{64}\lambda_2^4$ & $\tfrac{g_0-\alpha}{2}-\tfrac{5\ii}{4}\Xi\lambda_2^2+\tfrac{95\ii\beta_4}{96}\lambda_2^4$ & $\tfrac{g_0-\alpha}{2}-\tfrac{\ii}{4}\Xi\lambda_2^2+\tfrac{59\ii\beta_4}{192}\lambda_2^4$ \\
+$C_6$ & $\tfrac32\lambda_1-\tfrac{17\beta_3}{16}\lambda_2^3$ & $\tfrac32\lambda_1-\tfrac{\beta_3}{2}\lambda_2^3$ & $\tfrac32\lambda_1+\tfrac{\beta_3}{16}\lambda_2^3$ \\
+$C_7$ & $\tfrac{3\ii}{8}\Xi\lambda_2^2-\tfrac{5\ii\beta_4}{32}\lambda_2^4$ & $\tfrac{3\ii}{8}\Xi\lambda_2^2-\tfrac{3\ii\beta_4}{32}\lambda_2^4$ & $\tfrac{3\ii}{8}\Xi\lambda_2^2-\tfrac{\ii\beta_4}{32}\lambda_2^4$ \\
+$C_8$ & $-\tfrac{\beta_3}{16}\lambda_2^3$ & $-\tfrac{\beta_3}{16}\lambda_2^3$ & $-\tfrac{\beta_3}{16}\lambda_2^3$ \\
+$C_9$ & $\tfrac{3\ii\beta_4}{128}\lambda_2^4$ & $\tfrac{3\ii\beta_4}{128}\lambda_2^4$ & $\tfrac{3\ii\beta_4}{128}\lambda_2^4$ \\
+\bottomrule
+\end{tabular}
+\vspace{2pt}
+\footnotesize{$\Xi:=\beta_2+\ii g_0T_2^2$ throughout the appendix.}
+\end{table}
+
+\begin{table}[htbp]
+\centering\small
+\caption{Coefficients for $n=-3/2$, $m\in\{0,1/2,1,3/2\}$.}
+\begin{tabular}{lcccc}
+\toprule
+Coeff. & $(-3/2,0)$ & $(-3/2,1/2)$ & $(-3/2,1)$ & $(-3/2,3/2)$ \\
+\midrule
+$C_1$ & $0$ & $-\tfrac{5\ii\beta_4}{128}\lambda_2^4$ & $0$ & $\tfrac{3\ii\beta_4}{128}\lambda_2^4$ \\
+$C_2$ & $0$ & $\tfrac{\beta_3}{16}\lambda_2^3$ & $0$ & $-\tfrac{\beta_3}{16}\lambda_2^3$ \\
+$C_3$ & $0$ & $-\tfrac{\ii}{8}\Xi\lambda_2^2+\tfrac{5\ii\beta_4}{96}\lambda_2^4$ & $0$ & $\tfrac{3\ii}{8}\Xi\lambda_2^2+\tfrac{7\ii\beta_4}{32}\lambda_2^4$ \\
+$C_4$ & $0$ & $\tfrac12\lambda_1+\tfrac{7\beta_3}{48}\lambda_2^3$ & $\lambda_1+\tfrac{11\beta_3}{12}\lambda_2^3$ & $\tfrac32\lambda_1+\tfrac{37\beta_3}{16}\lambda_2^3$ \\
+$C_5$ & $\tfrac{g_0-\alpha}{2}+\tfrac{3\ii}{4}\Xi\lambda_2^2+\tfrac{5\ii\beta_4}{32}\lambda_2^4$ & $\tfrac{g_0-\alpha}{2}+\tfrac{7\ii}{4}\Xi\lambda_2^2+\tfrac{103\ii\beta_4}{192}\lambda_2^4$ & $\tfrac{g_0-\alpha}{2}+\tfrac{11\ii}{4}\Xi\lambda_2^2+\tfrac{139\ii\beta_4}{96}\lambda_2^4$ & $\tfrac{g_0-\alpha}{2}+\tfrac{15\ii}{4}\Xi\lambda_2^2+\tfrac{185\ii\beta_4}{64}\lambda_2^4$ \\
+$C_6$ & $\tfrac32\lambda_1+\tfrac{5\beta_3}{8}\lambda_2^3$ & $\tfrac32\lambda_1+\tfrac{19\beta_3}{16}\lambda_2^3$ & $\tfrac32\lambda_1+\tfrac{7\beta_3}{4}\lambda_2^3$ & $\tfrac32\lambda_1+\tfrac{37\beta_3}{16}\lambda_2^3$ \\
+$C_7$ & $\tfrac{3\ii}{8}\Xi\lambda_2^2+\tfrac{\ii\beta_4}{32}\lambda_2^4$ & $\tfrac{3\ii}{8}\Xi\lambda_2^2+\tfrac{3\ii\beta_4}{32}\lambda_2^4$ & $\tfrac{3\ii}{8}\Xi\lambda_2^2+\tfrac{5\ii\beta_4}{32}\lambda_2^4$ & $\tfrac{3\ii}{8}\Xi\lambda_2^2+\tfrac{7\ii\beta_4}{32}\lambda_2^4$ \\
+$C_8$ & $-\tfrac{\beta_3}{16}\lambda_2^3$ & $-\tfrac{\beta_3}{16}\lambda_2^3$ & $-\tfrac{\beta_3}{16}\lambda_2^3$ & $-\tfrac{\beta_3}{16}\lambda_2^3$ \\
+$C_9$ & $\tfrac{3\ii\beta_4}{128}\lambda_2^4$ & $\tfrac{3\ii\beta_4}{128}\lambda_2^4$ & $\tfrac{3\ii\beta_4}{128}\lambda_2^4$ & $\tfrac{3\ii\beta_4}{128}\lambda_2^4$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{$n=-1$}
+
+\begin{table}[htbp]
+\centering\small
+\caption{Coefficients for $n=-1$, $m\in\{-3/2,-1,-1/2\}$.}
+\begin{tabular}{lccc}
+\toprule
+Coeff. & $(-1,-3/2)$ & $(-1,-1)$ & $(-1,-1/2)$ \\
+\midrule
+$C_1$ & $\tfrac{315\ii\beta_4}{128}\lambda_2^4$ & $\ii\beta_4\lambda_2^4$ & $\tfrac{35\ii\beta_4}{128}\lambda_2^4$ \\
+$C_2$ & $-\tfrac{35\beta_3}{16}\lambda_2^3$ & $-\beta_3\lambda_2^3$ & $-\tfrac{5\beta_3}{16}\lambda_2^3$ \\
+$C_3$ & $\tfrac{15\ii}{8}\Xi\lambda_2^2-\tfrac{125\ii\beta_4}{32}\lambda_2^4$ & $\ii\Xi\lambda_2^2-\tfrac{5\ii\beta_4}{3}\lambda_2^4$ & $\tfrac{3\ii}{8}\Xi\lambda_2^2-\tfrac{15\ii\beta_4}{32}\lambda_2^4$ \\
+$C_4$ & $-\tfrac32\lambda_1+\tfrac{11\beta_3}{4}\lambda_2^3$ & $-\lambda_1+\tfrac{4\beta_3}{3}\lambda_2^3$ & $-\tfrac12\lambda_1+\tfrac{5\beta_3}{12}\lambda_2^3$ \\
+$C_5$ & $\tfrac{g_0-\alpha}{2}-\tfrac{7\ii}{4}\Xi\lambda_2^2+\tfrac{139\ii\beta_4}{96}\lambda_2^4$ & $\tfrac{g_0-\alpha}{2}-\ii\Xi\lambda_2^2+\tfrac{2\ii\beta_4}{3}\lambda_2^4$ & $\tfrac{g_0-\alpha}{2}-\tfrac{\ii}{4}\Xi\lambda_2^2+\tfrac{19\ii\beta_4}{96}\lambda_2^4$ \\
+$C_6$ & $\lambda_1-\tfrac{7\beta_3}{12}\lambda_2^3$ & $\lambda_1-\tfrac{\beta_3}{3}\lambda_2^3$ & $\lambda_1-\tfrac{\beta_3}{12}\lambda_2^3$ \\
+$C_7$ & $0$ & $0$ & $0$ \\
+$C_8$ & $0$ & $0$ & $0$ \\
+$C_9$ & $0$ & $0$ & $0$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering\small
+\caption{Coefficients for $n=-1$, $m\in\{0,1/2,1,3/2\}$.}
+\label{tab:nneg1-0}
+\begin{tabular}{lcccc}
+\toprule
+Coeff. & $(-1,0)$ & $(-1,1/2)$ & $(-1,1)$ & $(-1,3/2)$ \\
+\midrule
+$C_1$ & $0$ & $-\tfrac{5\ii\beta_4}{128}\lambda_2^4$ & $0$ & $\tfrac{3\ii\beta_4}{128}\lambda_2^4$ \\
+$C_2$ & $0$ & $\tfrac{\beta_3}{16}\lambda_2^3$ & $0$ & $-\tfrac{\beta_3}{16}\lambda_2^3$ \\
+$C_3$ & $0$ & $-\tfrac{\ii}{8}\Xi\lambda_2^2+\tfrac{5\ii\beta_4}{96}\lambda_2^4$ & $0$ & $\tfrac{3\ii}{8}\Xi\lambda_2^2+\tfrac{5\ii\beta_4}{32}\lambda_2^4$ \\
+$C_4$ & $0$ & $\tfrac12\lambda_1+\tfrac{\beta_3}{12}\lambda_2^3$ & $\lambda_1+\tfrac{2\beta_3}{3}\lambda_2^3$ & $\tfrac32\lambda_1+\tfrac{7\beta_3}{4}\lambda_2^3$ \\
+$C_5$ & $\tfrac{g_0-\alpha}{2}+\tfrac{\ii}{2}\Xi\lambda_2^2+\tfrac{\ii\beta_4}{24}\lambda_2^4$ & $\tfrac{g_0-\alpha}{2}+\tfrac{5\ii}{4}\Xi\lambda_2^2+\tfrac{19\ii\beta_4}{96}\lambda_2^4$ & $\tfrac{g_0-\alpha}{2}+2\ii\Xi\lambda_2^2+\tfrac{2\ii\beta_4}{3}\lambda_2^4$ & $\tfrac{g_0-\alpha}{2}+\tfrac{11\ii}{4}\Xi\lambda_2^2+\tfrac{139\ii\beta_4}{96}\lambda_2^4$ \\
+$C_6$ & $\lambda_1+\tfrac{\beta_3}{6}\lambda_2^3$ & $\lambda_1+\tfrac{5\beta_3}{12}\lambda_2^3$ & $\lambda_1+\tfrac{2\beta_3}{3}\lambda_2^3$ & $\lambda_1+\tfrac{11\beta_3}{12}\lambda_2^3$ \\
+$C_7$ & $0$ & $0$ & $0$ & $0$ \\
+$C_8$ & $0$ & $0$ & $0$ & $0$ \\
+$C_9$ & $0$ & $0$ & $0$ & $0$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{$n=-1/2$}
+
+\begin{table}[htbp]
+\centering\small
+\caption{Coefficients for $n=-1/2$, $m\in\{-3/2,-1,-1/2\}$.}
+\begin{tabular}{lccc}
+\toprule
+Coeff. & $(-1/2,-3/2)$ & $(-1/2,-1)$ & $(-1/2,-1/2)$ \\
+\midrule
+$C_1$ & $\tfrac{315\ii\beta_4}{128}\lambda_2^4$ & $\ii\beta_4\lambda_2^4$ & $\tfrac{35\ii\beta_4}{128}\lambda_2^4$ \\
+$C_2$ & $-\tfrac{35\beta_3}{16}\lambda_2^3$ & $-\beta_3\lambda_2^3$ & $-\tfrac{5\beta_3}{16}\lambda_2^3$ \\
+$C_3$ & $\tfrac{15\ii}{8}\Xi\lambda_2^2-\tfrac{105\ii\beta_4}{32}\lambda_2^4$ & $\ii\Xi\lambda_2^2-\tfrac{17\ii\beta_4}{12}\lambda_2^4$ & $\tfrac{3\ii}{8}\Xi\lambda_2^2-\tfrac{13\ii\beta_4}{32}\lambda_2^4$ \\
+$C_4$ & $-\tfrac32\lambda_1+\tfrac{35\beta_3}{16}\lambda_2^3$ & $-\lambda_1+\tfrac{13\beta_3}{12}\lambda_2^3$ & $-\tfrac12\lambda_1+\tfrac{17\beta_3}{48}\lambda_2^3$ \\
+$C_5$ & $\tfrac{g_0-\alpha}{2}-\tfrac{5\ii}{4}\Xi\lambda_2^2+\tfrac{163\ii\beta_4}{192}\lambda_2^4$ & $\tfrac{g_0-\alpha}{2}-\tfrac{3\ii}{4}\Xi\lambda_2^2+\tfrac{13\ii\beta_4}{32}\lambda_2^4$ & $\tfrac{g_0-\alpha}{2}-\tfrac{\ii}{4}\Xi\lambda_2^2+\tfrac{23\ii\beta_4}{192}\lambda_2^4$ \\
+$C_6$ & $\tfrac12\lambda_1-\tfrac{11\beta_3}{48}\lambda_2^3$ & $\tfrac12\lambda_1-\tfrac{\beta_3}{6}\lambda_2^3$ & $\tfrac12\lambda_1-\tfrac{5\beta_3}{48}\lambda_2^3$ \\
+$C_7$ & $-\tfrac{\ii}{8}\Xi\lambda_2^2+\tfrac{5\ii\beta_4}{96}\lambda_2^4$ & $-\tfrac{\ii}{8}\Xi\lambda_2^2+\tfrac{5\ii\beta_4}{96}\lambda_2^4$ & $-\tfrac{\ii}{8}\Xi\lambda_2^2+\tfrac{5\ii\beta_4}{96}\lambda_2^4$ \\
+$C_8$ & $\tfrac{\beta_3}{16}\lambda_2^3$ & $\tfrac{\beta_3}{16}\lambda_2^3$ & $\tfrac{\beta_3}{16}\lambda_2^3$ \\
+$C_9$ & $-\tfrac{5\ii\beta_4}{128}\lambda_2^4$ & $-\tfrac{5\ii\beta_4}{128}\lambda_2^4$ & $-\tfrac{5\ii\beta_4}{128}\lambda_2^4$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering\small
+\caption{Coefficients for $n=-1/2$, $m\in\{0,1/2,1,3/2\}$.}
+\begin{tabular}{lcccc}
+\toprule
+Coeff. & $(-1/2,0)$ & $(-1/2,1/2)$ & $(-1/2,1)$ & $(-1/2,3/2)$ \\
+\midrule
+$C_1$ & $0$ & $-\tfrac{5\ii\beta_4}{128}\lambda_2^4$ & $0$ & $\tfrac{3\ii\beta_4}{128}\lambda_2^4$ \\
+$C_2$ & $0$ & $\tfrac{\beta_3}{16}\lambda_2^3$ & $0$ & $-\tfrac{\beta_3}{16}\lambda_2^3$ \\
+$C_3$ & $0$ & $-\tfrac{\ii}{8}\Xi\lambda_2^2+\tfrac{5\ii\beta_4}{96}\lambda_2^4$ & $0$ & $\tfrac{3\ii}{8}\Xi\lambda_2^2+\tfrac{3\ii\beta_4}{32}\lambda_2^4$ \\
+$C_4$ & $0$ & $\tfrac12\lambda_1+\tfrac{\beta_3}{48}\lambda_2^3$ & $\lambda_1+\tfrac{5\beta_3}{12}\lambda_2^3$ & $\tfrac32\lambda_1+\tfrac{19\beta_3}{16}\lambda_2^3$ \\
+$C_5$ & $\tfrac{g_0-\alpha}{2}+\tfrac{\ii}{4}\Xi\lambda_2^2-\tfrac{\ii\beta_4}{96}\lambda_2^4$ & $\tfrac{g_0-\alpha}{2}+\tfrac{3\ii}{4}\Xi\lambda_2^2+\tfrac{\ii\beta_4}{64}\lambda_2^4$ & $\tfrac{g_0-\alpha}{2}+\tfrac{5\ii}{4}\Xi\lambda_2^2+\tfrac{19\ii\beta_4}{96}\lambda_2^4$ & $\tfrac{g_0-\alpha}{2}+\tfrac{7\ii}{4}\Xi\lambda_2^2+\tfrac{103\ii\beta_4}{192}\lambda_2^4$ \\
+$C_6$ & $\tfrac12\lambda_1-\tfrac{\beta_3}{24}\lambda_2^3$ & $\tfrac12\lambda_1+\tfrac{\beta_3}{48}\lambda_2^3$ & $\tfrac12\lambda_1+\tfrac{\beta_3}{12}\lambda_2^3$ & $\tfrac12\lambda_1+\tfrac{7\beta_3}{48}\lambda_2^3$ \\
+$C_7$ & $-\tfrac{\ii}{8}\Xi\lambda_2^2+\tfrac{5\ii\beta_4}{96}\lambda_2^4$ & $-\tfrac{\ii}{8}\Xi\lambda_2^2+\tfrac{5\ii\beta_4}{96}\lambda_2^4$ & $-\tfrac{\ii}{8}\Xi\lambda_2^2+\tfrac{5\ii\beta_4}{96}\lambda_2^4$ & $-\tfrac{\ii}{8}\Xi\lambda_2^2+\tfrac{5\ii\beta_4}{96}\lambda_2^4$ \\
+$C_8$ & $\tfrac{\beta_3}{16}\lambda_2^3$ & $\tfrac{\beta_3}{16}\lambda_2^3$ & $\tfrac{\beta_3}{16}\lambda_2^3$ & $\tfrac{\beta_3}{16}\lambda_2^3$ \\
+$C_9$ & $-\tfrac{5\ii\beta_4}{128}\lambda_2^4$ & $-\tfrac{5\ii\beta_4}{128}\lambda_2^4$ & $-\tfrac{5\ii\beta_4}{128}\lambda_2^4$ & $-\tfrac{5\ii\beta_4}{128}\lambda_2^4$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{$n=0$}
+
+\begin{table}[htbp]
+\centering\small
+\caption{Coefficients for $n=0$, $m\in\{-3/2,-1,-1/2\}$.}
+\begin{tabular}{lccc}
+\toprule
+Coeff. & $(0,-3/2)$ & $(0,-1)$ & $(0,-1/2)$ \\
+\midrule
+$C_1$ & $\tfrac{315\ii\beta_4}{128}\lambda_2^4$ & $\ii\beta_4\lambda_2^4$ & $\tfrac{35\ii\beta_4}{128}\lambda_2^4$ \\
+$C_2$ & $-\tfrac{35\beta_3}{16}\lambda_2^3$ & $-\beta_3\lambda_2^3$ & $-\tfrac{5\beta_3}{16}\lambda_2^3$ \\
+$C_3$ & $\tfrac{15\ii}{8}\Xi\lambda_2^2-\tfrac{85\ii\beta_4}{32}\lambda_2^4$ & $\ii\Xi\lambda_2^2-\tfrac{7\ii\beta_4}{6}\lambda_2^4$ & $\tfrac{3\ii}{8}\Xi\lambda_2^2-\tfrac{11\ii\beta_4}{32}\lambda_2^4$ \\
+$C_4$ & $-\tfrac32\lambda_1+\tfrac{13\beta_3}{8}\lambda_2^3$ & $-\lambda_1+\tfrac{5\beta_3}{6}\lambda_2^3$ & $-\tfrac12\lambda_1+\tfrac{7\beta_3}{24}\lambda_2^3$ \\
+$C_5$ & $\tfrac{g_0-\alpha}{2}-\tfrac{3\ii}{4}\Xi\lambda_2^2+\tfrac{13\ii\beta_4}{32}\lambda_2^4$ & $\tfrac{g_0-\alpha}{2}-\tfrac{\ii}{2}\Xi\lambda_2^2+\tfrac{5\ii\beta_4}{24}\lambda_2^4$ & $\tfrac{g_0-\alpha}{2}-\tfrac{\ii}{4}\Xi\lambda_2^2+\tfrac{7\ii\beta_4}{96}\lambda_2^4$ \\
+$C_6$ & $0$ & $0$ & $0$ \\
+$C_7$ & $0$ & $0$ & $0$ \\
+$C_8$ & $0$ & $0$ & $0$ \\
+$C_9$ & $0$ & $0$ & $0$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering\small
+\caption{Coefficients for $n=0$, $m\in\{0,1/2,1,3/2\}$.}
+\begin{tabular}{lcccc}
+\toprule
+Coeff. & $(0,0)$ & $(0,1/2)$ & $(0,1)$ & $(0,3/2)$ \\
+\midrule
+$C_1$ & $0$ & $-\tfrac{5\ii\beta_4}{128}\lambda_2^4$ & $0$ & $\tfrac{3\ii\beta_4}{128}\lambda_2^4$ \\
+$C_2$ & $0$ & $\tfrac{\beta_3}{16}\lambda_2^3$ & $0$ & $-\tfrac{\beta_3}{16}\lambda_2^3$ \\
+$C_3$ & $0$ & $-\tfrac{\ii}{8}\Xi\lambda_2^2+\tfrac{5\ii\beta_4}{96}\lambda_2^4$ & $0$ & $\tfrac{3\ii}{8}\Xi\lambda_2^2+\tfrac{\ii\beta_4}{32}\lambda_2^4$ \\
+$C_4$ & $0$ & $\tfrac12\lambda_1-\tfrac{\beta_3}{24}\lambda_2^3$ & $\lambda_1+\tfrac{\beta_3}{6}\lambda_2^3$ & $\tfrac32\lambda_1+\tfrac{5\beta_3}{8}\lambda_2^3$ \\
+$C_5$ & $\tfrac{g_0-\alpha}{2}$ & $\tfrac{g_0-\alpha}{2}+\tfrac{\ii}{4}\Xi\lambda_2^2-\tfrac{\ii\beta_4}{96}\lambda_2^4$ & $\tfrac{g_0-\alpha}{2}+\tfrac{\ii}{2}\Xi\lambda_2^2+\tfrac{\ii\beta_4}{24}\lambda_2^4$ & $\tfrac{g_0-\alpha}{2}+\tfrac{3\ii}{4}\Xi\lambda_2^2+\tfrac{5\ii\beta_4}{32}\lambda_2^4$ \\
+$C_6$ & $0$ & $0$ & $0$ & $0$ \\
+$C_7$ & $0$ & $0$ & $0$ & $0$ \\
+$C_8$ & $0$ & $0$ & $0$ & $0$ \\
+$C_9$ & $0$ & $0$ & $0$ & $0$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{$n=1/2$}
+
+\begin{table}[htbp]
+\centering\small
+\caption{Coefficients for $n=1/2$, $m\in\{-3/2,-1,-1/2\}$.}
+\begin{tabular}{lccc}
+\toprule
+Coeff. & $(1/2,-3/2)$ & $(1/2,-1)$ & $(1/2,-1/2)$ \\
+\midrule
+$C_1$ & $\tfrac{315\ii\beta_4}{128}\lambda_2^4$ & $\ii\beta_4\lambda_2^4$ & $\tfrac{35\ii\beta_4}{128}\lambda_2^4$ \\
+$C_2$ & $-\tfrac{35\beta_3}{16}\lambda_2^3$ & $-\beta_3\lambda_2^3$ & $-\tfrac{5\beta_3}{16}\lambda_2^3$ \\
+$C_3$ & $\tfrac{15\ii}{8}\Xi\lambda_2^2-\tfrac{65\ii\beta_4}{32}\lambda_2^4$ & $\ii\Xi\lambda_2^2-\tfrac{11\ii\beta_4}{12}\lambda_2^4$ & $\tfrac{3\ii}{8}\Xi\lambda_2^2-\tfrac{9\ii\beta_4}{32}\lambda_2^4$ \\
+$C_4$ & $-\tfrac32\lambda_1+\tfrac{17\beta_3}{16}\lambda_2^3$ & $-\lambda_1+\tfrac{7\beta_3}{12}\lambda_2^3$ & $-\tfrac12\lambda_1+\tfrac{11\beta_3}{48}\lambda_2^3$ \\
+$C_5$ & $\tfrac{g_0-\alpha}{2}-\tfrac{\ii}{4}\Xi\lambda_2^2+\tfrac{23\ii\beta_4}{192}\lambda_2^4$ & $\tfrac{g_0-\alpha}{2}-\tfrac{\ii}{4}\Xi\lambda_2^2+\tfrac{7\ii\beta_4}{96}\lambda_2^4$ & $\tfrac{g_0-\alpha}{2}-\tfrac{\ii}{4}\Xi\lambda_2^2+\tfrac{11\ii\beta_4}{192}\lambda_2^4$ \\
+$C_6$ & $-\tfrac12\lambda_1+\tfrac{5\beta_3}{48}\lambda_2^3$ & $-\tfrac12\lambda_1+\tfrac{\beta_3}{6}\lambda_2^3$ & $-\tfrac12\lambda_1+\tfrac{11\beta_3}{48}\lambda_2^3$ \\
+$C_7$ & $\tfrac{3\ii}{8}\Xi\lambda_2^2-\tfrac{5\ii\beta_4}{32}\lambda_2^4$ & $\tfrac{3\ii}{8}\Xi\lambda_2^2-\tfrac{7\ii\beta_4}{32}\lambda_2^4$ & $\tfrac{3\ii}{8}\Xi\lambda_2^2-\tfrac{9\ii\beta_4}{32}\lambda_2^4$ \\
+$C_8$ & $-\tfrac{5\beta_3}{16}\lambda_2^3$ & $-\tfrac{5\beta_3}{16}\lambda_2^3$ & $-\tfrac{5\beta_3}{16}\lambda_2^3$ \\
+$C_9$ & $\tfrac{35\ii\beta_4}{128}\lambda_2^4$ & $\tfrac{35\ii\beta_4}{128}\lambda_2^4$ & $\tfrac{35\ii\beta_4}{128}\lambda_2^4$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering\small
+\caption{Coefficients for $n=1/2$, $m\in\{0,1/2,1,3/2\}$.}
+\begin{tabular}{lcccc}
+\toprule
+Coeff. & $(1/2,0)$ & $(1/2,1/2)$ & $(1/2,1)$ & $(1/2,3/2)$ \\
+\midrule
+$C_1$ & $0$ & $-\tfrac{5\ii\beta_4}{128}\lambda_2^4$ & $0$ & $\tfrac{3\ii\beta_4}{128}\lambda_2^4$ \\
+$C_2$ & $0$ & $\tfrac{\beta_3}{16}\lambda_2^3$ & $0$ & $-\tfrac{\beta_3}{16}\lambda_2^3$ \\
+$C_3$ & $0$ & $-\tfrac{\ii}{8}\Xi\lambda_2^2+\tfrac{5\ii\beta_4}{96}\lambda_2^4$ & $0$ & $\tfrac{3\ii}{8}\Xi\lambda_2^2-\tfrac{\ii\beta_4}{32}\lambda_2^4$ \\
+$C_4$ & $0$ & $\tfrac12\lambda_1-\tfrac{5\beta_3}{48}\lambda_2^3$ & $\lambda_1-\tfrac{\beta_3}{12}\lambda_2^3$ & $\tfrac32\lambda_1+\tfrac{\beta_3}{16}\lambda_2^3$ \\
+$C_5$ & $\tfrac{g_0-\alpha}{2}-\tfrac{\ii}{4}\Xi\lambda_2^2+\tfrac{7\ii\beta_4}{96}\lambda_2^4$ & $\tfrac{g_0-\alpha}{2}-\tfrac{\ii}{4}\Xi\lambda_2^2+\tfrac{23\ii\beta_4}{192}\lambda_2^4$ & $\tfrac{g_0-\alpha}{2}-\tfrac{\ii}{4}\Xi\lambda_2^2+\tfrac{19\ii\beta_4}{96}\lambda_2^4$ & $\tfrac{g_0-\alpha}{2}-\tfrac{\ii}{4}\Xi\lambda_2^2+\tfrac{59\ii\beta_4}{192}\lambda_2^4$ \\
+$C_6$ & $-\tfrac12\lambda_1+\tfrac{7\beta_3}{24}\lambda_2^3$ & $-\tfrac12\lambda_1+\tfrac{17\beta_3}{48}\lambda_2^3$ & $-\tfrac12\lambda_1+\tfrac{5\beta_3}{12}\lambda_2^3$ & $-\tfrac12\lambda_1+\tfrac{23\beta_3}{48}\lambda_2^3$ \\
+$C_7$ & $\tfrac{3\ii}{8}\Xi\lambda_2^2-\tfrac{11\ii\beta_4}{32}\lambda_2^4$ & $\tfrac{3\ii}{8}\Xi\lambda_2^2-\tfrac{13\ii\beta_4}{32}\lambda_2^4$ & $\tfrac{3\ii}{8}\Xi\lambda_2^2-\tfrac{15\ii\beta_4}{32}\lambda_2^4$ & $\tfrac{3\ii}{8}\Xi\lambda_2^2-\tfrac{17\ii\beta_4}{32}\lambda_2^4$ \\
+$C_8$ & $-\tfrac{5\beta_3}{16}\lambda_2^3$ & $-\tfrac{5\beta_3}{16}\lambda_2^3$ & $-\tfrac{5\beta_3}{16}\lambda_2^3$ & $-\tfrac{5\beta_3}{16}\lambda_2^3$ \\
+$C_9$ & $\tfrac{35\ii\beta_4}{128}\lambda_2^4$ & $\tfrac{35\ii\beta_4}{128}\lambda_2^4$ & $\tfrac{35\ii\beta_4}{128}\lambda_2^4$ & $\tfrac{35\ii\beta_4}{128}\lambda_2^4$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{$n=1$}
+
+\begin{table}[htbp]
+\centering\small
+\caption{Coefficients for $n=1$, $m\in\{-3/2,-1,-1/2\}$.}
+\begin{tabular}{lccc}
+\toprule
+Coeff. & $(1,-3/2)$ & $(1,-1)$ & $(1,-1/2)$ \\
+\midrule
+$C_1$ & $\tfrac{315\ii\beta_4}{128}\lambda_2^4$ & $\ii\beta_4\lambda_2^4$ & $\tfrac{35\ii\beta_4}{128}\lambda_2^4$ \\
+$C_2$ & $-\tfrac{35\beta_3}{16}\lambda_2^3$ & $-\beta_3\lambda_2^3$ & $-\tfrac{5\beta_3}{16}\lambda_2^3$ \\
+$C_3$ & $\tfrac{15\ii}{8}\Xi\lambda_2^2-\tfrac{45\ii\beta_4}{32}\lambda_2^4$ & $\ii\Xi\lambda_2^2-\tfrac{2\ii\beta_4}{3}\lambda_2^4$ & $\tfrac{3\ii}{8}\Xi\lambda_2^2-\tfrac{7\ii\beta_4}{32}\lambda_2^4$ \\
+$C_4$ & $-\tfrac32\lambda_1+\tfrac{\beta_3}{2}\lambda_2^3$ & $-\lambda_1+\tfrac{\beta_3}{3}\lambda_2^3$ & $-\tfrac12\lambda_1+\tfrac{\beta_3}{6}\lambda_2^3$ \\
+$C_5$ & $\tfrac{g_0-\alpha}{2}+\tfrac{\ii}{4}\Xi\lambda_2^2-\tfrac{\ii\beta_4}{96}\lambda_2^4$ & $\tfrac{g_0-\alpha}{2}$ & $\tfrac{g_0-\alpha}{2}-\tfrac{\ii}{4}\Xi\lambda_2^2+\tfrac{7\ii\beta_4}{96}\lambda_2^4$ \\
+$C_6$ & $-\lambda_1+\tfrac{\beta_3}{12}\lambda_2^3$ & $-\lambda_1+\tfrac{\beta_3}{3}\lambda_2^3$ & $-\lambda_1+\tfrac{7\beta_3}{12}\lambda_2^3$ \\
+$C_7$ & $\ii\Xi\lambda_2^2-\tfrac{5\ii\beta_4}{12}\lambda_2^4$ & $\ii\Xi\lambda_2^2-\tfrac{2\ii\beta_4}{3}\lambda_2^4$ & $\ii\Xi\lambda_2^2-\tfrac{11\ii\beta_4}{12}\lambda_2^4$ \\
+$C_8$ & $-\beta_3\lambda_2^3$ & $-\beta_3\lambda_2^3$ & $-\beta_3\lambda_2^3$ \\
+$C_9$ & $\ii\beta_4\lambda_2^4$ & $\ii\beta_4\lambda_2^4$ & $\ii\beta_4\lambda_2^4$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering\small
+\caption{Coefficients for $n=1$, $m\in\{0,1/2,1,3/2\}$.}
+\label{tab:n1-0113}
+\begin{tabular}{lcccc}
+\toprule
+Coeff. & $(1,0)$ & $(1,1/2)$ & $(1,1)$ & $(1,3/2)$ \\
+\midrule
+$C_1$ & $0$ & $-\tfrac{5\ii\beta_4}{128}\lambda_2^4$ & $0$ & $\tfrac{3\ii\beta_4}{128}\lambda_2^4$ \\
+$C_2$ & $0$ & $\tfrac{\beta_3}{16}\lambda_2^3$ & $0$ & $-\tfrac{\beta_3}{16}\lambda_2^3$ \\
+$C_3$ & $0$ & $-\tfrac{\ii}{8}\Xi\lambda_2^2+\tfrac{5\ii\beta_4}{96}\lambda_2^4$ & $0$ & $\tfrac{3\ii}{8}\Xi\lambda_2^2-\tfrac{3\ii\beta_4}{32}\lambda_2^4$ \\
+$C_4$ & $0$ & $\tfrac12\lambda_1-\tfrac{\beta_3}{6}\lambda_2^3$ & $\lambda_1-\tfrac{\beta_3}{3}\lambda_2^3$ & $\tfrac32\lambda_1-\tfrac{\beta_3}{2}\lambda_2^3$ \\
+$C_5$ & $\tfrac{g_0-\alpha}{2}-\tfrac{\ii}{2}\Xi\lambda_2^2+\tfrac{5\ii\beta_4}{24}\lambda_2^4$ & $\tfrac{g_0-\alpha}{2}-\tfrac{3\ii}{4}\Xi\lambda_2^2+\tfrac{13\ii\beta_4}{32}\lambda_2^4$ & $\tfrac{g_0-\alpha}{2}-\ii\Xi\lambda_2^2+\tfrac{2\ii\beta_4}{3}\lambda_2^4$ & $\tfrac{g_0-\alpha}{2}-\tfrac{5\ii}{4}\Xi\lambda_2^2+\tfrac{95\ii\beta_4}{96}\lambda_2^4$ \\
+$C_6$ & $-\lambda_1+\tfrac{5\beta_3}{6}\lambda_2^3$ & $-\lambda_1+\tfrac{13\beta_3}{12}\lambda_2^3$ & $-\lambda_1+\tfrac{4\beta_3}{3}\lambda_2^3$ & $-\lambda_1+\tfrac{19\beta_3}{12}\lambda_2^3$ \\
+$C_7$ & $\ii\Xi\lambda_2^2-\tfrac{7\ii\beta_4}{6}\lambda_2^4$ & $\ii\Xi\lambda_2^2-\tfrac{17\ii\beta_4}{12}\lambda_2^4$ & $\ii\Xi\lambda_2^2-\tfrac{5\ii\beta_4}{3}\lambda_2^4$ & $\ii\Xi\lambda_2^2-\tfrac{23\ii\beta_4}{12}\lambda_2^4$ \\
+$C_8$ & $-\beta_3\lambda_2^3$ & $-\beta_3\lambda_2^3$ & $-\beta_3\lambda_2^3$ & $-\beta_3\lambda_2^3$ \\
+$C_9$ & $\ii\beta_4\lambda_2^4$ & $\ii\beta_4\lambda_2^4$ & $\ii\beta_4\lambda_2^4$ & $\ii\beta_4\lambda_2^4$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{$n=3/2$}
+
+\begin{table}[htbp]
+\centering\small
+\caption{Coefficients for $n=3/2$, $m\in\{-3/2,-1,-1/2\}$.}
+\begin{tabular}{lccc}
+\toprule
+Coeff. & $(3/2,-3/2)$ & $(3/2,-1)$ & $(3/2,-1/2)$ \\
+\midrule
+$C_1$ & $\tfrac{315\ii\beta_4}{128}\lambda_2^4$ & $\ii\beta_4\lambda_2^4$ & $\tfrac{35\ii\beta_4}{128}\lambda_2^4$ \\
+$C_2$ & $-\tfrac{35\beta_3}{16}\lambda_2^3$ & $-\beta_3\lambda_2^3$ & $-\tfrac{5\beta_3}{16}\lambda_2^3$ \\
+$C_3$ & $\tfrac{15\ii}{8}\Xi\lambda_2^2-\tfrac{25\ii\beta_4}{32}\lambda_2^4$ & $\ii\Xi\lambda_2^2-\tfrac{5\ii\beta_4}{12}\lambda_2^4$ & $\tfrac{3\ii}{8}\Xi\lambda_2^2-\tfrac{5\ii\beta_4}{32}\lambda_2^4$ \\
+$C_4$ & $-\tfrac32\lambda_1-\tfrac{\beta_3}{16}\lambda_2^3$ & $-\lambda_1+\tfrac{\beta_3}{12}\lambda_2^3$ & $-\tfrac12\lambda_1+\tfrac{5\beta_3}{48}\lambda_2^3$ \\
+$C_5$ & $\tfrac{g_0-\alpha}{2}+\tfrac{3\ii}{4}\Xi\lambda_2^2+\tfrac{\ii\beta_4}{64}\lambda_2^4$ & $\tfrac{g_0-\alpha}{2}+\tfrac{\ii}{4}\Xi\lambda_2^2-\tfrac{\ii\beta_4}{96}\lambda_2^4$ & $\tfrac{g_0-\alpha}{2}-\tfrac{\ii}{4}\Xi\lambda_2^2+\tfrac{23\ii\beta_4}{192}\lambda_2^4$ \\
+$C_6$ & $-\tfrac32\lambda_1-\tfrac{\beta_3}{16}\lambda_2^3$ & $-\tfrac32\lambda_1+\tfrac{\beta_3}{2}\lambda_2^3$ & $-\tfrac32\lambda_1+\tfrac{17\beta_3}{16}\lambda_2^3$ \\
+$C_7$ & $\tfrac{15\ii}{8}\Xi\lambda_2^2-\tfrac{25\ii\beta_4}{32}\lambda_2^4$ & $\tfrac{15\ii}{8}\Xi\lambda_2^2-\tfrac{45\ii\beta_4}{32}\lambda_2^4$ & $\tfrac{15\ii}{8}\Xi\lambda_2^2-\tfrac{65\ii\beta_4}{32}\lambda_2^4$ \\
+$C_8$ & $-\tfrac{35\beta_3}{16}\lambda_2^3$ & $-\tfrac{35\beta_3}{16}\lambda_2^3$ & $-\tfrac{35\beta_3}{16}\lambda_2^3$ \\
+$C_9$ & $\tfrac{315\ii\beta_4}{128}\lambda_2^4$ & $\tfrac{315\ii\beta_4}{128}\lambda_2^4$ & $\tfrac{315\ii\beta_4}{128}\lambda_2^4$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering\small
+\caption{Coefficients for $n=3/2$, $m\in\{0,1/2,1,3/2\}$.}
+\label{tab:n32-3-32}
+\begin{tabular}{lcccc}
+\toprule
+Coeff. & $(3/2,0)$ & $(3/2,1/2)$ & $(3/2,1)$ & $(3/2,3/2)$ \\
+\midrule
+$C_1$ & $0$ & $-\tfrac{5\ii\beta_4}{128}\lambda_2^4$ & $0$ & $\tfrac{3\ii\beta_4}{128}\lambda_2^4$ \\
+$C_2$ & $0$ & $\tfrac{\beta_3}{16}\lambda_2^3$ & $0$ & $-\tfrac{\beta_3}{16}\lambda_2^3$ \\
+$C_3$ & $0$ & $-\tfrac{\ii}{8}\Xi\lambda_2^2+\tfrac{5\ii\beta_4}{96}\lambda_2^4$ & $0$ & $\tfrac{3\ii}{8}\Xi\lambda_2^2-\tfrac{5\ii\beta_4}{32}\lambda_2^4$ \\
+$C_4$ & $0$ & $\tfrac12\lambda_1-\tfrac{11\beta_3}{48}\lambda_2^3$ & $\lambda_1-\tfrac{7\beta_3}{12}\lambda_2^3$ & $\tfrac32\lambda_1-\tfrac{17\beta_3}{16}\lambda_2^3$ \\
+$C_5$ & $\tfrac{g_0-\alpha}{2}-\tfrac{3\ii}{4}\Xi\lambda_2^2+\tfrac{13\ii\beta_4}{32}\lambda_2^4$ & $\tfrac{g_0-\alpha}{2}-\tfrac{5\ii}{4}\Xi\lambda_2^2+\tfrac{163\ii\beta_4}{192}\lambda_2^4$ & $\tfrac{g_0-\alpha}{2}-\tfrac{7\ii}{4}\Xi\lambda_2^2+\tfrac{139\ii\beta_4}{96}\lambda_2^4$ & $\tfrac{g_0-\alpha}{2}-\tfrac{9\ii}{4}\Xi\lambda_2^2+\tfrac{141\ii\beta_4}{64}\lambda_2^4$ \\
+$C_6$ & $-\tfrac32\lambda_1+\tfrac{13\beta_3}{8}\lambda_2^3$ & $-\tfrac32\lambda_1+\tfrac{35\beta_3}{16}\lambda_2^3$ & $-\tfrac32\lambda_1+\tfrac{11\beta_3}{4}\lambda_2^3$ & $-\tfrac32\lambda_1+\tfrac{53\beta_3}{16}\lambda_2^3$ \\
+$C_7$ & $\tfrac{15\ii}{8}\Xi\lambda_2^2-\tfrac{85\ii\beta_4}{32}\lambda_2^4$ & $\tfrac{15\ii}{8}\Xi\lambda_2^2-\tfrac{105\ii\beta_4}{32}\lambda_2^4$ & $\tfrac{15\ii}{8}\Xi\lambda_2^2-\tfrac{125\ii\beta_4}{32}\lambda_2^4$ & $\tfrac{15\ii}{8}\Xi\lambda_2^2-\tfrac{145\ii\beta_4}{32}\lambda_2^4$ \\
+$C_8$ & $-\tfrac{35\beta_3}{16}\lambda_2^3$ & $-\tfrac{35\beta_3}{16}\lambda_2^3$ & $-\tfrac{35\beta_3}{16}\lambda_2^3$ & $-\tfrac{35\beta_3}{16}\lambda_2^3$ \\
+$C_9$ & $\tfrac{315\ii\beta_4}{128}\lambda_2^4$ & $\tfrac{315\ii\beta_4}{128}\lambda_2^4$ & $\tfrac{315\ii\beta_4}{128}\lambda_2^4$ & $\tfrac{315\ii\beta_4}{128}\lambda_2^4$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%======================================================================
+\section*{Data and Code Availability}
+%======================================================================
+The coefficient expressions in Appendix~\ref{app:tables} were obtained by direct exact
+substitution of $(n,m)$ into the closed-form expressions of Section~5 and are fully
+reproducible from that section alone. No numerical PINN experiments were executed for
+this paper; Section~\ref{sec:pinn} specifies the methodology for future numerical work.
+
+%======================================================================
+\bibliographystyle{unsrtnat}
+\begin{thebibliography}{99}
+
+\bibitem[Raissi et al.(2019)]{raissi2019}
+M.~Raissi, P.~Perdikaris, G.~E.~Karniadakis,
+\emph{Physics-informed neural networks: A deep learning framework for solving forward and
+inverse problems involving nonlinear partial differential equations},
+Journal of Computational Physics \textbf{378} (2019) 686--707.
+
+\bibitem[Zhou and Yan(2021)]{zhou2021}
+Z.~Zhou, Z.~Yan,
+\emph{Deep learning neural networks for the third-order nonlinear Schr\"odinger equation:
+solitons, breathers, and rogue waves},
+arXiv:2104.14809 (2021).
+
+\bibitem[Fang et al.(2021)]{fang2021}
+Y.~Fang, G.-Z.~Wu, Y.-Y.~Wang, C.-Q.~Dai,
+\emph{Data-driven femtosecond optical soliton excitations and parameters discovery of the
+high-order NLSE using the PINN},
+arXiv:2103.16297 (2021).
+
+\bibitem[Physics-Informed Neural Networks Review(2025)]{pinnreview2025}
+\emph{Physics-Informed Neural Networks for Higher-Order Nonlinear Schr\"odinger Equations:
+Soliton Dynamics in External Potentials}, preprint (2025).
+
+\bibitem[GRAVIS(2026)]{gravis2026}
+\emph{Physics-informed neural networks for nonlinear Schr\"odinger localized wave problems
+with gradient-residual adaptive collocation sampling},
+Nonlinear Dynamics (2026).
+
+\bibitem[Baldwin et al.(2004)]{baldwin2004}
+D.~Baldwin, \"U.~G\"okta\c{s}, W.~Hereman, L.~Hong, R.~S.~Martino, J.~C.~Miller,
+\emph{Symbolic computation of exact solutions expressible in hyperbolic and elliptic
+functions for nonlinear PDEs},
+Journal of Symbolic Computation \textbf{37}(6) (2004) 669--705.
+
+\bibitem[Hereman and Takaoka(1990)]{hereman1990}
+W.~Hereman, M.~Takaoka,
+\emph{Solitary wave solutions of nonlinear evolution and wave equations using a direct
+algebraic method},
+Journal of Physics A: Mathematical and General \textbf{23} (1990) 4805--4822.
+
+\end{thebibliography}
+
+\end{document}

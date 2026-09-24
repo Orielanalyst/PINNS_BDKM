@@ -1,0 +1,89 @@
+{
+  "n": "-3/2",
+  "m": "-1/2",
+  "n_equations": 21,
+  "certificate_notes": [
+    "real: unexpected denominator factor T - 1",
+    "imag: unexpected denominator factor T - 1"
+  ],
+  "cleared_denominators": "powers of T and (1-T^2); T in (0,1) so both nonzero",
+  "n_families_found": 2,
+  "families": [
+    {
+      "branch_id": "nneg3o2_mneg1o2_f0",
+      "n": "-3/2",
+      "m": "-1/2",
+      "family_index": 0,
+      "tier": "C",
+      "group": "none",
+      "constraints": {
+        "beta4": "0",
+        "beta2": "0",
+        "gamma": "0",
+        "beta3": "0",
+        "lambda1": "0",
+        "c": "0",
+        "ell": "0",
+        "alpha2": "0"
+      },
+      "free_parameters": [
+        "lambda2",
+        "asq",
+        "Gamma"
+      ],
+      "representative_sets": [],
+      "xi_domain": [
+        0.35,
+        4.35
+      ],
+      "power_convention": "positive_xi",
+      "properties": {},
+      "active_terms": [],
+      "residual_max": 0.0,
+      "residual_rms_rel": 0.0,
+      "verified_symbolic": true,
+      "verified_numeric": true,
+      "rejection_reason": "vacuous solution: at most one PDE term is active (governing equation trivializes on this family)",
+      "notes": []
+    },
+    {
+      "branch_id": "nneg3o2_mneg1o2_f1",
+      "n": "-3/2",
+      "m": "-1/2",
+      "family_index": 1,
+      "tier": "C",
+      "group": "none",
+      "constraints": {
+        "lambda2": "0",
+        "lambda1": "0",
+        "ell": "0",
+        "alpha2": "0",
+        "gamma": "0"
+      },
+      "free_parameters": [
+        "asq",
+        "beta2",
+        "beta3",
+        "beta4",
+        "c",
+        "Gamma"
+      ],
+      "representative_sets": [],
+      "xi_domain": [
+        -4.0,
+        4.0
+      ],
+      "power_convention": "positive_xi",
+      "properties": {},
+      "active_terms": [],
+      "residual_max": NaN,
+      "residual_rms_rel": NaN,
+      "verified_symbolic": false,
+      "verified_numeric": false,
+      "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+      "notes": []
+    }
+  ],
+  "elapsed_s": 0.8180677079981251,
+  "extended_phase": false
+}

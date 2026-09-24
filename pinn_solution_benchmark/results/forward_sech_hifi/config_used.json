@@ -1,0 +1,56 @@
+{
+  "experiment_name": "forward_sech_hifi",
+  "run_mode": "pilot",
+  "device": "auto",
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "branches": [
+    "n1_m0_f0"
+  ],
+  "n_pilot_branches": 3,
+  "param_sets_per_branch": 2,
+  "methods": [
+    "vanilla",
+    "adaptive_weights",
+    "adaptive_sampling"
+  ],
+  "domain": {
+    "z_max": 1.0
+  },
+  "network": {
+    "hidden_layers": 4,
+    "width": 48,
+    "activation": "tanh",
+    "fourier_features": 0
+  },
+  "training": {
+    "adam_steps": 2500,
+    "adam_lr": 0.002,
+    "adam_lr_decay": 0.1,
+    "lbfgs_steps": 300,
+    "n_collocation": 2048,
+    "n_initial": 256,
+    "n_boundary": 256,
+    "resample_every": 600,
+    "balancer_alpha": 0.1,
+    "balancer_every": 100,
+    "checkpoint_every": 500
+  },
+  "loss_weights": {
+    "initial": 100.0,
+    "boundary": 100.0,
+    "pde": 1.0
+  },
+  "metrics": {
+    "test_grid": [
+      64,
+      128
+    ],
+    "n_residual_test": 2000,
+    "success_threshold_l2re": 0.01
+  },
+  "workers": 3
+}

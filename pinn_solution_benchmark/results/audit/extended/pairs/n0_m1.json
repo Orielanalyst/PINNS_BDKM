@@ -1,0 +1,262 @@
+{
+  "n": "0",
+  "m": "1",
+  "n_equations": 8,
+  "certificate_notes": [
+    "real: unexpected denominator factor T - 1",
+    "imag: unexpected denominator factor T - 1"
+  ],
+  "cleared_denominators": "powers of T and (1-T^2); T in (0,1) so both nonzero",
+  "n_families_found": 3,
+  "families": [
+    {
+      "branch_id": "n0_m1_f0",
+      "n": "0",
+      "m": "1",
+      "family_index": 0,
+      "tier": "B",
+      "group": "stress",
+      "constraints": {
+        "c": "0",
+        "ell": "0",
+        "alpha2": "0",
+        "lambda1": "lambda2*(6*beta2*omega - beta3*lambda2**2 + 3*beta3*omega**2 + beta4*lambda2**2*omega - beta4*omega**3)/6",
+        "kappa": "-beta2*lambda2**2/2 + beta2*omega**2/2 - beta3*lambda2**2*omega/2 + beta3*omega**3/6 - beta4*lambda2**4/24 + beta4*lambda2**2*omega**2/4 - beta4*omega**4/24",
+        "gamma": "0"
+      },
+      "free_parameters": [
+        "lambda2",
+        "asq",
+        "beta2",
+        "beta3",
+        "beta4",
+        "Gamma",
+        "omega"
+      ],
+      "representative_sets": [
+        {
+          "beta2": "1/5",
+          "beta3": "1/5",
+          "beta4": "1/10",
+          "gamma": "0",
+          "alpha2": "0",
+          "Gamma": "1/2",
+          "g0": "0",
+          "T2": "0",
+          "alpha": "0",
+          "lambda1": "1283/15000",
+          "lambda2": "4/5",
+          "a": "1",
+          "omega": "1/2",
+          "kappa": "-155521/2400000"
+        },
+        {
+          "beta2": "-1/5",
+          "beta3": "1/10",
+          "beta4": "1/20",
+          "gamma": "0",
+          "alpha2": "0",
+          "Gamma": "1",
+          "g0": "0",
+          "T2": "0",
+          "alpha": "0",
+          "lambda1": "-71383/384000",
+          "lambda2": "13/10",
+          "a": "6/5",
+          "omega": "3/4",
+          "kappa": "4736999/76800000"
+        }
+      ],
+      "xi_domain": [
+        -4.0,
+        4.0
+      ],
+      "power_convention": "integer_exact",
+      "properties": {
+        "real_profile": false,
+        "bounded_on_domain": true,
+        "bounded_on_R": false,
+        "localized": false,
+        "smooth_C4_on_domain": true,
+        "smooth_C4_on_R": true,
+        "fractional_power": false,
+        "singular_at_xi0": false,
+        "feat_max_amplitude": 27.28991719712775,
+        "feat_max_curvature_tt": 17.465547006161763,
+        "feat_max_fourth_deriv_tttt": 11.177950083943529,
+        "feat_gradient_max": 21.84658626881319,
+        "feat_localization_width_t": 9.999999998749999,
+        "feat_distance_to_singularity_xi": Infinity,
+        "activity_A_z": 2.92968015629348,
+        "activity_beta2_GVD": 2.4301197950181903,
+        "activity_gain_bandwidth_c": 0.0,
+        "activity_beta3_TOD": 0.7637815724802721,
+        "activity_beta4_FOD": 0.09010561689572909,
+        "activity_kerr_gamma": 0.0,
+        "activity_two_photon_alpha2": 0.0,
+        "activity_linear_gain_loss": 0.0,
+        "activity_saturation_Gamma": 0.0
+      },
+      "active_terms": [
+        "A_z",
+        "beta2_GVD",
+        "beta3_TOD",
+        "beta4_FOD"
+      ],
+      "residual_max": 1.945802079766217e-50,
+      "residual_rms_rel": 4.612643970281977e-52,
+      "verified_symbolic": true,
+      "verified_numeric": true,
+      "rejection_reason": "",
+      "notes": [
+        "profile unbounded as |xi|->inf; finite only on truncated domain"
+      ]
+    },
+    {
+      "branch_id": "n0_m1_f1",
+      "n": "0",
+      "m": "1",
+      "family_index": 1,
+      "tier": "C",
+      "group": "none",
+      "constraints": {
+        "lambda2": "0",
+        "lambda1": "0",
+        "ell": "-c*omega**2/2",
+        "alpha2": "0",
+        "kappa": "omega**2*(12*beta2 + 4*beta3*omega - beta4*omega**2)/24",
+        "gamma": "0"
+      },
+      "free_parameters": [
+        "asq",
+        "beta2",
+        "beta3",
+        "beta4",
+        "c",
+        "Gamma",
+        "omega"
+      ],
+      "representative_sets": [],
+      "xi_domain": [
+        -4.0,
+        4.0
+      ],
+      "power_convention": "integer_exact",
+      "properties": {},
+      "active_terms": [],
+      "residual_max": NaN,
+      "residual_rms_rel": NaN,
+      "verified_symbolic": false,
+      "verified_numeric": false,
+      "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+      "notes": []
+    },
+    {
+      "branch_id": "n0_m1_f2",
+      "n": "0",
+      "m": "1",
+      "family_index": 2,
+      "tier": "B",
+      "group": "stress",
+      "constraints": {
+        "omega": "0",
+        "ell": "c*lambda2**2/2",
+        "alpha2": "0",
+        "lambda1": "-beta3*lambda2**3/6",
+        "kappa": "lambda2**2*(-12*beta2 - beta4*lambda2**2)/24",
+        "gamma": "0"
+      },
+      "free_parameters": [
+        "lambda2",
+        "asq",
+        "beta2",
+        "beta3",
+        "beta4",
+        "c",
+        "Gamma"
+      ],
+      "representative_sets": [
+        {
+          "beta2": "1/5",
+          "beta3": "1/5",
+          "beta4": "1/10",
+          "gamma": "0",
+          "alpha2": "0",
+          "Gamma": "1/2",
+          "g0": "1",
+          "T2": "sqrt(2)/2",
+          "alpha": "17/25",
+          "lambda1": "-32/1875",
+          "lambda2": "4/5",
+          "a": "1",
+          "omega": "0",
+          "kappa": "-616/9375"
+        },
+        {
+          "beta2": "-1/5",
+          "beta3": "1/10",
+          "beta4": "1/20",
+          "gamma": "0",
+          "alpha2": "0",
+          "Gamma": "1",
+          "g0": "1",
+          "T2": "sqrt(3)/2",
+          "alpha": "-107/400",
+          "lambda1": "-2197/60000",
+          "lambda2": "13/10",
+          "a": "6/5",
+          "omega": "0",
+          "kappa": "782639/4800000"
+        }
+      ],
+      "xi_domain": [
+        -4.0,
+        4.0
+      ],
+      "power_convention": "integer_exact",
+      "properties": {
+        "real_profile": false,
+        "bounded_on_domain": true,
+        "bounded_on_R": false,
+        "localized": false,
+        "smooth_C4_on_domain": true,
+        "smooth_C4_on_R": true,
+        "fractional_power": false,
+        "singular_at_xi0": false,
+        "feat_max_amplitude": 27.28991719712775,
+        "feat_max_curvature_tt": 17.465547006161763,
+        "feat_max_fourth_deriv_tttt": 11.177950083943529,
+        "feat_gradient_max": 21.84658626881319,
+        "feat_localization_width_t": 9.999999998749999,
+        "feat_distance_to_singularity_xi": Infinity,
+        "activity_A_z": 1.8527076870346726,
+        "activity_beta2_GVD": 1.746554700616176,
+        "activity_gain_bandwidth_c": 4.36638675154044,
+        "activity_beta3_TOD": 0.4660605070680147,
+        "activity_beta4_FOD": 0.04657479201643136,
+        "activity_kerr_gamma": 0.0,
+        "activity_two_photon_alpha2": 0.0,
+        "activity_linear_gain_loss": 4.36638675154044,
+        "activity_saturation_Gamma": 0.0
+      },
+      "active_terms": [
+        "A_z",
+        "beta2_GVD",
+        "gain_bandwidth_c",
+        "beta3_TOD",
+        "beta4_FOD",
+        "linear_gain_loss"
+      ],
+      "residual_max": 2.2698877263794646e-50,
+      "residual_rms_rel": 5.156507626098356e-52,
+      "verified_symbolic": true,
+      "verified_numeric": true,
+      "rejection_reason": "",
+      "notes": [
+        "profile unbounded as |xi|->inf; finite only on truncated domain"
+      ]
+    }
+  ],
+  "elapsed_s": 33.27889103599955,
+  "extended_phase": true
+}

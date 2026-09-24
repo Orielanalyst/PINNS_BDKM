@@ -1,0 +1,48 @@
+{
+  "experiment_name": "forward_smoke",
+  "run_mode": "smoke",
+  "device": "auto",
+  "seeds": [
+    0
+  ],
+  "branches": "auto",
+  "n_pilot_branches": 3,
+  "param_sets_per_branch": 1,
+  "methods": [
+    "vanilla"
+  ],
+  "domain": {
+    "z_max": 1.0
+  },
+  "network": {
+    "hidden_layers": 3,
+    "width": 32,
+    "activation": "tanh",
+    "fourier_features": 0
+  },
+  "training": {
+    "adam_steps": 300,
+    "adam_lr": 0.002,
+    "adam_lr_decay": 0.2,
+    "lbfgs_steps": 60,
+    "n_collocation": 512,
+    "n_initial": 128,
+    "n_boundary": 128,
+    "resample_every": 150,
+    "checkpoint_every": 150
+  },
+  "loss_weights": {
+    "initial": 100.0,
+    "boundary": 100.0,
+    "pde": 1.0
+  },
+  "metrics": {
+    "test_grid": [
+      48,
+      96
+    ],
+    "n_residual_test": 1000,
+    "success_threshold_l2re": 0.01
+  },
+  "workers": 1
+}

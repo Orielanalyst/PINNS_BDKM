@@ -1,0 +1,36 @@
+{
+  "state": "done",
+  "stage": "dispersion",
+  "density": 0.05,
+  "noise": 0.01,
+  "seed": 2,
+  "params": [
+    {
+      "param": "beta2",
+      "true": 0.0,
+      "recovered": -0.012706170206567315,
+      "abs_error": 0.012706170206567315,
+      "rel_error": null
+    },
+    {
+      "param": "beta3",
+      "true": 0.0,
+      "recovered": 0.009735346454120586,
+      "abs_error": 0.009735346454120586,
+      "rel_error": null
+    },
+    {
+      "param": "beta4",
+      "true": 0.0,
+      "recovered": -0.08254055222567701,
+      "abs_error": 0.08254055222567701,
+      "rel_error": null
+    }
+  ],
+  "l2re_field": 0.003896369871970281,
+  "n_obs": 230,
+  "obs_sigma": 0.0025260705656035064,
+  "elapsed_s": 315.5582592389983,
+  "branch_id": "n1_m1_f0",
+  "job": "n1_m1_f0__dispersion__d0.05__n0.01__seed2"
+}

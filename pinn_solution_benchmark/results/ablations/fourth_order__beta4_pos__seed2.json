@@ -1,0 +1,11 @@
+{
+  "job": "fourth_order__beta4_pos__seed2",
+  "ablation": "fourth_order",
+  "arm": "beta4_pos",
+  "seed": 2,
+  "state": "done",
+  "l2re_complex": 0.0018738151089940965,
+  "residual_rms": 0.004052557806526674,
+  "train_time_s": 125.62811965999572,
+  "success": true
+}

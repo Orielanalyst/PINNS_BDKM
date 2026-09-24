@@ -1,0 +1,43 @@
+{
+  "state": "done",
+  "stage": "joint",
+  "density": 0.05,
+  "noise": 0.05,
+  "seed": 1,
+  "params": [
+    {
+      "param": "c",
+      "true": 0.5000000000000001,
+      "recovered": 0.5050018129108093,
+      "abs_error": 0.005001812910809145,
+      "rel_error": 0.010003625821618288
+    },
+    {
+      "param": "ell",
+      "true": -0.31999999999999995,
+      "recovered": -0.3312838477245609,
+      "abs_error": 0.011283847724560925,
+      "rel_error": 0.0352620241392529
+    },
+    {
+      "param": "alpha2",
+      "true": -0.64,
+      "recovered": -0.6643134316562564,
+      "abs_error": 0.024313431656256435,
+      "rel_error": 0.03798973696290068
+    },
+    {
+      "param": "Gamma",
+      "true": 0.0,
+      "recovered": 0.007568713111768287,
+      "abs_error": 0.007568713111768287,
+      "rel_error": null
+    }
+  ],
+  "l2re_field": 0.005676323258031848,
+  "n_obs": 230,
+  "obs_sigma": 0.012360276502151789,
+  "elapsed_s": 319.094778543993,
+  "branch_id": "n1_m1_f0",
+  "job": "n1_m1_f0__joint__d0.05__n0.05__seed1"
+}

@@ -1,0 +1,29 @@
+# Phase 7 pilot: inverse parameter discovery.
+# Full grid (per stage): densities x noises x seeds x branches; resumable.
+experiment_name: inverse_pilot
+device: auto
+branches: [n1_m1_f0, n1_m0_f0]   # easy (kink) and difficult (sech) verified branches
+stages: [gainloss, nonlinear, dispersion, joint]
+densities: [0.01, 0.05, 0.10]
+noises: [0.0, 0.01, 0.02, 0.05]
+seeds: [0, 1, 2, 3, 4]
+init_offset: 0.5
+w_data: 100.0
+network:
+  hidden_layers: 4
+  width: 32
+  activation: tanh
+  fourier_features: 0
+training:
+  adam_steps: 1200
+  adam_lr: 2.0e-3
+  param_lr: 5.0e-3
+  n_collocation: 1024
+  n_initial: 64
+  n_boundary: 64
+metrics:
+  test_grid: [48, 96]
+workers: 3
+# In-session pilot subset (documented in the final report): use CLI flags
+#   --densities 0.05 --noises 0.0,0.01,0.05 --seeds 0,1,2 --stages gainloss,nonlinear
+# The full grid resumes with:  python scripts/run_inverse.py --config configs/inverse_pilot.yaml

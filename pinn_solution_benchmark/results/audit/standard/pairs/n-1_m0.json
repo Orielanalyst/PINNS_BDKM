@@ -1,0 +1,151 @@
+{
+  "n": "-1",
+  "m": "0",
+  "n_equations": 6,
+  "certificate_notes": [
+    "real: unexpected denominator factor T - 1",
+    "imag: unexpected denominator factor T - 1"
+  ],
+  "cleared_denominators": "powers of T and (1-T^2); T in (0,1) so both nonzero",
+  "n_families_found": 2,
+  "families": [
+    {
+      "branch_id": "nneg1_m0_f0",
+      "n": "-1",
+      "m": "0",
+      "family_index": 0,
+      "tier": "C",
+      "group": "none",
+      "constraints": {
+        "lambda1": "0",
+        "ell": "0",
+        "alpha2": "0",
+        "lambda2": "0",
+        "gamma": "0"
+      },
+      "free_parameters": [
+        "asq",
+        "beta2",
+        "beta3",
+        "beta4",
+        "c",
+        "Gamma"
+      ],
+      "representative_sets": [],
+      "xi_domain": [
+        -4.0,
+        4.0
+      ],
+      "power_convention": "integer_exact",
+      "properties": {},
+      "active_terms": [],
+      "residual_max": NaN,
+      "residual_rms_rel": NaN,
+      "verified_symbolic": false,
+      "verified_numeric": false,
+      "rejection_reason": "lambda2 = 0 (xi has no t-dependence)",
+      "notes": []
+    },
+    {
+      "branch_id": "nneg1_m0_f1",
+      "n": "-1",
+      "m": "0",
+      "family_index": 1,
+      "tier": "B",
+      "group": "stress",
+      "constraints": {
+        "lambda1": "-beta3*lambda2**3/6",
+        "ell": "c*lambda2**2/2",
+        "alpha2": "0",
+        "beta2": "-beta4*lambda2**2/12",
+        "gamma": "0"
+      },
+      "free_parameters": [
+        "lambda2",
+        "asq",
+        "beta3",
+        "beta4",
+        "c",
+        "Gamma"
+      ],
+      "representative_sets": [
+        {
+          "beta2": "-2/375",
+          "beta3": "1/5",
+          "beta4": "1/10",
+          "gamma": "0",
+          "alpha2": "0",
+          "Gamma": "1/2",
+          "g0": "1",
+          "T2": "sqrt(2)/2",
+          "alpha": "17/25",
+          "lambda1": "-32/1875",
+          "lambda2": "4/5",
+          "a": "1"
+        },
+        {
+          "beta2": "-169/24000",
+          "beta3": "1/10",
+          "beta4": "1/20",
+          "gamma": "0",
+          "alpha2": "0",
+          "Gamma": "1",
+          "g0": "1",
+          "T2": "sqrt(3)/2",
+          "alpha": "-107/400",
+          "lambda1": "-2197/60000",
+          "lambda2": "13/10",
+          "a": "6/5"
+        }
+      ],
+      "xi_domain": [
+        -4.0,
+        4.0
+      ],
+      "power_convention": "integer_exact",
+      "properties": {
+        "real_profile": true,
+        "bounded_on_domain": true,
+        "bounded_on_R": false,
+        "localized": false,
+        "smooth_C4_on_domain": true,
+        "smooth_C4_on_R": true,
+        "fractional_power": false,
+        "singular_at_xi0": false,
+        "feat_max_amplitude": 27.308232836016487,
+        "feat_max_curvature_tt": 17.477269015050556,
+        "feat_max_fourth_deriv_tttt": 11.185452169632354,
+        "feat_gradient_max": 21.831933757702203,
+        "feat_localization_width_t": 9.999999998749999,
+        "feat_distance_to_singularity_xi": Infinity,
+        "activity_A_z": 0.4657479201643136,
+        "activity_beta2_GVD": 0.04660605070680147,
+        "activity_gain_bandwidth_c": 4.369317253762638,
+        "activity_beta3_TOD": 0.4657479201643136,
+        "activity_beta4_FOD": 0.04660605070680147,
+        "activity_kerr_gamma": 0.0,
+        "activity_two_photon_alpha2": 0.0,
+        "activity_linear_gain_loss": 4.369317253762638,
+        "activity_saturation_Gamma": 0.0
+      },
+      "active_terms": [
+        "A_z",
+        "beta2_GVD",
+        "gain_bandwidth_c",
+        "beta3_TOD",
+        "beta4_FOD",
+        "linear_gain_loss"
+      ],
+      "residual_max": 2.138228081272697e-50,
+      "residual_rms_rel": 4.7842847937716744e-52,
+      "verified_symbolic": true,
+      "verified_numeric": true,
+      "rejection_reason": "",
+      "notes": [
+        "profile unbounded as |xi|->inf; finite only on truncated domain"
+      ]
+    }
+  ],
+  "elapsed_s": 0.3204170200006047,
+  "extended_phase": false
+}

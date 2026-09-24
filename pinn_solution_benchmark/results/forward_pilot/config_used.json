@@ -1,0 +1,56 @@
+{
+  "experiment_name": "forward_pilot",
+  "run_mode": "pilot",
+  "device": "auto",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "branches": "auto",
+  "n_pilot_branches": 3,
+  "param_sets_per_branch": 2,
+  "methods": [
+    "vanilla",
+    "adaptive_weights",
+    "adaptive_sampling"
+  ],
+  "domain": {
+    "z_max": 1.0
+  },
+  "network": {
+    "hidden_layers": 4,
+    "width": 40,
+    "activation": "tanh",
+    "fourier_features": 0
+  },
+  "training": {
+    "adam_steps": 600,
+    "adam_lr": 0.002,
+    "adam_lr_decay": 0.1,
+    "lbfgs_steps": 100,
+    "n_collocation": 1024,
+    "n_initial": 256,
+    "n_boundary": 256,
+    "resample_every": 500,
+    "balancer_alpha": 0.1,
+    "balancer_every": 100,
+    "checkpoint_every": 500
+  },
+  "loss_weights": {
+    "initial": 100.0,
+    "boundary": 100.0,
+    "pde": 1.0
+  },
+  "metrics": {
+    "test_grid": [
+      64,
+      128
+    ],
+    "n_residual_test": 2000,
+    "success_threshold_l2re": 0.01
+  },
+  "workers": 3
+}

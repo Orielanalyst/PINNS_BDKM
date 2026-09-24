@@ -1,0 +1,11 @@
+# Stress-test group: singular (coth/csch-type, domain restricted away from
+# xi=0) and unbounded (cosh/sinh-type linear) verified branches. These are
+# excluded from the main benchmark by design; here they probe failure regimes:
+# large-amplitude fields, active beta3/beta4 dispersion, traveling profiles
+# (lambda1 != 0), and near-singularity behavior.
+inherit: pilot.yaml
+experiment_name: forward_stress
+branches: [nneg1_mneg1_f0, n0_mneg1_f0, n1_mneg1_f0, nneg1_m0_f1, nneg1_m1_f1, n0_m1_f1]
+param_sets_per_branch: 1
+methods: [vanilla]
+seeds: [0, 1, 2]
