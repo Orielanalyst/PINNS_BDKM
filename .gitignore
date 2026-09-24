@@ -38,3 +38,7 @@ Thumbs.db
 
 # Local manuscript renderings
 /manuscript.pdf
+
+# Publication materials not licensed for redistribution
+*.pdf
+*.tex
