@@ -94,3 +94,17 @@ resumes the remainder.
   the stress group and are excluded from the main forward benchmark.
 - Success criterion (configurable): complex L2RE < 1e-2 AND finite
   independently-sampled PDE residual; raw errors are always reported.
+
+## Methodological reporting
+
+- Ablations use three matched seeds per arm (0, 1, 2). The generated ablation
+  report includes Welch and exact two-sided Mann-Whitney comparisons, Shapiro
+  diagnostics, and a planning MDE at alpha=0.05 and 80% power. These tests are
+  low-power at n=3 and are not treated as definitive evidence.
+- RAD regenerates a 4x collocation candidate pool at each resampling event;
+  the event seed is the run seed plus the Adam step. Initial and ordinary
+  collocation sets use the custom randomized Latin-hypercube sampler in
+  `src/pinn_benchmark/datasets.py` (per-cell jitter; no maximin optimization).
+- Inverse identifiability reports ranks at relative tolerances 1e-6, 1e-8,
+  and 1e-10. Positive `c` and `Gamma` use Softplus coordinates with signed
+  50% scaled initialization offsets; no unconstrained baseline is claimed.

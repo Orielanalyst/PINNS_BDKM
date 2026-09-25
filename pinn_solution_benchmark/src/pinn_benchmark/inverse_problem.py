@@ -102,10 +102,14 @@ def sensitivity_analysis(sol: BranchSolution, n_points: int = 400, seed: int = 0
     J_red = np.stack([_per_point_sens(u, v, z, t, th_true, name)
                       for name in REDUCED_NAMES], axis=1)
     s_red = np.linalg.svd(J_red, compute_uv=False)
+    rank_tolerances = (1e-6, 1e-8, 1e-10)
     out = {"reduced_names": REDUCED_NAMES,
            "reduced_singular_values": s_red.tolist(),
            "reduced_condition_number": float(s_red[0] / max(s_red[-1], 1e-300)),
-           "reduced_rank_1e-8": int((s_red > 1e-8 * s_red[0]).sum())}
+           "reduced_rank_1e-8": int((s_red > 1e-8 * s_red[0]).sum()),
+           "reduced_rank_by_tolerance": {
+               f"{tol:.0e}": int((s_red > tol * s_red[0]).sum())
+               for tol in rank_tolerances}}
 
     if include_g0T2alpha:
         raw = {k: float(v_) for k, v_ in sol.params.items()}
@@ -116,6 +120,9 @@ def sensitivity_analysis(sol: BranchSolution, n_points: int = 400, seed: int = 0
         out.update({
             "g0T2alpha_singular_values": s_raw.tolist(),
             "g0T2alpha_rank_1e-8": int((s_raw > 1e-8 * max(s_raw[0], 1e-300)).sum()),
+            "g0T2alpha_rank_by_tolerance": {
+                f"{tol:.0e}": int((s_raw > tol * max(s_raw[0], 1e-300)).sum())
+                for tol in rank_tolerances},
             "g0T2alpha_null_direction": Vt[-1].tolist(),
             "statement": "rank < 3 confirms g0, T2, alpha are not separately "
                          "identifiable; only c = g0*T2^2 and ell = (g0-alpha)/2 are.",
